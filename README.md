@@ -10,3 +10,4 @@ CNotreProjet - Benoit Langlois
 
 <a>https://trello.com/edgeofchaos2</a>
 
+<a>https://edge-of-chaos.slack.com/</a>
