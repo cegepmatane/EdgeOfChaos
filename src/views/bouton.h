@@ -11,4 +11,6 @@ class Bouton : public sf::RectangleShape{
 		sf::Text contenu;
 	public:
 		Bouton(int hauteur, int longueur, std::string texte, sf::Font police);
+		sf::Vector2f getPosition();
+		void setPosition(float x, float y);
 };

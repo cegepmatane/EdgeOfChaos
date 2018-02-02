@@ -15,3 +15,13 @@ Bouton::Bouton(int hauteur, int longueur, std::string texte, sf::Font police) : 
 	this->contenu.setPosition(this->getPosition().x + this->getPosition().x / 4 / 2, this->getPosition().x + this->getPosition().x / 4 / 2);
 
 }
+
+sf::Vector2f Bouton::getPosition()
+{
+	return sf::Vector2f(this->getPosition().x - this->bordure, this->getPostion().y - this->bordure)
+}
+
+void Bouton::setPosition(float x, float y)
+{
+	this->setPosition(x + this->bordure, y + this->bordure);
+}
