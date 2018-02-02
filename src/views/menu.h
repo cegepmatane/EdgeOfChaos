@@ -7,6 +7,7 @@ class Menu : public sf::RenderWindow{
 		sf::RectangleShape btnHeberger;
 		sf::RectangleShape btnJoindre;
 		sf::RectangleShape btnParametres;
+		sf::Text titre;
 	public:
 		Menu();
 		void afficher();
