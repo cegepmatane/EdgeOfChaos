@@ -13,4 +13,6 @@ class Menu : public sf::RenderWindow{
 	public:
 		Menu();
 		void afficher();
+
+		~Menu();
 };

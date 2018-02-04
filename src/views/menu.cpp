@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "menu.h"
+
+#include "../../inclusion/menu.h"
+#include "../../inclusion/bouton.h"
 
 Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Default)
 {
@@ -21,10 +23,20 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 	this->titre.setFillColor(sf::Color::Black);
 	this->titre.setPosition(10, 10);
 
-	this->btnHeberger.setSize(sf::Vector2f(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2));
+
+	this->btnHeberger = nullptr;
+	this->btnJoindre = nullptr;
+	this->btnParametres = nullptr;
+
+
+	std::string test("azerty");
+
+	this->btnHeberger = new Bouton(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2, test, policeTitre);
+	//this->btnHeberger->setPosition(_XPOSITION, 80);
+	/*this->btnHeberger.setSize(sf::Vector2f(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2));
 	this->btnHeberger.setOutlineThickness(_OUTLINE);
 	this->btnHeberger.setOutlineColor(sf::Color::Black);
-	this->btnHeberger.setPosition(_XPOSITION, 80);
+	this->btnHeberger.setPosition(_XPOSITION, 80);*/
 
 	while(this->isOpen()){
 		sf::Event event;
@@ -35,7 +47,7 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 			}
 			this->clear(sf::Color::Yellow);
 			this->draw(this->titre);
-			this->draw(this->btnHeberger);
+			this->draw(*(this->btnHeberger));
 			this->display();
 		}
 	}
@@ -43,4 +55,19 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 }
 
 void Menu::afficher(){
+}
+
+Menu::~Menu(){
+	if(this->btnHeberger != nullptr){
+		delete this->btnHeberger;
+		this->btnHeberger = nullptr;
+	}
+	if(this->btnJoindre != nullptr){
+		delete this->btnJoindre;
+		this->btnJoindre = nullptr;
+	}
+	if(this->btnParametres != nullptr){
+		delete this->btnParametres;
+		this->btnParametres = nullptr;
+	}
 }
