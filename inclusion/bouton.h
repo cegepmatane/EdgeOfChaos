@@ -7,8 +7,8 @@ class Bouton : public sf::RectangleShape{
 	private:
 		int bordure;
 		sf::Text contenu;
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	public:
 		Bouton(int hauteur, int longueur, std::string& texte, sf::Font& police);
-		//sf::Vector2f getPosition();
-		void setPosition(float x, float y);
+		void setBtnPosition(float x, float y);
 };
