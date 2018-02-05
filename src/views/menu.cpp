@@ -14,7 +14,7 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 	this->setVerticalSyncEnabled(true);
 
 	sf::Font policeTitre;
-	if(!policeTitre.loadFromFile("../../ressources/polices/urw-chancery-l-medium-Menus.ttf")){
+	if(!policeTitre.loadFromFile("../../ressources/polices/fraktur-bt.ttf")){
 		std::cerr << "Impossible de charger la police du titre." << std::endl;
 	}
 	this->titre.setFont(policeTitre);
@@ -24,14 +24,16 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 	this->titre.setPosition(10, 10);
 
 
-	this->btnHeberger = nullptr;
 	this->btnJoindre = nullptr;
 	this->btnParametres = nullptr;
 
 
-	std::string test("azerty");
-
-	this->btnHeberger = new Bouton(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2, test, policeTitre);
+	this->btnHeberger = new Bouton(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2, "Héberger", policeTitre);
+	this->btnHeberger->setBtnPosition(_XPOSITION, 80);
+	this->btnJoindre = new Bouton(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2, "Joindre", policeTitre);
+	this->btnJoindre->setBtnPosition(_XPOSITION, 160);
+	this->btnParametres = new Bouton(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2, "Parametres", policeTitre);
+	this->btnParametres->setBtnPosition(_XPOSITION, 240);
 	//this->btnHeberger->setPosition(_XPOSITION, 80);
 	/*this->btnHeberger.setSize(sf::Vector2f(this->getSize().x / 2 - _OUTLINE * 2, this->getSize().y / 6 - _OUTLINE * 2));
 	this->btnHeberger.setOutlineThickness(_OUTLINE);
@@ -48,6 +50,8 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 			this->clear(sf::Color::Yellow);
 			this->draw(this->titre);
 			this->draw(*(this->btnHeberger));
+			this->draw(*(this->btnJoindre));
+			this->draw(*(this->btnParametres));
 			this->display();
 		}
 	}

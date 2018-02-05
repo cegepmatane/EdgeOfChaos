@@ -4,7 +4,7 @@
 
 #include "../../inclusion/bouton.h"
 
-Bouton::Bouton(int hauteur, int longueur, std::string& texte, sf::Font& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426 * 2))
+Bouton::Bouton(int hauteur, int longueur, std::string texte, sf::Font& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426 * 2))
 {
 	this->bordure = sf::VideoMode::getDesktopMode().width / 426;
 	
