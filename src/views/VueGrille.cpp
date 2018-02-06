@@ -15,8 +15,8 @@ VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(s
 	compteurBas = tailleCase * 9;
 
 	//TILEMAP
-	// on définit le niveau à l'aide de numéro de tuiles
-	const int level[] =
+	// on définit le niveau à l'aide de numéro de case
+	const int niveau[] =
 	{
 		0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
 		0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 5, 0, 1, 1,
@@ -42,13 +42,13 @@ VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(s
 
 	// on crée la tilemap avec le niveau précédemment défini
 
-	if (carte.load("ressources/textures/textures.png", sf::Vector2u(tailleCase, tailleCase), level, longueur, hauteur))
+	if (carte.load("ressources/textures/textures.png", sf::Vector2u(tailleCase, tailleCase), niveau, longueur, hauteur))
 	{
 
 		vueGrille = sf::View(sf::FloatRect(0, 0, 20*tailleCase, 9*tailleCase));
 		vueGrille.setViewport(sf::FloatRect(0, 0, 1, 0.75f));
 		this->setView(vueGrille);
-		vueGénérale = sf::View(sf::FloatRect(0, 0, 40 * tailleCase, 20 * tailleCase));
+		vueGénérale = sf::View(sf::FloatRect(0, 0, longueur * tailleCase, hauteur * tailleCase));
 		
 	}
 }
@@ -81,7 +81,7 @@ void VueGrille::boucleOpen()
 					}
 					break;
 				case sf::Keyboard::D:
-					if (vueCarte&&compteurDroite!=tailleCase*40)
+					if (vueCarte&&compteurDroite!=tailleCase*longueur)
 					{
 						vueGrille.move(tailleCase, 0);
 						this->setView(vueGrille);
@@ -99,7 +99,7 @@ void VueGrille::boucleOpen()
 					}
 					break;
 				case sf::Keyboard::S:
-					if (vueCarte&&compteurBas!=tailleCase*20)
+					if (vueCarte&&compteurBas!=tailleCase*hauteur)
 					{
 						vueGrille.move(0, tailleCase);
 						this->setView(vueGrille);
