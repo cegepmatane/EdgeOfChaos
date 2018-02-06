@@ -33,3 +33,9 @@ void Bouton::setBtnPosition(float x, float y)
 	this->setPosition(x, y);
 	this->contenu.setPosition(x, y);
 }
+
+const sf::Vector2f Bouton::getPosition(){
+	int rectangleInterneX = ((RectangleShape)(*this)).getPosition().x;
+	int rectangleInterneY = ((RectangleShape)(*this)).getPosition().y;
+	return sf::Vector2f(rectangleInterneX - this->bordure, rectangleInterneY - this->bordure);
+}
