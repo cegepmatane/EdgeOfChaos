@@ -12,6 +12,7 @@ private:
 	TileMap carte;
 	sf::View vueGrille;
 	sf::View vueGénérale;
+	int compteurHaut, compteurBas, compteurGauche, compteurDroite;
 
 public:
 	VueGrille(int hauteur, int longueur, int tailleCase);

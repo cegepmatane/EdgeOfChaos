@@ -9,6 +9,11 @@ VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(s
 	this->longueur = longueur;
 	this->tailleCase = tailleCase;
 
+	compteurGauche = 0;
+	compteurHaut = 0;
+	compteurDroite = tailleCase * 20;
+	compteurBas = tailleCase * 9;
+
 	//TILEMAP
 	// on définit le niveau à l'aide de numéro de tuiles
 	const int level[] =
@@ -76,31 +81,39 @@ void VueGrille::boucleOpen()
 					}
 					break;
 				case sf::Keyboard::D:
-					if (vueCarte)
+					if (vueCarte&&compteurDroite!=tailleCase*40)
 					{
 						vueGrille.move(tailleCase, 0);
 						this->setView(vueGrille);
+						compteurDroite += tailleCase;
+						compteurGauche += tailleCase;
 					}
 					break;
 				case sf::Keyboard::Z:
-					if (vueCarte)
+					if (vueCarte&&compteurHaut!=0)
 					{
 						vueGrille.move(0, -tailleCase);
 						this->setView(vueGrille);
+						compteurBas -= tailleCase;
+						compteurHaut -= tailleCase;
 					}
 					break;
 				case sf::Keyboard::S:
-					if (vueCarte)
+					if (vueCarte&&compteurBas!=tailleCase*20)
 					{
 						vueGrille.move(0, tailleCase);
 						this->setView(vueGrille);
+						compteurBas += tailleCase;
+						compteurHaut += tailleCase;
 					}
 					break;
 				case sf::Keyboard::Q:
-					if (vueCarte)
+					if (vueCarte&&compteurGauche!=0)
 					{
 						vueGrille.move(-tailleCase, 0);
 						this->setView(vueGrille);
+						compteurDroite -= tailleCase;
+						compteurGauche -= tailleCase;
 					}
 					break;
 				}
