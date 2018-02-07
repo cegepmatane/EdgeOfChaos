@@ -3,7 +3,7 @@
 #include "../../inclusion/VueGrille.h"
 #include "../../inclusion/TileMap.h"
 
-VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(sf::VideoMode(1280, 768), "Fenêtre de jeu")
+VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(sf::VideoMode(1280, 768), "Edge of Chaos")
 {
 	this->hauteur = hauteur;
 	this->longueur = longueur;
@@ -51,6 +51,13 @@ VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(s
 		vueGénérale = sf::View(sf::FloatRect(0, 0, longueur * tailleCase, hauteur * tailleCase));
 		
 	}
+
+	sf::Texture textureBois;
+	textureBois.loadFromFile("ressources/textures/bois.jpg");
+	spritePanneau.setTexture(textureBois);
+	//spritePanneau.setPosition(sf::Vector2f(0, tailleCase*9));
+
+	//TODO réussir à afficher le panneau
 }
 
 void VueGrille::boucleOpen()
@@ -124,7 +131,8 @@ void VueGrille::boucleOpen()
 		this->clear(sf::Color::White);
 
 		//AFFICHER LA TILEMAP
-		this->draw(carte);
+		//this->draw(carte);
+		this->draw(spritePanneau);
 
 		this->display();
 	}

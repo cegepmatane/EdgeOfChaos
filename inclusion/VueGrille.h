@@ -13,6 +13,7 @@ private:
 	sf::View vueGrille;
 	sf::View vueGénérale;
 	int compteurHaut, compteurBas, compteurGauche, compteurDroite;
+	sf::Sprite spritePanneau;
 
 public:
 	VueGrille(int hauteur, int longueur, int tailleCase);
