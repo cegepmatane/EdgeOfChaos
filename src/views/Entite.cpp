@@ -2,7 +2,8 @@
 #include <string>
 #include "../../inclusion/Entite.h"
 
-Entite::Entite(std::string nom, int pdv, sf::Vector2u position) : nom(nom), pointDeVie(pdv), position(position)
+Entite::Entite(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite) : 
+	nom(nomEntite), pointDeVie(pointDeVieEntite), position(positionEntite)
 {
 	
 }

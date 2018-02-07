@@ -2,7 +2,8 @@
 #include <string>
 #include "../../inclusion/Unite.h"
 
-Unite::Unite(std::string nom, int pdv, sf::Vector2u position) : Entite(nom, pdv, position)
+Unite::Unite(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite, int attaqueUnite, int defenseUnite) : 
+Entite(nomEntite, pointDeVieEntite, positionEntite), attaque(attaqueUnite), defense(defenseUnite)
 {
 	
 }
