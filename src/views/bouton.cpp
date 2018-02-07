@@ -4,21 +4,33 @@
 
 #include "../../inclusion/bouton.h"
 
-Bouton::Bouton(int hauteur, int longueur, std::string texte, sf::Font& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
+Bouton::Bouton(int hauteur, int longueur, std::string texte, const std::string& cheminPolice) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
 {
 	this->setFillColor(sf::Color::White);
-	
+	initBordure(sf::Color::Black);	
+	initContenu(texte, cheminPolice);
+}
+
+void Bouton::initBordure(const sf::Color& couleur)
+{
 	this->bordure = sf::VideoMode::getDesktopMode().width / 426.0;
 	this->setOutlineThickness(this->bordure);
-	this->setOutlineColor(sf::Color::Black);
-	
+	this->setOutlineColor(couleur);
+}
+
+void Bouton::initContenu(std::string& texte, const std::string& cheminPolice)
+{
+	if(!(this->police.loadFromFile(cheminPolice))){
+		std::cerr << "Impossible de charger la police du bouton. \n ( " << cheminPolice << " )" << std::endl;
+	}
 	this->contenu.setFont(police);
 	this->contenu.setString(texte);
 	this->contenu.setCharacterSize(this->getSize().y - this->getSize().y / 6);
 	this->contenu.setFillColor(sf::Color::Black);
 }
 
-void Bouton::draw(sf::RenderTarget& target, sf::RenderStates states) const{
+void Bouton::draw(sf::RenderTarget& target, sf::RenderStates states) const
+{
 	target.draw((RectangleShape)(*this));	// Caster, sinon, affichage récursif de tous les composant de l'instance de la classe.
 	target.draw(this->contenu);
 }

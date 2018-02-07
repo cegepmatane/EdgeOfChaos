@@ -7,9 +7,13 @@ class Bouton : public sf::RectangleShape{
 	private:
 		int bordure;
 		sf::Text contenu;
-		void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+		sf::Font police;
+
+		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
+		void initBordure(const sf::Color& couleur);
+		void initContenu(std::string& texte, const std::string& cheminPolice);
 	public:
-		Bouton(int hauteur, int longueur, std::string texte, sf::Font& police);
+		Bouton(int hauteur, int longueur, std::string texte, const std::string& cheminPolice);
 		void setBtnPosition(float x, float y);
 		const sf::Vector2f getPosition();
 		const sf::Vector2f getSize();

@@ -16,8 +16,8 @@ class Menu : public sf::RenderWindow{
 		sf::Font policeTitre;
 
 		void initFenetre();
-		void initTitre(const std::string& chemin);
-		void initBoutons(const std::string& chemin, const double proportion);
+		void initTitre(const std::string& cheminPolice);
+		void initBoutons(const std::string& cheminPolice, const double proportion);
 	public:
 		Menu();
 		void afficher();
