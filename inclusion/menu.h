@@ -11,6 +11,9 @@ class Menu : public sf::RenderWindow{
 		Bouton * actionJoindre;
 		Bouton * actionParametres;
 		sf::Font policeBoutons;
+		int positionXBoutons;
+		int offsetYBoutons;
+		int espacementBoutons;
 
 		sf::Text titre;
 		sf::Font policeTitre;
@@ -20,7 +23,8 @@ class Menu : public sf::RenderWindow{
 		void initBoutons(const std::string& cheminPolice, const double proportion);
 	public:
 		Menu();
-		void afficher();
-
+		Bouton getHeberger();
+		Bouton getJoindre();
+		Bouton getParametres();
 		~Menu();
 };

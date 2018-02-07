@@ -18,11 +18,16 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 
 	while(this->isOpen()){
 		sf::Event event;
+		//sf::Event ;
 
 		while(this->pollEvent(event)){
-			if(event.type == sf::Event::Closed){
+			if(event.type == sf::Event::Closed)
+			{
 				this->close();
 			}
+			/*if(sf::Mouse::getposition(*this).x > )
+			{
+			}*/
 			this->clear(sf::Color::Yellow);
 			this->draw(this->titre);
 			this->draw(*(this->actionHeberger));
@@ -30,6 +35,33 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 			this->draw(*(this->actionParametres));
 			this->display();
 		}
+	}
+}
+
+Bouton Menu::getHeberger(){
+	return *(this->actionHeberger);
+}
+
+Bouton Menu::getJoindre(){
+	return *(this->actionJoindre);
+}
+
+Bouton Menu::getParametres(){
+	return *(this->actionParametres);
+}
+
+Menu::~Menu(){
+	if(this->actionHeberger != nullptr){
+		delete this->actionHeberger;
+		this->actionHeberger = nullptr;
+	}
+	if(this->actionJoindre != nullptr){
+		delete this->actionJoindre;
+		this->actionJoindre = nullptr;
+	}
+	if(this->actionParametres != nullptr){
+		delete this->actionParametres;
+		this->actionParametres = nullptr;
 	}
 }
 
@@ -50,35 +82,17 @@ void Menu::initTitre(const std::string& cheminPolice){
 }
 
 void Menu::initBoutons(const std::string& cheminPolice, const double proportion){
-	const int _XPOSITION = this->getSize().x * (1 - proportion) / 2 ;	// Somme des des fractions doit être égale à 1.
-	const int _YOFFSET_POSITION = this->titre.getCharacterSize() + this->titre.getPosition().y;
-	const int _ESPACEMENT = 20;
+	this->positionXBoutons = this->getSize().x * (1 - proportion) / 2 ;	// Somme des des fractions doit être égale à 1.
+	this->offsetYBoutons = this->titre.getCharacterSize() + this->titre.getPosition().y;
+	this->espacementBoutons = 20;
 	
-	const int _HAUTEUR_BTN = this->getSize().y / 6;	
-	const int _LONGUEUR_BTN = this->getSize().x * proportion;
+	const int _HAUTEUR = this->getSize().y / 6;	
+	const int _LONGUEUR = this->getSize().x * proportion;
 	
-	//if(!(this->policeBoutons.loadFromFile(cheminPolice))){
-	//	std::cerr << "Impossible de charger la police des boutons." << std::endl;
-	//}
-	this->actionHeberger = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Heberger", cheminPolice);
-	this->actionHeberger->setBtnPosition(_XPOSITION, _YOFFSET_POSITION + 50 + (_HAUTEUR_BTN + _ESPACEMENT) * 0);
-	this->actionJoindre = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Joindre", cheminPolice);
-	this->actionJoindre->setBtnPosition(_XPOSITION, _YOFFSET_POSITION + 50 + (_HAUTEUR_BTN + _ESPACEMENT) * 1);
-	this->actionParametres = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Parametres", cheminPolice);
-	this->actionParametres->setBtnPosition(_XPOSITION, _YOFFSET_POSITION + 50 + (_HAUTEUR_BTN + _ESPACEMENT) * 2);
-}
-
-Menu::~Menu(){
-	if(this->actionHeberger != nullptr){
-		delete this->actionHeberger;
-		this->actionHeberger = nullptr;
-	}
-	if(this->actionJoindre != nullptr){
-		delete this->actionJoindre;
-		this->actionJoindre = nullptr;
-	}
-	if(this->actionParametres != nullptr){
-		delete this->actionParametres;
-		this->actionParametres = nullptr;
-	}
+	this->actionHeberger = new Bouton(_LONGUEUR, _HAUTEUR, "Heberger", cheminPolice);
+	this->actionHeberger->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 0);
+	this->actionJoindre = new Bouton(_LONGUEUR, _HAUTEUR, "Joindre", cheminPolice);
+	this->actionJoindre->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 1);
+	this->actionParametres = new Bouton(_LONGUEUR, _HAUTEUR, "Parametres", cheminPolice);
+	this->actionParametres->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 2);
 }

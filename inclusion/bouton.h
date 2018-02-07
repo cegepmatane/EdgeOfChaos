@@ -17,4 +17,5 @@ class Bouton : public sf::RectangleShape{
 		void setBtnPosition(float x, float y);
 		const sf::Vector2f getPosition();
 		const sf::Vector2f getSize();
+		
 };
