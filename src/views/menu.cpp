@@ -23,9 +23,9 @@ void Menu::initTitre(const std::string& chemin){
 }
 
 void Menu::initBoutons(const std::string& chemin){
-	const int _XPOSITION = this->getSize().x / 4;
-	const int _HAUTEUR_BTN = this->getSize().y / 6;
-	const int _LONGUEUR_BTN = this->getSize().x / 2;
+	const int _XPOSITION = this->getSize().x * (4 / 9.0) / 2 ;	// Somme des des fractions doit être égale
+	const int _HAUTEUR_BTN = this->getSize().y / 6;			// à 1.
+	const int _LONGUEUR_BTN = this->getSize().x * (5 / 9.0);
 	
 	if(!(this->policeBoutons.loadFromFile(chemin))){
 		std::cerr << "Impossible de charger la police des boutons." << std::endl;
@@ -38,7 +38,7 @@ void Menu::initBoutons(const std::string& chemin){
 	this->btnParametres->setBtnPosition(_XPOSITION, 240);
 }
 
-Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Default)
+Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Close)
 {
 	const std::string cheminPoliceTitre("../../ressources/polices/fraktur-bt.ttf");
 	const std::string cheminPoliceBoutons("../../ressources/polices/urw-chancery-l-medium-Menus.ttf");
