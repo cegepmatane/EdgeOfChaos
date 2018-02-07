@@ -56,7 +56,7 @@ int main()
 	textureBois.loadFromFile("ressources/textures/bois.jpg");
 	spritePanneau.setTexture(textureBois);
 	spritePanneau.setPosition(sf::Vector2f(0, tailleCase * 9));
-	
+
 	TODO réussir à afficher le panneau
 	*/
 
