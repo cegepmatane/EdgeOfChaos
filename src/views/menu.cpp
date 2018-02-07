@@ -30,12 +30,12 @@ void Menu::initBoutons(const std::string& chemin){
 	if(!(this->policeBoutons.loadFromFile(chemin))){
 		std::cerr << "Impossible de charger la police des boutons." << std::endl;
 	}
-	this->btnHeberger = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Heberger", this->policeBoutons);
-	this->btnHeberger->setBtnPosition(_XPOSITION, 80);
-	this->btnJoindre = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Joindre", this->policeBoutons);
-	this->btnJoindre->setBtnPosition(_XPOSITION, 160);
-	this->btnParametres = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Parametres", this->policeBoutons);
-	this->btnParametres->setBtnPosition(_XPOSITION, 240);
+	this->actionHeberger = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Heberger", this->policeBoutons);
+	this->actionHeberger->setBtnPosition(_XPOSITION, 80);
+	this->actionJoindre = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Joindre", this->policeBoutons);
+	this->actionJoindre->setBtnPosition(_XPOSITION, 160);
+	this->actionParametres = new Bouton(_LONGUEUR_BTN, _HAUTEUR_BTN, "Parametres", this->policeBoutons);
+	this->actionParametres->setBtnPosition(_XPOSITION, 240);
 }
 
 Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Close)
@@ -56,9 +56,9 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 			}
 			this->clear(sf::Color::Yellow);
 			this->draw(this->titre);
-			this->draw(*(this->btnHeberger));
-			this->draw(*(this->btnJoindre));
-			this->draw(*(this->btnParametres));
+			this->draw(*(this->actionHeberger));
+			this->draw(*(this->actionJoindre));
+			this->draw(*(this->actionParametres));
 			this->display();
 		}
 	}
@@ -69,16 +69,16 @@ void Menu::afficher(){
 }
 
 Menu::~Menu(){
-	if(this->btnHeberger != nullptr){
-		delete this->btnHeberger;
-		this->btnHeberger = nullptr;
+	if(this->actionHeberger != nullptr){
+		delete this->actionHeberger;
+		this->actionHeberger = nullptr;
 	}
-	if(this->btnJoindre != nullptr){
-		delete this->btnJoindre;
-		this->btnJoindre = nullptr;
+	if(this->actionJoindre != nullptr){
+		delete this->actionJoindre;
+		this->actionJoindre = nullptr;
 	}
-	if(this->btnParametres != nullptr){
-		delete this->btnParametres;
-		this->btnParametres = nullptr;
+	if(this->actionParametres != nullptr){
+		delete this->actionParametres;
+		this->actionParametres = nullptr;
 	}
 }
