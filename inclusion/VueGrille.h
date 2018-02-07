@@ -3,21 +3,20 @@
 #include <iostream>
 #include "TileMap.h"
 
-class VueGrille : public sf::RenderWindow
+class VueGrille : public sf::View
 {
 private:
-	int hauteur;
-	int longueur;
-	int tailleCase;
 	TileMap carte;
-	sf::View vueGrille;
-	sf::View vueGénérale;
-	int compteurHaut, compteurBas, compteurGauche, compteurDroite;
-	sf::Sprite spritePanneau;
+	int compteurHauteur, compteurLongueur;
 
 public:
-	VueGrille(int hauteur, int longueur, int tailleCase);
-	int getHauteur() { return hauteur; }
-	int getLongueur() { return longueur; }
-	void boucleOpen();
+	VueGrille(int longueur, int hauteur, int tailleCase, int niveau[]);
+
+	int getCompteurHauteur() { return compteurHauteur; }
+	int getCompteurLongueur() { return compteurLongueur; }
+
+	void setCompteurHauteur(int hauteur) { compteurHauteur = hauteur; }
+	void setCompteurLongueur(int longueur) { compteurLongueur = longueur; }
+
+	TileMap getCarte() { return carte; }
 };
