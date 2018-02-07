@@ -52,16 +52,18 @@ VueGrille::VueGrille(int hauteur, int longueur, int tailleCase) : RenderWindow(s
 		
 	}
 
-	sf::Texture textureBois;
-	textureBois.loadFromFile("ressources/textures/bois.jpg");
-	spritePanneau.setTexture(textureBois);
-	//spritePanneau.setPosition(sf::Vector2f(0, tailleCase*9));
+	
 
 	//TODO réussir à afficher le panneau
 }
 
 void VueGrille::boucleOpen()
 {
+	sf::Texture textureBois;
+	textureBois.loadFromFile("ressources/textures/bois.jpg");
+	spritePanneau.setTexture(textureBois);
+	spritePanneau.setPosition(sf::Vector2f(0, tailleCase * 9));
+
 	bool vueCarte = true;
 	while (this->isOpen())
 	{
@@ -96,8 +98,26 @@ void VueGrille::boucleOpen()
 						compteurGauche += tailleCase;
 					}
 					break;
+				case sf::Keyboard::Right:
+					if (vueCarte&&compteurDroite != tailleCase * longueur)
+					{
+						vueGrille.move(tailleCase, 0);
+						this->setView(vueGrille);
+						compteurDroite += tailleCase;
+						compteurGauche += tailleCase;
+					}
+					break;
 				case sf::Keyboard::Z:
 					if (vueCarte&&compteurHaut!=0)
+					{
+						vueGrille.move(0, -tailleCase);
+						this->setView(vueGrille);
+						compteurBas -= tailleCase;
+						compteurHaut -= tailleCase;
+					}
+					break;
+				case sf::Keyboard::Up:
+					if (vueCarte&&compteurHaut != 0)
 					{
 						vueGrille.move(0, -tailleCase);
 						this->setView(vueGrille);
@@ -114,8 +134,26 @@ void VueGrille::boucleOpen()
 						compteurHaut += tailleCase;
 					}
 					break;
+				case sf::Keyboard::Down:
+					if (vueCarte&&compteurBas != tailleCase * hauteur)
+					{
+						vueGrille.move(0, tailleCase);
+						this->setView(vueGrille);
+						compteurBas += tailleCase;
+						compteurHaut += tailleCase;
+					}
+					break;
 				case sf::Keyboard::Q:
 					if (vueCarte&&compteurGauche!=0)
+					{
+						vueGrille.move(-tailleCase, 0);
+						this->setView(vueGrille);
+						compteurDroite -= tailleCase;
+						compteurGauche -= tailleCase;
+					}
+					break;
+				case sf::Keyboard::Left:
+					if (vueCarte&&compteurGauche != 0)
 					{
 						vueGrille.move(-tailleCase, 0);
 						this->setView(vueGrille);
@@ -131,7 +169,7 @@ void VueGrille::boucleOpen()
 		this->clear(sf::Color::White);
 
 		//AFFICHER LA TILEMAP
-		//this->draw(carte);
+		this->draw(carte);
 		this->draw(spritePanneau);
 
 		this->display();
