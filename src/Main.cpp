@@ -1,17 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/menu.h"
 #include "../inclusion/VueGrille.h"
-#include "../inclusion/vueGénérale.h"
+#include "../inclusion/vueGï¿½nï¿½rale.h"
+#include "../inclusion/vuePanneau.h"
 
 int main()
 {
 	int tailleCase = 64;
 
-	int hauteurGénérale = 20;
+	int hauteurGï¿½nï¿½rale = 20;
 	int hauteurGrille = 9;
 	int hauteurPanneau = 3;
 
-	int longueurGénérale = 40;
+	int longueurGï¿½nï¿½rale = 40;
 	int longueurGrille = 20;
 
 	int niveau[] =
@@ -39,26 +40,17 @@ int main()
 	};
 
 	sf::Texture texturePanneau;
-	texturePanneau.loadFromFile("image.png");
+	texturePanneau.loadFromFile("ressources/textures/bois.jpg");
 
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
-	VueGrille vueGrille(longueurGénérale, hauteurGénérale, tailleCase, niveau);
-	VueGénérale vueGénérale(longueurGénérale, hauteurGénérale, tailleCase, niveau);
+	VueGrille vueGrille(longueurGï¿½nï¿½rale, hauteurGï¿½nï¿½rale, tailleCase, niveau);
+	VueGï¿½nï¿½rale vueGï¿½nï¿½rale(longueurGï¿½nï¿½rale, hauteurGï¿½nï¿½rale, tailleCase, niveau);
+	VuePanneau panneauBois(longueurGrille, hauteurPanneau, tailleCase, texturePanneau);
 
 	fenetre.setView(vueGrille);
 	bool estVueGrille = true;
 	
-	//Panneau panneauBois(longueurGrille, hauteurPanneau, texturePanneau);
-
-	/*
-	sf::Texture textureBois;
-	textureBois.loadFromFile("ressources/textures/bois.jpg");
-	spritePanneau.setTexture(textureBois);
-	spritePanneau.setPosition(sf::Vector2f(0, tailleCase * 9));
-
-	TODO réussir à afficher le panneau
-	*/
 
 	while (fenetre.isOpen())
 	{
@@ -75,7 +67,7 @@ int main()
 				case sf::Keyboard::R:
 					if (estVueGrille)
 					{
-						fenetre.setView(vueGénérale);
+						fenetre.setView(vueGï¿½nï¿½rale);
 						estVueGrille = false;
 					}
 					else
@@ -84,23 +76,15 @@ int main()
 						estVueGrille = true;
 					}
 					break;
-				case sf::Keyboard::D:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGénérale)- (tailleCase * 20))
+				case sf::Keyboard::D: case sf::Keyboard::Right:
+					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGï¿½nï¿½rale)- (tailleCase * 20))
 					{
 						vueGrille.move(tailleCase, 0);
 						fenetre.setView(vueGrille);
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
 					}
 					break;
-				case sf::Keyboard::Right:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGénérale) - (tailleCase * longueurGrille))
-					{
-						vueGrille.move(tailleCase, 0);
-						fenetre.setView(vueGrille);
-						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
-					}
-					break;
-				case sf::Keyboard::Z:
+				case sf::Keyboard::Z: case sf::Keyboard::Up:
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != 0)
 					{
 						vueGrille.move(0, -tailleCase);
@@ -108,39 +92,15 @@ int main()
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() - tailleCase);
 					}
 					break;
-				case sf::Keyboard::Up:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != 0)
-					{
-						vueGrille.move(0, -tailleCase);
-						fenetre.setView(vueGrille);
-						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() - tailleCase);
-					}
-					break;
-				case sf::Keyboard::S:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGénérale) - tailleCase*hauteurGrille)
+				case sf::Keyboard::S: case sf::Keyboard::Down:
+					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGï¿½nï¿½rale) - tailleCase*hauteurGrille)
 					{
 						vueGrille.move(0, tailleCase);
 						fenetre.setView(vueGrille);
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
 					}
 					break;
-				case sf::Keyboard::Down:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGénérale) - tailleCase*hauteurGrille)
-					{
-						vueGrille.move(0, tailleCase);
-						fenetre.setView(vueGrille);
-						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
-					}
-					break;
-				case sf::Keyboard::Q:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != 0)
-					{
-						vueGrille.move(-tailleCase, 0);
-						fenetre.setView(vueGrille);
-						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() - tailleCase);
-					}
-					break;
-				case sf::Keyboard::Left:
+				case sf::Keyboard::Q: case sf::Keyboard::Left:
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != 0)
 					{
 						vueGrille.move(-tailleCase, 0);
@@ -153,12 +113,15 @@ int main()
 
 		}
 
-		fenetre.clear(sf::Color::White);
+		fenetre.clear(sf::Color::Transparent);
 
-		//AFFICHER LA TILEMAP
+		//AFFICHER LA TILEMAP ET LE PANNEAU
 
+		//fenetre.setView(vueGrille);
 		fenetre.draw(vueGrille.getCarte());
-		//fenetre.draw(spritePanneau);
+
+		//fenetre.setView(panneauBois);
+		//fenetre.draw(panneauBois.getSprite());
 
 		fenetre.display();
 	}
