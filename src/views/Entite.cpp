@@ -2,13 +2,14 @@
 #include <string>
 #include "../../inclusion/Entite.h"
 
-Entite::Entite(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite) : 
-	nom(nomEntite), pointDeVie(pointDeVieEntite), position(positionEntite)
+Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur) : sf::Sprite(),
+	nom(nomEntite), pointDeVie(pointDeVieEntite)
 {
-	
+	this->setPosition(sf::Vector2f(positionLargeur, positionHauteur));
 }
 
-void Entite::setTexture(std::string image, int numTexture)
+void Entite::setImage(std::string image, int numTexture)
 {
 	texture.loadFromFile(image, sf::IntRect(64*numTexture, 0, 64, 64));
+	this->setTexture(texture);
 }

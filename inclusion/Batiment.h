@@ -10,7 +10,7 @@ private:
 	std::vector<std::string> options;
 
 public:
-	Batiment(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite, std::string descriptionBatiment, std::vector<std::string> optionsBatiment);
+	Batiment(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur, std::string descriptionBatiment, std::vector<std::string> optionsBatiment);
 
 	std::string getDescription() { return description; }
 	std::vector<std::string> getOptions() { return options; }

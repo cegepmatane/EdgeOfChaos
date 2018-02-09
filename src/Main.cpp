@@ -3,6 +3,7 @@
 #include "../inclusion/VueGrille.h"
 #include "../inclusion/vueGenerale.h"
 #include "../inclusion/vuePanneau.h"
+#include "../inclusion/Unite.h"
 
 int main()
 {
@@ -38,8 +39,10 @@ int main()
 		2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
 		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
 	};
-
 	std::string imagePanneau = "ressources/textures/bois.jpg";
+
+	Unite unite("Test", 100, tailleCase*21, tailleCase*10, 10, 10);
+	unite.setImage("ressources/textures/textures.png", 8);
 
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
@@ -112,6 +115,7 @@ int main()
 		{
 			fenetre.setView(vueGrille);
 			fenetre.draw(vueGrille.getCarte());
+			fenetre.draw(unite);
 			fenetre.setView(panneauBois);
 			fenetre.draw(panneauBois.getSprite());
 		}
@@ -119,7 +123,9 @@ int main()
 		{
 			fenetre.setView(vueGenerale);
 			fenetre.draw(vueGenerale.getCarte());
+			fenetre.draw(unite);
 		}
+		
 
 		fenetre.display();
 	}

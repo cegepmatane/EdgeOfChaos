@@ -10,7 +10,7 @@ private:
 	int defense;
 
 public:
-	Unite(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite, int attaqueUnite, int defenseUnite);
+	Unite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur, int attaqueUnite, int defenseUnite);
 	int getAttaque() { return attaque; }
 	int getDefense() { return defense; }
 

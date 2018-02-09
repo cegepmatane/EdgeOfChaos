@@ -2,24 +2,23 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Entite
+class Entite : public sf::Sprite
 {
 protected:
 	std::string nom;
 	int pointDeVie;
-	sf::Vector2u position;
+	sf::Vector2f position;
 	sf::Texture texture;
 
 public:
-	Entite(std::string nomEntite, int pointDeVieEntite, sf::Vector2u positionEntite);
+	Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur);
 
 	std::string getNom() { return nom; }
 	int getPointDeVie() { return pointDeVie; }
-	sf::Vector2u getPosition() { return position; }
+	sf::Vector2f getPosition() { return position; }
 	sf::Texture getTexture() { return texture; }
-
-	void setTexture(std::string image, int numTexture);
+	
 	void setNom(std::string nomEntite) { nom = nomEntite; }
 	void setPointDeVie(int pointDeVieEntite) { pointDeVie = pointDeVieEntite; }
-	void setPosition(sf::Vector2u positionEntite) { position = positionEntite; }
+	void setImage(std::string image, int numTexture);
 };
