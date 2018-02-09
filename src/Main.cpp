@@ -1,18 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/menu.h"
 #include "../inclusion/VueGrille.h"
-#include "../inclusion/vueG�n�rale.h"
+#include "../inclusion/vueGenerale.h"
 #include "../inclusion/vuePanneau.h"
 
 int main()
 {
 	int tailleCase = 64;
 
-	int hauteurG�n�rale = 20;
+	int hauteurGenerale = 20;
 	int hauteurGrille = 9;
 	int hauteurPanneau = 3;
 
-	int longueurG�n�rale = 40;
+	int longueurGenerale = 40;
 	int longueurGrille = 20;
 
 	int niveau[] =
@@ -44,8 +44,8 @@ int main()
 
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
-	VueGrille vueGrille(longueurG�n�rale, hauteurG�n�rale, tailleCase, niveau);
-	VueG�n�rale vueG�n�rale(longueurG�n�rale, hauteurG�n�rale, tailleCase, niveau);
+	VueGrille vueGrille(longueurGenerale, hauteurGenerale, tailleCase, niveau);
+	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VuePanneau panneauBois(longueurGrille, hauteurPanneau, tailleCase, texturePanneau);
 
 	fenetre.setView(vueGrille);
@@ -67,7 +67,7 @@ int main()
 				case sf::Keyboard::R:
 					if (estVueGrille)
 					{
-						fenetre.setView(vueG�n�rale);
+						fenetre.setView(vueGenerale);
 						estVueGrille = false;
 					}
 					else
@@ -77,7 +77,7 @@ int main()
 					}
 					break;
 				case sf::Keyboard::D: case sf::Keyboard::Right:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurG�n�rale)- (tailleCase * 20))
+					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGenerale)- (tailleCase * 20))
 					{
 						vueGrille.move(tailleCase, 0);
 						fenetre.setView(vueGrille);
@@ -93,7 +93,7 @@ int main()
 					}
 					break;
 				case sf::Keyboard::S: case sf::Keyboard::Down:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurG�n�rale) - tailleCase*hauteurGrille)
+					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGenerale) - tailleCase*hauteurGrille)
 					{
 						vueGrille.move(0, tailleCase);
 						fenetre.setView(vueGrille);
@@ -119,9 +119,9 @@ int main()
 
 		//fenetre.setView(vueGrille);
 		fenetre.draw(vueGrille.getCarte());
-
-		//fenetre.setView(panneauBois);
-		//fenetre.draw(panneauBois.getSprite());
+		panneauBois.setSize(0.1f, 0.5f);
+		fenetre.setView(panneauBois);
+		fenetre.draw(panneauBois.getSprite());
 
 		fenetre.display();
 	}
