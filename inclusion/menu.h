@@ -23,6 +23,7 @@ class Menu : public sf::RenderWindow{
 		void initBoutons(const std::string& police, const double proportion);
 	public:
 		Menu();
+		void afficher();
 		Bouton getHeberger();
 		Bouton getJoindre();
 		Bouton getParametres();

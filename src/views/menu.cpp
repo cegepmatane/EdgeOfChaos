@@ -17,22 +17,13 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 	initTitre(policeTitre);
 	initBoutons(policeBoutons, dimensionBoutons);
 
-	while(this->isOpen()){
-		sf::Event event;
+}
 
-		while(this->pollEvent(event)){
-			if(event.type == sf::Event::Closed)
-			{
-				this->close();
-			}
-			this->clear(sf::Color::Yellow);
-			this->draw(this->titre);
-			this->draw(*(this->actionHeberger));
-			this->draw(*(this->actionJoindre));
-			this->draw(*(this->actionParametres));
-			this->display();
-		}
-	}
+void Menu::afficher(){
+	this->draw(this->titre);
+	this->draw(*(this->actionHeberger));
+	this->draw(*(this->actionJoindre));
+	this->draw(*(this->actionParametres));
 }
 
 Bouton Menu::getHeberger(){
