@@ -19,8 +19,8 @@ class Menu : public sf::RenderWindow{
 		sf::Font policeTitre;
 
 		void initFenetre();
-		void initTitre(const std::string& cheminPolice);
-		void initBoutons(const std::string& cheminPolice, const double proportion);
+		void initTitre(const std::string& police);
+		void initBoutons(const std::string& police, const double proportion);
 	public:
 		Menu();
 		Bouton getHeberger();

@@ -11,11 +11,11 @@ class Bouton : public sf::RectangleShape{
 
 		void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 		void initBordure(const sf::Color& couleur);
-		void initContenu(std::string& texte, const std::string& cheminPolice);
+		void initContenu(std::string& texte, const std::string& policeBoutons);
 	public:
-		Bouton(int hauteur, int longueur, std::string texte, const std::string& cheminPolice);
+		Bouton(int hauteur, int longueur, std::string texte, const std::string& police);
 		void setBtnPosition(float x, float y);
-		const sf::Vector2f getPosition() override;
-		const sf::Vector2f getSize() override;
+		const sf::Vector2f getPosition();
+		const sf::Vector2f getSize();
 		
 };

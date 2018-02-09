@@ -2,13 +2,14 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
+#include "../../systemes/interfaceDebian.h"
 #include "../../inclusion/bouton.h"
 
-Bouton::Bouton(int hauteur, int longueur, std::string texte, const std::string& cheminPolice) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
+Bouton::Bouton(int hauteur, int longueur, std::string texte, const std::string& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
 {
 	this->setFillColor(sf::Color::White);
 	initBordure(sf::Color::Black);	
-	initContenu(texte, cheminPolice);
+	initContenu(texte, police);
 }
 
 void Bouton::initBordure(const sf::Color& couleur)
@@ -18,10 +19,10 @@ void Bouton::initBordure(const sf::Color& couleur)
 	this->setOutlineColor(couleur);
 }
 
-void Bouton::initContenu(std::string& texte, const std::string& cheminPolice)
+void Bouton::initContenu(std::string& texte, const std::string& policeBoutons)
 {
-	if(!(this->police.loadFromFile(cheminPolice))){
-		std::cerr << "Impossible de charger la police du bouton. \n ( " << cheminPolice << " )" << std::endl;
+	if(!(this->police.loadFromFile(Configuration::cheminPolices + policeBoutons))){
+		std::cerr << "Impossible de charger la police du bouton. \n ( " << Configuration::cheminPolices + policeBoutons << " )" << std::endl;
 	}
 	this->contenu.setFont(police);
 	this->contenu.setString(texte);
