@@ -43,7 +43,7 @@ bool TileMap::load(const std::string& texture, sf::Vector2u tailleCase, const in
 }
 
 /* Correspondance numéros et textures :
- * 0 = désert
+ * 0 = desert
  * 1 = eau
  * 2 = pierre
  * 3 = plaine
@@ -51,4 +51,8 @@ bool TileMap::load(const std::string& texture, sf::Vector2u tailleCase, const in
  * 5 = route
  * 6 = route2
  * 7 = bois
+ * 8 = maison
+ * 9 = taverne
+ * 10 = eglise
+ * 11 = moulin
  */
