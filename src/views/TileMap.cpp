@@ -50,4 +50,5 @@ bool TileMap::load(const std::string& texture, sf::Vector2u tailleCase, const in
  * 4 = plaine2
  * 5 = route
  * 6 = route2
+ * 7 = bois
  */

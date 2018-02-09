@@ -10,7 +10,7 @@ private:
 	sf::Sprite sprite;
 
 public:
-	VuePanneau(int longueurPanneau, int hauteurPanneau, int tailleCase, sf::Texture texturePanneau);
+	VuePanneau(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image);
 	int getLongueurPanneau() { return longueur; }
 	int getHauteurPanneau() { return hauteur; }
 	sf::Texture getTexturePanneau() { return texture; }

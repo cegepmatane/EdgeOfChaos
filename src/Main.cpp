@@ -39,18 +39,16 @@ int main()
 		0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
 	};
 
-	sf::Texture texturePanneau;
-	texturePanneau.loadFromFile("ressources/textures/bois.jpg");
+	std::string imagePanneau = "ressources/textures/bois.jpg";
 
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
 	VueGrille vueGrille(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
-	VuePanneau panneauBois(longueurGrille, hauteurPanneau, tailleCase, texturePanneau);
+	VuePanneau panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau);
 
 	fenetre.setView(vueGrille);
 	bool estVueGrille = true;
-	
 
 	while (fenetre.isOpen())
 	{
@@ -67,12 +65,10 @@ int main()
 				case sf::Keyboard::R:
 					if (estVueGrille)
 					{
-						fenetre.setView(vueGenerale);
 						estVueGrille = false;
 					}
 					else
 					{
-						fenetre.setView(vueGrille);
 						estVueGrille = true;
 					}
 					break;
@@ -80,7 +76,6 @@ int main()
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGenerale)- (tailleCase * 20))
 					{
 						vueGrille.move(tailleCase, 0);
-						fenetre.setView(vueGrille);
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
 					}
 					break;
@@ -88,7 +83,6 @@ int main()
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != 0)
 					{
 						vueGrille.move(0, -tailleCase);
-						fenetre.setView(vueGrille);
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() - tailleCase);
 					}
 					break;
@@ -96,7 +90,6 @@ int main()
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGenerale) - tailleCase*hauteurGrille)
 					{
 						vueGrille.move(0, tailleCase);
-						fenetre.setView(vueGrille);
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
 					}
 					break;
@@ -104,7 +97,6 @@ int main()
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != 0)
 					{
 						vueGrille.move(-tailleCase, 0);
-						fenetre.setView(vueGrille);
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() - tailleCase);
 					}
 					break;
@@ -116,7 +108,6 @@ int main()
 		fenetre.clear(sf::Color::Black);
 
 		//AFFICHER LA TILEMAP ET LE PANNEAU
-
 		if (estVueGrille)
 		{
 			fenetre.setView(vueGrille);
@@ -129,6 +120,7 @@ int main()
 			fenetre.setView(vueGenerale);
 			fenetre.draw(vueGenerale.getCarte());
 		}
+
 		fenetre.display();
 	}
 
