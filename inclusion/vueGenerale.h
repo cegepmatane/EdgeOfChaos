@@ -10,4 +10,5 @@ private:
 
 public:
 	VueGenerale(int longueur, int hauteur, int tailleCase, int niveau[]);
+	TileMap getCarte() { return carte; }
 };

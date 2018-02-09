@@ -113,16 +113,22 @@ int main()
 
 		}
 
-		fenetre.clear(sf::Color::Transparent);
+		fenetre.clear(sf::Color::Black);
 
 		//AFFICHER LA TILEMAP ET LE PANNEAU
 
-		//fenetre.setView(vueGrille);
-		fenetre.draw(vueGrille.getCarte());
-		panneauBois.setSize(0.1f, 0.5f);
-		fenetre.setView(panneauBois);
-		fenetre.draw(panneauBois.getSprite());
-
+		if (estVueGrille)
+		{
+			fenetre.setView(vueGrille);
+			fenetre.draw(vueGrille.getCarte());
+			fenetre.setView(panneauBois);
+			fenetre.draw(panneauBois.getSprite());
+		}
+		else
+		{
+			fenetre.setView(vueGenerale);
+			fenetre.draw(vueGenerale.getCarte());
+		}
 		fenetre.display();
 	}
 
