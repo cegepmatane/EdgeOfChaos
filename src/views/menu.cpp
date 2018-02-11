@@ -16,29 +16,44 @@ Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width 
 	initFenetre();
 	initTitre(policeTitre);
 	initBoutons(policeBoutons, dimensionBoutons);
+	initErreur(policeBoutons);
 
 }
 
-void Menu::afficher(){
+void Menu::afficher()
+{
 	this->draw(this->titre);
 	this->draw(*(this->actionHeberger));
 	this->draw(*(this->actionJoindre));
 	this->draw(*(this->actionParametres));
+	if(!(this->erreur.getString().isEmpty())){
+		this->draw(this->cadreErreur);
+		this->draw(erreur);
+	}
 }
 
-Bouton Menu::getHeberger(){
+void Menu::lancerErreur(std::string& messageErreur)
+{
+	this->erreur.setString(messageErreur);
+}
+
+Bouton Menu::getHeberger()
+{
 	return *(this->actionHeberger);
 }
 
-Bouton Menu::getJoindre(){
+Bouton Menu::getJoindre()
+{
 	return *(this->actionJoindre);
 }
 
-Bouton Menu::getParametres(){
+Bouton Menu::getParametres()
+{
 	return *(this->actionParametres);
 }
 
-Menu::~Menu(){
+Menu::~Menu()
+{
 	if(this->actionHeberger != nullptr){
 		delete this->actionHeberger;
 		this->actionHeberger = nullptr;
@@ -53,12 +68,14 @@ Menu::~Menu(){
 	}
 }
 
-void Menu::initFenetre(){
+void Menu::initFenetre()
+{
 	this->setPosition(sf::Vector2i(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2 - sf::VideoMode::getDesktopMode().height / 4));
 	this->setVerticalSyncEnabled(true);
 }
 
-void Menu::initTitre(const std::string& police){
+void Menu::initTitre(const std::string& police)
+{
 	if(!(this->policeTitre.loadFromFile(Configuration::cheminPolices + police))){
 		std::cerr << "Impossible de charger la police du titre ( " << Configuration::cheminPolices + police << " )." << std::endl;
 	}
@@ -69,7 +86,8 @@ void Menu::initTitre(const std::string& police){
 	this->titre.setPosition(this->getSize().x / 2 - this->getSize().x / 4, 10);
 }
 
-void Menu::initBoutons(const std::string& police, const double proportion){
+void Menu::initBoutons(const std::string& police, const double proportion)
+{
 	this->positionXBoutons = this->getSize().x * (1 - proportion) / 2 ;	// Somme des des fractions doit être égale à 1.
 	this->offsetYBoutons = this->titre.getCharacterSize() + this->titre.getPosition().y;
 	this->espacementBoutons = 20;
@@ -85,4 +103,20 @@ void Menu::initBoutons(const std::string& police, const double proportion){
 	this->actionJoindre->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 1);
 	this->actionParametres = new Bouton(_LONGUEUR, _HAUTEUR, "Parametres", police);
 	this->actionParametres->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 2);
+}
+
+void Menu::initErreur(const std::string& police)
+{
+	this->cadreErreur.setSize(sf::Vector2f(this->getSize().x, this->getSize().y / 20));
+	this->cadreErreur.setFillColor(sf::Color::Red);
+	this->cadreErreur.setPosition(0, this->getSize().y - this->cadreErreur.getSize().y);
+
+	if(!this->policeErreur.loadFromFile(Configuration::cheminPolices + police))
+	{
+		std::cerr << "Impossible de charger la police d'erreur \" " << police << "\"." << std::endl;
+	}
+	this->erreur.setFont(this->policeErreur);
+	this->erreur.setFillColor(sf::Color::White);
+	this->erreur.setCharacterSize(this->cadreErreur.getSize().y);
+	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
