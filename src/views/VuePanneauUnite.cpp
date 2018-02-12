@@ -8,7 +8,9 @@ VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int ta
 {
 	this->fonte.loadFromFile("ressources/polices/LinuxLibertine-Classique.ttf");
 
-	this->titreStats = sf::Text("Statistiques :\n" + std::to_string(this->unite->getAttaque()), this->fonte, 60);
+	std::string stats = "Statistiques :\nAttaque : " + std::to_string(this->unite->getAttaque())
+	+ "\nDéfense : " + std::to_string(this->unite->getDefense());
+	this->titreStats = sf::Text(stats, this->fonte, 60);
 	this->titreStats.setOutlineColor(sf::Color::Black);
 	this->titreStats.setOutlineThickness(3.f);
 	this->titreStats.setStyle(sf::Text::Bold);
@@ -16,7 +18,7 @@ VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int ta
 	this->titreStats.setScale(0.5f, 0.8f);
 	this->titreStats.setPosition(tailleCase / 2, 10);
 
-	this->titrePoints = sf::Text("Points forts / faibles :\n" + std::to_string(this->unite->getAttaque()), this->fonte, 60);
+	this->titrePoints = sf::Text("Points forts / faibles :\n", this->fonte, 60);
 	this->titrePoints.setOutlineColor(sf::Color::Black);
 	this->titrePoints.setOutlineThickness(3.f);
 	this->titrePoints.setStyle(sf::Text::Bold);
@@ -24,7 +26,8 @@ VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int ta
 	this->titrePoints.setScale(0.5f, 0.8f);
 	this->titrePoints.setPosition((tailleCase * 16) / 2, 10);
 
-	this->titreAttaques = sf::Text("Attaques spéciales :\n" + std::to_string(this->unite->getAttaque()), this->fonte, 60);
+	std::string attaques = "Attaques spéciales :\n" + this->unite->getListeAttaques()[0] + "\n" + this->unite->getListeAttaques()[1];
+	this->titreAttaques = sf::Text(attaques, this->fonte, 60);
 	this->titreAttaques.setOutlineColor(sf::Color::Black);
 	this->titreAttaques.setOutlineThickness(3.f);
 	this->titreAttaques.setStyle(sf::Text::Bold);
@@ -43,5 +46,6 @@ void VuePanneauUnite::dessiner(sf::RenderTarget& cible)
 
 void VuePanneauUnite::mettreAJourTexte()
 {
-	this->titreStats.setString("Statistiques :\n" + std::to_string(this->unite->getAttaque()));
+	this->titreStats.setString("Statistiques :\nAttaque : " + std::to_string(this->unite->getAttaque())
+		+ "\nDéfense : " + std::to_string(this->unite->getDefense()));
 }

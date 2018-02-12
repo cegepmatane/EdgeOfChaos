@@ -42,7 +42,11 @@ int main()
 	};
 	std::string imagePanneau = "ressources/textures/bois2.jpg";
 
-	Unite unite("Test", 100, tailleCase*16, tailleCase*14, 10, 10);
+	int attaque = 10;
+	std::vector<std::string> listeAttaques;
+	listeAttaques.push_back("Charge");
+	listeAttaques.push_back("Chun chun maru!");
+	Unite unite("Test", 100, tailleCase*16, tailleCase*14, attaque, 10, listeAttaques);
 	unite.setImage("ressources/textures/textures.png", 8);
 
 	std::string optionsBatiment = "Créer un lancier\nCréer un homme d'arme";
@@ -97,11 +101,11 @@ int main()
 					}
 					break;
 				case sf::Keyboard::I:
-					unite.setAttaque(500);
+					unite.setAttaque(++attaque);
 					panneauBoisUnite.mettreAJourTexte();
 					break;
 				case sf::Keyboard::O:
-					unite.setAttaque(25);
+					unite.setAttaque(--attaque);
 					panneauBoisUnite.mettreAJourTexte();
 					break;
 				case sf::Keyboard::S: case sf::Keyboard::Down:
@@ -133,10 +137,10 @@ int main()
 			fenetre.draw(unite);
 			fenetre.draw(batiment);
 
-			//fenetre.setView(panneauBoisUnite);
-			fenetre.setView(panneauBoisBatiment);
-			//panneauBoisUnite.dessiner(fenetre);
-			panneauBoisBatiment.draw(fenetre);
+			fenetre.setView(panneauBoisUnite);
+			//fenetre.setView(panneauBoisBatiment);
+			panneauBoisUnite.dessiner(fenetre);
+			//panneauBoisBatiment.draw(fenetre);
 		}
 		else
 		{
