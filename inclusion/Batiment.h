@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "../../inclusion/Entite.h"
+#include "Entite.h"
 
 class Batiment: public Entite
 {
