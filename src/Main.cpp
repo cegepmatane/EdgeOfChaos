@@ -2,10 +2,8 @@
 #include "../inclusion/menu.h"
 #include "../inclusion/VueGrille.h"
 #include "../inclusion/vueGenerale.h"
-//#include "../inclusion/vuePanneau.h"
 #include "../inclusion/Unite.h"
 #include "../inclusion/VuePanneauUnite.h"
-#include "../inclusion/VuePanneauBatiment.h"
 
 int main()
 {
@@ -46,18 +44,11 @@ int main()
 	Unite unite("Test", 100, tailleCase*21, tailleCase*10, 10, 10);
 	unite.setImage("ressources/textures/textures.png", 8);
 
-	std::string optionsBatiment = "Créer un lancier\nCréer un homme d'armes";
-	Batiment batiment("Caserne", 100, tailleCase * 3, tailleCase * 3, "Vous pouvez y former des unités", optionsBatiment);
-	batiment.setImage("ressources/textures/textures.png", 9);
-
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
 	VueGrille vueGrille(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
-
-	VuePanneauUnite panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, unite);
-	VuePanneauBatiment panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiment);
-	panneauBoisBatiment.init();
+	VuePanneauUnite panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &unite, imagePanneau);
 
 	fenetre.setView(vueGrille);
 	bool estVueGrille = true;
@@ -98,6 +89,14 @@ int main()
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() - tailleCase);
 					}
 					break;
+				case sf::Keyboard::I:
+					unite.setAttaque(500);
+					panneauBoisUnite.mettreAJourTexte();
+					break;
+				case sf::Keyboard::O:
+					unite.setAttaque(25);
+					panneauBoisUnite.mettreAJourTexte();
+					break;
 				case sf::Keyboard::S: case sf::Keyboard::Down:
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGenerale) - tailleCase*hauteurGrille)
 					{
@@ -125,24 +124,14 @@ int main()
 			fenetre.setView(vueGrille);
 			fenetre.draw(vueGrille.getCarte());
 			fenetre.draw(unite);
-			fenetre.draw(batiment);
-			/*
 			fenetre.setView(panneauBoisUnite);
-			fenetre.draw(panneauBoisUnite.getSprite());
-			fenetre.draw(panneauBoisUnite.getStatTexte());
-			fenetre.draw(pointsTexte);
-			fenetre.draw(attaquesTexte);
-			*/
-			fenetre.setView(panneauBoisBatiment);
-			panneauBoisBatiment.draw(fenetre);
-			//fenetre.draw(panneauBoisBatiment.getNom());
+			panneauBoisUnite.dessiner(fenetre);
 		}
 		else
 		{
 			fenetre.setView(vueGenerale);
 			fenetre.draw(vueGenerale.getCarte());
 			fenetre.draw(unite);
-			fenetre.draw(batiment);
 		}
 
 		fenetre.display();
