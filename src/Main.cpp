@@ -5,6 +5,7 @@
 //#include "../inclusion/vuePanneau.h"
 #include "../inclusion/Unite.h"
 #include "../inclusion/VuePanneauUnite.h"
+#include "../inclusion/VuePanneauBatiment.h"
 
 int main()
 {
@@ -45,47 +46,18 @@ int main()
 	Unite unite("Test", 100, tailleCase*21, tailleCase*10, 10, 10);
 	unite.setImage("ressources/textures/textures.png", 8);
 
+	std::string optionsBatiment = "Créer un lancier\nCréer un homme d'armes";
+	Batiment batiment("Caserne", 100, tailleCase * 3, tailleCase * 3, "Vous pouvez y former des unités", optionsBatiment);
+	batiment.setImage("ressources/textures/textures.png", 9);
+
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
 	VueGrille vueGrille(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
-	//VuePanneau panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau);
 
 	VuePanneauUnite panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, unite);
-	sf::Sprite spriteBois = panneauBoisUnite.getSprite();
-
-	sf::Font fonte;
-	fonte.loadFromFile("ressources/polices/LinuxLibertine-Classique.ttf");
-	
-	sf::Text statistiquesTexte("Statistiques : ", fonte, 60);
-	statistiquesTexte.setOutlineColor(sf::Color::Black);
-	statistiquesTexte.setOutlineThickness(3.f);
-	statistiquesTexte.setStyle(sf::Text::Bold);
-	statistiquesTexte.setFillColor(sf::Color::White);
-	statistiquesTexte.setScale(0.5f, 0.8f);
-	statistiquesTexte.setPosition(tailleCase/2, 10);
-
-	sf::Text pointsTexte("Points forts / faibles :", fonte, 60);
-	pointsTexte.setOutlineColor(sf::Color::Black);
-	pointsTexte.setOutlineThickness(3.f);
-	pointsTexte.setStyle(sf::Text::Bold);
-	pointsTexte.setFillColor(sf::Color::White);
-	pointsTexte.setScale(0.5f, 0.8f);
-	pointsTexte.setPosition((tailleCase*16)/2, 10);
-
-	sf::Text attaquesTexte("Attaques spéciales :", fonte, 60);
-	attaquesTexte.setOutlineColor(sf::Color::Black);
-	attaquesTexte.setOutlineThickness(3.f);
-	attaquesTexte.setStyle(sf::Text::Bold);
-	attaquesTexte.setFillColor(sf::Color::White);
-	attaquesTexte.setScale(0.5f, 0.8f);
-	attaquesTexte.setPosition((tailleCase*31)/2, 10);
-
-	/*sf::Text attaqueTexte("Attaque", fonte, 70);
-	attaqueTexte.setFillColor(sf::Color::Black);
-	attaqueTexte.setScale(0.5f, 0.8f);
-	attaqueTexte.setPosition(tailleCase, tailleCase);*/
-
+	VuePanneauBatiment panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiment);
+	panneauBoisBatiment.init();
 
 	fenetre.setView(vueGrille);
 	bool estVueGrille = true;
@@ -153,20 +125,25 @@ int main()
 			fenetre.setView(vueGrille);
 			fenetre.draw(vueGrille.getCarte());
 			fenetre.draw(unite);
+			fenetre.draw(batiment);
+			/*
 			fenetre.setView(panneauBoisUnite);
-			fenetre.draw(spriteBois);
-			fenetre.draw(statistiquesTexte);
+			fenetre.draw(panneauBoisUnite.getSprite());
+			fenetre.draw(panneauBoisUnite.getStatTexte());
 			fenetre.draw(pointsTexte);
 			fenetre.draw(attaquesTexte);
-			//fenetre.draw(attaqueTexte);
+			*/
+			fenetre.setView(panneauBoisBatiment);
+			panneauBoisBatiment.draw(fenetre);
+			//fenetre.draw(panneauBoisBatiment.getNom());
 		}
 		else
 		{
 			fenetre.setView(vueGenerale);
 			fenetre.draw(vueGenerale.getCarte());
 			fenetre.draw(unite);
+			fenetre.draw(batiment);
 		}
-		
 
 		fenetre.display();
 	}
