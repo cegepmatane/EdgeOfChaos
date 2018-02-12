@@ -7,11 +7,11 @@ class Batiment: public Entite
 {
 private:
 	std::string description;
-	std::vector<std::string> options;
+	std::string options;
 
 public:
-	Batiment(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur, std::string descriptionBatiment, std::vector<std::string> optionsBatiment);
+	Batiment(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur, std::string descriptionBatiment, std::string optionsBatiment);
 
 	std::string getDescription() { return description; }
-	std::vector<std::string> getOptions() { return options; }
+	std::string getOptions() { return options; }
 };

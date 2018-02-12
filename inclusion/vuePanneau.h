@@ -3,7 +3,7 @@
 
 class VuePanneau : public sf::View
 {
-private:
+protected:
 	int longueur;
 	int hauteur;
 	sf::Texture texture;
