@@ -1,14 +1,9 @@
-#include <SFML/Graphics.hpp>
-#include "../inclusion/menu.h"
-#include "../inclusion/VueGrille.h"
-#include "../inclusion/vueGenerale.h"
-#include "../inclusion/Unite.h"
-#include "../inclusion/VuePanneauUnite.h"
-#include "../inclusion/VuePanneauBatiment.h" 
 #include "../inclusion/FenetreJeu.h"
 
 int main()
 {
+	/* Définitions des mesures */
+
 	int longueurFenetre = 1280;
 	int hauteurFenetre = 768;
 	std::string nomFenetre = "Edge of Chaos";
@@ -21,6 +16,8 @@ int main()
 
 	int longueurGenerale = 40;
 	int longueurGrille = 20;
+
+	/* Déclaration du niveau et des textures */
 
 	int niveau[] =
 	{
@@ -47,6 +44,8 @@ int main()
 	};
 	std::string imagePanneau = "ressources/textures/bois2.jpg";
 
+	/* Déclaration des unités et bâtiments */
+
 	int attaque = 10;
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
@@ -65,6 +64,8 @@ int main()
 
 	listeUnites.push_back(unite);
 	listeBatiments.push_back(batiment);
+
+	/* Appel de la fenêtre de jeu */
 
 	FenetreJeu fenetre(longueurFenetre, hauteurFenetre, nomFenetre, longueurGenerale, hauteurGenerale, longueurGrille, hauteurGrille,
 		tailleCase, hauteurPanneau, niveau, imagePanneau, listeUnites, listeBatiments);
