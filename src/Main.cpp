@@ -55,9 +55,9 @@ int main()
 	unite.setImage("ressources/textures/textures.png", 8);
 
 	std::vector<std::string> optionsBatiment;
-	optionsBatiment.push_back("Cr�er un lancier");
-	optionsBatiment.push_back("Cr�er un homme d'arme");
-	Batiment batiment("Caserne", 100, tailleCase * 26, tailleCase * 9, "Vous pouvez y former des unit�s", optionsBatiment);
+	optionsBatiment.push_back("Créer un lancier");
+	optionsBatiment.push_back("Créer un homme d'arme");
+	Batiment batiment("Caserne", 100, tailleCase * 26, tailleCase * 9, "Vous pouvez y former des unités", optionsBatiment);
 	batiment.setImage("ressources/textures/textures.png", 9);
 
 	std::vector<Unite> listeUnites;

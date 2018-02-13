@@ -91,9 +91,9 @@ void FenetreJeu::lancerBoucle()
 			}
 
 			//this->setView(panneauBoisUnite);
-			//panneauBoisUnite.dessiner(this);
+			//panneauBoisUnite.dessiner(*this);
 			this->setView(panneauBoisBatiment);
-			panneauBoisBatiment.draw(*this);
+			panneauBoisBatiment.dessiner(*this);
 		}
 		else
 		{
