@@ -3,7 +3,7 @@
 
 FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurGenerale, int hauteurGenerale, int longueurGrille, int hauteurGrille,
 	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite> listeUnites, std::vector<Batiment> listeBatiment) :
-	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre),
+	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre, sf::Style::Close),
 	longueurFenetre(longueurFenetre), hauteurFenetre(hauteurFenetre), nomFenetre(nomFenetre),
 	longueurGenerale(longueurGenerale), hauteurGenerale(hauteurGenerale), longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),
 	hauteurPanneau(hauteurPanneau), niveau(niveau), imagePanneau(imagePanneau), listeUnites(listeUnites), listeBatiments(listeBatiment),
