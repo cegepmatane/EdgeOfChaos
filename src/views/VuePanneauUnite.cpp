@@ -26,8 +26,12 @@ VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int ta
 	this->titrePoints.setScale(0.5f, 0.8f);
 	this->titrePoints.setPosition((tailleCase * 16) / 2, 10);
 
-	std::string attaques = "Attaques spéciales :\n" + this->unite->getListeAttaques()[0] + "\n" + this->unite->getListeAttaques()[1];
-	this->titreAttaques = sf::Text(attaques, this->fonte, 60);
+	std::string texteAttaques = "Attaques spéciales :\n";
+	for(std::string attaque : this->unite->getListeAttaques())
+	{
+		texteAttaques = texteAttaques + attaque + "\n";
+	}
+	this->titreAttaques = sf::Text(texteAttaques, this->fonte, 60);
 	this->titreAttaques.setOutlineColor(sf::Color::Black);
 	this->titreAttaques.setOutlineThickness(3.f);
 	this->titreAttaques.setStyle(sf::Text::Bold);
