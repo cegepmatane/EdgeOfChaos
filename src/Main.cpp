@@ -57,7 +57,7 @@ int main()
 
 	sf::RenderWindow fenetre(sf::VideoMode(1280, 768), "Edge of Chaos");
 
-	VueGrille vueGrille(longueurGenerale, hauteurGenerale, tailleCase, niveau);
+	VueGrille vueGrille(longueurGenerale, hauteurGenerale, longueurGrille, hauteurGrille, tailleCase, niveau);
 	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VuePanneauUnite panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &unite, imagePanneau);
 	VuePanneauBatiment panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiment);

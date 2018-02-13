@@ -3,7 +3,7 @@
 #include "../../inclusion/VueGrille.h"
 #include "../../inclusion/TileMap.h"
 
-VueGrille::VueGrille(int longueur, int hauteur, int tailleCase, int niveau[]) : sf::View(sf::FloatRect(0, 0, 20 * tailleCase, 9 * tailleCase))
+VueGrille::VueGrille(int longueur, int hauteur, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]) : sf::View(sf::FloatRect(0, 0, longueurGrille * tailleCase, hauteurGrille * tailleCase))
 {
 	compteurLongueur = 0;
 	compteurHauteur = 0;

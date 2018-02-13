@@ -10,7 +10,7 @@ private:
 	int compteurHauteur, compteurLongueur;
 
 public:
-	VueGrille(int longueur, int hauteur, int tailleCase, int niveau[]);
+	VueGrille(int longueur, int hauteur, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]);
 
 	int getCompteurHauteur() { return compteurHauteur; }
 	int getCompteurLongueur() { return compteurLongueur; }
