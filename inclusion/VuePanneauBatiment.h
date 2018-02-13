@@ -14,8 +14,8 @@ private:
 
 public:
 	VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image, Batiment* batiment);
-	void init();
-	void draw(sf::RenderWindow &fenetre);
+	void initialiser();
+	void dessiner(sf::RenderWindow &fenetre);
 
 	sf::Text getDescriptionBatiment() { return descriptionBatiment; }
 	sf::Text getOptionsBatiment() { return optionsBatiment; }

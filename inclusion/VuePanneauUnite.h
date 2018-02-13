@@ -25,6 +25,7 @@ public:
 	void setTitrePoints(std::string titre) { this->titrePoints.setString(titre); }
 	void setTitreAttaques(std::string titre) { this->titreAttaques.setString(titre); }
 
+	void initialiser();
 	void dessiner(sf::RenderTarget &cible);
 	void mettreAJourTexte();
 };

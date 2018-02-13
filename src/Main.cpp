@@ -61,7 +61,6 @@ int main()
 	VueGenerale vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau);
 	VuePanneauUnite panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &unite, imagePanneau);
 	VuePanneauBatiment panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiment);
-	panneauBoisBatiment.init();
 
 	fenetre.setView(vueGrille);
 	bool estVueGrille = true;
@@ -142,7 +141,7 @@ int main()
 			//fenetre.setView(panneauBoisUnite);
 			//panneauBoisUnite.dessiner(fenetre);
 			fenetre.setView(panneauBoisBatiment);
-			panneauBoisBatiment.draw(fenetre);
+			panneauBoisBatiment.dessiner(fenetre);
 		}
 		else
 		{

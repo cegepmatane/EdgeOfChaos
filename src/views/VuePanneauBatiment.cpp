@@ -7,9 +7,10 @@ VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, 
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batimentSprite(batiment)
 {
 	this->fonte.loadFromFile("ressources/polices/LinuxLibertine-Classique.ttf");
+	initialiser();
 }
 
-void VuePanneauBatiment::init()
+void VuePanneauBatiment::initialiser()
 {
 	descriptionBatiment = sf::Text(batimentSprite->getNom() + "\nDescription :\n" + batimentSprite->getDescription(), fonte, 60);
 	initTexte(descriptionBatiment);
@@ -25,7 +26,7 @@ void VuePanneauBatiment::init()
 	optionsBatiment.setPosition(64 * 16 /2, 50);
 }
 
-void VuePanneauBatiment::draw(sf::RenderWindow &fenetre)
+void VuePanneauBatiment::dessiner(sf::RenderWindow &fenetre)
 {
 	fenetre.draw(sprite);
 	fenetre.draw(descriptionBatiment);
