@@ -15,7 +15,12 @@ void VuePanneauBatiment::init()
 	initTexte(descriptionBatiment);
 	descriptionBatiment.setPosition(64 / 2, 50);
 
-	optionsBatiment = sf::Text("Options :\n" + batimentSprite->getOptions(), fonte, 60);
+	std::string texteOptions = "Options :\n";
+	for (std::string option : this->batimentSprite->getOptions())
+	{
+		texteOptions = texteOptions + option + "\n";
+	}
+	optionsBatiment = sf::Text(texteOptions, fonte, 60);
 	initTexte(optionsBatiment);
 	optionsBatiment.setPosition(64 * 16 /2, 50);
 }

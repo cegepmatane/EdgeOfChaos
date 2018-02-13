@@ -49,7 +49,9 @@ int main()
 	Unite unite("Test", 100, tailleCase*16, tailleCase*14, attaque, 10, listeAttaques);
 	unite.setImage("ressources/textures/textures.png", 8);
 
-	std::string optionsBatiment = "Créer un lancier\nCréer un homme d'arme";
+	std::vector<std::string> optionsBatiment;
+	optionsBatiment.push_back("Créer un lancier");
+	optionsBatiment.push_back("Créer un homme d'arme");
 	Batiment batiment("Caserne", 100, tailleCase * 26, tailleCase * 9, "Vous pouvez y former des unités", optionsBatiment);
 	batiment.setImage("ressources/textures/textures.png", 9);
 
@@ -137,10 +139,10 @@ int main()
 			fenetre.draw(unite);
 			fenetre.draw(batiment);
 
-			fenetre.setView(panneauBoisUnite);
-			//fenetre.setView(panneauBoisBatiment);
-			panneauBoisUnite.dessiner(fenetre);
-			//panneauBoisBatiment.draw(fenetre);
+			//fenetre.setView(panneauBoisUnite);
+			//panneauBoisUnite.dessiner(fenetre);
+			fenetre.setView(panneauBoisBatiment);
+			panneauBoisBatiment.draw(fenetre);
 		}
 		else
 		{
