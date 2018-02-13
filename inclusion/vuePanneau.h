@@ -18,6 +18,7 @@ public:
 	void setLongueurPanneau(int longueurPanneau) { longueur = longueurPanneau; }
 	void setHauteurPanneau(int hauteurPanneau) { hauteur = hauteurPanneau; }
 	void setTexturePanneau(sf::Texture texturePanneau) { texture = texturePanneau; }
+	void initTexte(sf::Text &texte);
 	
 	sf::Sprite getSprite() { return sprite; }
 };
