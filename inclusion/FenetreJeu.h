@@ -23,7 +23,7 @@ private:
 
 public:
 	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,
-		int niveau[], std::string imagePanneau, std::vector<Unite> unites, std::vector<Batiment> batiment);
+		int niveau[], std::string imagePanneau, std::vector<Unite> unites, std::vector<Batiment> batiments);
 
 	void lancerBoucle();
 };
