@@ -1,9 +1,13 @@
-#include <iostream>
-#include <string>
-#include <SFML/Graphics.hpp>
+# include <iostream>
+# include <string>
+# include <SFML/Graphics.hpp>
 
-#include "../../systemes/interfaceDebian.h"
-#include "../../inclusion/bouton.h"
+# if defined (linux)
+	# include "../../systemes/interfaceDebian.h"
+# elif (WIN32)
+	# include "../../systemes/interfaceWindows.h"
+# endif
+# include "../../inclusion/bouton.h"
 
 Bouton::Bouton(int hauteur, int longueur, std::string texte, const std::string& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
 {
