@@ -4,6 +4,7 @@
 #include <string>
 
 #include "bouton.h"
+#include "FenetreJeu.h"
 
 class Menu : public sf::RenderWindow{
 	private:
@@ -21,12 +22,15 @@ class Menu : public sf::RenderWindow{
 		sf::Text titre;
 		sf::Font policeTitre;
 
+		FenetreJeu * jeu;
+
 		void initFenetre();
 		void initTitre(const std::string& police);
 		void initBoutons(const std::string& police, const double proportion);
 		void initErreur(const std::string& police);
 	public:
 		Menu();
+		void initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite> unites, std::vector<Batiment> batiments, int niveau[]);
 		void afficher();
 		void lancerErreur( std::string& messageErreur );
 		Bouton getHeberger();
