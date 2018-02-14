@@ -112,6 +112,3 @@ void FenetreJeu::lancerBoucle()
 		this->display();
 	}
 }
-
-
-
