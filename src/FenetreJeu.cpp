@@ -2,7 +2,7 @@
 #include "../inclusion/FenetreJeu.h"
 
 FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille,
-	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite> unites, std::vector<Batiment> batiments) :
+	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite> &unites, std::vector<Batiment> &batiments) :
 	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre, sf::Style::Close),
 	longueurFenetre(longueurFenetre), hauteurFenetre(hauteurFenetre), nomFenetre(nomFenetre),
 	longueurNiveau(longueurNiveau), hauteurNiveau(hauteurNiveau), longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),

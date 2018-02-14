@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../../inclusion/VueGrille.h"
+#include "../../inclusion/VueNiveauRapproche.h"
 #include "../../inclusion/TileMap.h"
 
-VueGrille::VueGrille(int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]) : sf::View(sf::FloatRect(0, 0, longueurGrille * tailleCase, hauteurGrille * tailleCase))
+VueNiveauRapproche::VueNiveauRapproche(int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]) : sf::View(sf::FloatRect(0, 0, longueurGrille * tailleCase, hauteurGrille * tailleCase))
 {
 	compteurLongueur = 0;
 	compteurHauteur = 0;

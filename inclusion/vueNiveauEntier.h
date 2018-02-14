@@ -3,12 +3,12 @@
 #include <iostream>
 #include "TileMap.h"
 
-class VueGenerale : public sf::View
+class VueNiveauEntier : public sf::View
 {
 private:
 	TileMap carte;
 
 public:
-	VueGenerale(int longueurNiveau, int hauteurNiveau, int tailleCase, int niveau[]);
+	VueNiveauEntier(int longueurNiveau, int hauteurNiveau, int tailleCase, int niveau[]);
 	TileMap getCarte() { return carte; }
 };

@@ -3,14 +3,14 @@
 #include <iostream>
 #include "TileMap.h"
 
-class VueGrille : public sf::View
+class VueNiveauRapproche : public sf::View
 {
 private:
 	TileMap carte;
 	int compteurHauteur, compteurLongueur;
 
 public:
-	VueGrille(int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]);
+	VueNiveauRapproche(int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]);
 
 	int getCompteurHauteur() { return compteurHauteur; }
 	int getCompteurLongueur() { return compteurLongueur; }
