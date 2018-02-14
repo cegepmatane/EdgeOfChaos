@@ -9,6 +9,6 @@ private:
 	TileMap carte;
 
 public:
-	VueGenerale(int longueur, int hauteur, int tailleCase, int niveau[]);
+	VueGenerale(int longueurNiveau, int hauteurNiveau, int tailleCase, int niveau[]);
 	TileMap getCarte() { return carte; }
 };

@@ -1,16 +1,16 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
 
-FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurGenerale, int hauteurGenerale, int longueurGrille, int hauteurGrille,
-	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite> listeUnites, std::vector<Batiment> listeBatiment) :
+FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille,
+	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite> unites, std::vector<Batiment> batiment) :
 	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre, sf::Style::Close),
 	longueurFenetre(longueurFenetre), hauteurFenetre(hauteurFenetre), nomFenetre(nomFenetre),
-	longueurGenerale(longueurGenerale), hauteurGenerale(hauteurGenerale), longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),
-	hauteurPanneau(hauteurPanneau), niveau(niveau), imagePanneau(imagePanneau), listeUnites(listeUnites), listeBatiments(listeBatiment),
-	vueGrille(longueurGenerale, hauteurGenerale, longueurGrille, hauteurGrille, tailleCase, niveau),
-	vueGenerale(longueurGenerale, hauteurGenerale, tailleCase, niveau),
-	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &listeUnites.front(), imagePanneau),
-	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &listeBatiment.front())
+	longueurNiveau(longueurNiveau), hauteurNiveau(hauteurNiveau), longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),
+	hauteurPanneau(hauteurPanneau), niveau(niveau), imagePanneau(imagePanneau), unites(unites), batiments(batiment),
+	vueGrille(longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, niveau),
+	vueGenerale(longueurNiveau, hauteurNiveau, tailleCase, niveau),
+	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &unites.front(), imagePanneau),
+	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiment.front())
 {
 	this->setView(vueGrille);
 	estVueGrille = true;
@@ -41,7 +41,7 @@ void FenetreJeu::lancerBoucle()
 					}
 					break;
 				case sf::Keyboard::D: case sf::Keyboard::Right:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurGenerale) - (tailleCase * 20))
+					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurNiveau) - (tailleCase * 20))
 					{
 						vueGrille.move(tailleCase, 0);
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
@@ -55,7 +55,7 @@ void FenetreJeu::lancerBoucle()
 					}
 					break;
 				case sf::Keyboard::S: case sf::Keyboard::Down:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurGenerale) - tailleCase*hauteurGrille)
+					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurNiveau) - tailleCase*hauteurGrille)
 					{
 						vueGrille.move(0, tailleCase);
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
@@ -81,11 +81,11 @@ void FenetreJeu::lancerBoucle()
 			this->setView(vueGrille);
 			this->draw(vueGrille.getCarte());
 			
-			for (Unite unite : listeUnites)
+			for (Unite unite : unites)
 			{
 				this->draw(unite);
 			}
-			for (Batiment batiment : listeBatiments)
+			for (Batiment batiment : batiments)
 			{
 				this->draw(batiment);
 			}
@@ -99,11 +99,11 @@ void FenetreJeu::lancerBoucle()
 		{
 			this->setView(vueGenerale);
 			this->draw(vueGenerale.getCarte());
-			for (Unite unite : listeUnites)
+			for (Unite unite : unites)
 			{
 				this->draw(unite);
 			}
-			for (Batiment batiment : listeBatiments)
+			for (Batiment batiment : batiments)
 			{
 				this->draw(batiment);
 			}

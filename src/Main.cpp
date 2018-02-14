@@ -10,11 +10,11 @@ int main()
 
 	int tailleCase = 64;
 
-	int hauteurGenerale = 20;
+	int hauteurNiveau = 20;
 	int hauteurGrille = 9;
 	int hauteurPanneau = 3;
 
-	int longueurGenerale = 40;
+	int longueurNiveau = 40;
 	int longueurGrille = 20;
 
 	/* Déclaration du niveau et des textures */
@@ -59,16 +59,16 @@ int main()
 	Batiment batiment("Caserne", 100, tailleCase * 26, tailleCase * 9, "Vous pouvez y former des unités", optionsBatiment);
 	batiment.setImage("ressources/textures/textures.png", 9);
 
-	std::vector<Unite> listeUnites;
-	std::vector<Batiment> listeBatiments;
+	std::vector<Unite> unites;
+	std::vector<Batiment> batiments;
 
-	listeUnites.push_back(unite);
-	listeBatiments.push_back(batiment);
+	unites.push_back(unite);
+	batiments.push_back(batiment);
 
 	/* Appel de la fenêtre de jeu */
 
-	FenetreJeu fenetre(longueurFenetre, hauteurFenetre, nomFenetre, longueurGenerale, hauteurGenerale, longueurGrille, hauteurGrille,
-		tailleCase, hauteurPanneau, niveau, imagePanneau, listeUnites, listeBatiments);
+	FenetreJeu fenetre(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille,
+		tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
 	
 	fenetre.lancerBoucle();
 
