@@ -4,11 +4,12 @@
 
 # if defined (linux)
 	# include "../../systemes/interfaceDebian.h"
-# elif (WIN32)
+# elif defined (_WIN64) || (_WIN32)
 	# include "../../systemes/interfaceWindows.h"
 # endif
 # include "../../inclusion/menu.h"
 # include "../../inclusion/bouton.h"
+# include "../../inclusion/FenetreJeu.h"
 
 
 Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Close)
@@ -126,7 +127,7 @@ void Menu::initErreur(const std::string& police)
 	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
 
-void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& unites, std::vector<Batiment>& batiments, int niveau[])
+void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& unites, std::vector<Batiment>& batiments, int* niveau)
 {
 	int longueurFenetre = 1280;
 	int hauteurFenetre = 768;
@@ -140,5 +141,5 @@ void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& un
 	std::string imagePanneau = Configuration::cheminTextures + "bois2.jpg";
 
 
-	this->jeu = new fenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
+	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
 }

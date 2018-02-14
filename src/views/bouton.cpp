@@ -4,7 +4,7 @@
 
 # if defined (linux)
 	# include "../../systemes/interfaceDebian.h"
-# elif (WIN32)
+# elif (_WIN64)
 	# include "../../systemes/interfaceWindows.h"
 # endif
 # include "../../inclusion/bouton.h"
