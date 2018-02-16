@@ -6,6 +6,9 @@
 #include "vueNiveauEntier.h"
 #include "VuePanneauUnite.h"
 #include "VuePanneauBatiment.h"
+#include "menu.h"
+
+class Menu;
 
 class FenetreJeu : public sf::RenderWindow
 {
@@ -25,5 +28,5 @@ public:
 	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,
 		int niveau[], std::string imagePanneau, std::vector<Unite> &unites, std::vector<Batiment> &batiments);
 
-	void lancerBoucle();
+	void lancerBoucle(Menu* menu);
 };

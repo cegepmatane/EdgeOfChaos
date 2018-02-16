@@ -139,7 +139,7 @@ void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& un
 	int hauteurPanneau = 3;
 	std::string imagePanneau = Configuration::cheminTextures + "bois2.jpg";
 
-
+	
 	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
-	this->jeu->lancerBoucle();
+	this->jeu->lancerBoucle(this);
 }

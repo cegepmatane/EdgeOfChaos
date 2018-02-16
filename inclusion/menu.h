@@ -6,6 +6,8 @@
 #include "bouton.h"
 #include "FenetreJeu.h"
 
+class FenetreJeu;
+
 class Menu : public sf::RenderWindow{
 	private:
 		sf::RectangleShape cadreErreur;

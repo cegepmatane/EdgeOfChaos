@@ -16,8 +16,9 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	estVueGrille = true;
 }
 
-void FenetreJeu::lancerBoucle()
+void FenetreJeu::lancerBoucle(Menu* menu)
 {
+	menu->close();
 	while (this->isOpen())
 	{
 		sf::Event event;

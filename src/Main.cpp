@@ -76,8 +76,6 @@ int main(void)
 			{
 				// Inclusion de l'initialisation du jeu ici
 				menu.initJeu(longueurNiveau, hauteurNiveau, unites, batiments, niveau);
-				// // // // // // //
-				menu.close();
 			}
 				menu.clear(sf::Color::Yellow);
 				menu.afficher();
