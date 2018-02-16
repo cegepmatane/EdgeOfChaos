@@ -2,8 +2,11 @@
 #include <iostream>
 #include "../../inclusion/vueNiveauEntier.h"
 #include "../../inclusion/TileMap.h"
-
-#include "../../systemes/interfaceWindows.h"
+# if defined (__linux__)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN64) || (_WIN32)
+# include "../../systemes/interfaceWindows.h"
+# endif
 
 VueNiveauEntier::VueNiveauEntier(int longueurNiveau, int hauteurNiveau, int tailleCase, int niveau[]) : sf::View(sf::FloatRect(0, 0, longueurNiveau * tailleCase, hauteurNiveau * tailleCase))
 {

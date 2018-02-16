@@ -1,15 +1,14 @@
 # include <SFML/Graphics.hpp>
 # include <iostream>
 # include <string>
-
+# include "../../inclusion/menu.h"
+# include "../../inclusion/bouton.h"
+# include "../../inclusion/FenetreJeu.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
 # elif defined (_WIN64) || (_WIN32)
 # include "../../systemes/interfaceWindows.h"
 # endif
-# include "../../inclusion/menu.h"
-# include "../../inclusion/bouton.h"
-# include "../../inclusion/FenetreJeu.h"
 
 
 Menu::Menu() : RenderWindow(sf::VideoMode(sf::VideoMode::getDesktopMode().width / 3, sf::VideoMode::getDesktopMode().height / 2), "Edge of Chaos", sf::Style::Close)

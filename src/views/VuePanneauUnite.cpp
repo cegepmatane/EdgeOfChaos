@@ -2,8 +2,11 @@
 #include <string>
 #include <iostream>
 #include "../../inclusion/VuePanneauUnite.h"
-
-#include "../../systemes/interfaceWindows.h"
+# if defined (__linux__)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN64) || (_WIN32)
+# include "../../systemes/interfaceWindows.h"
+# endif
 
 VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int tailleCase, Unite* unite, std::string image) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), unite(unite)

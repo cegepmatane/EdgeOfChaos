@@ -2,8 +2,11 @@
 #include <string>
 #include <iostream>
 #include "../../inclusion/VuePanneauBatiment.h"
-
-#include "../../systemes/interfaceWindows.h"
+# if defined (__linux__)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN64) || (_WIN32)
+# include "../../systemes/interfaceWindows.h"
+# endif
 
 VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image, Batiment* batiment) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batimentSprite(batiment)
