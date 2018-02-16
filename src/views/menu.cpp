@@ -2,11 +2,11 @@
 # include <iostream>
 # include <string>
 
-//# if defined (linux)
-	# include "../../systemes/interfaceDebian.h"
-//# elif defined (_WIN64) || (_WIN32)
-//	# include "../../systemes/interfaceWindows.h"
-//# endif
+# if defined (__linux__)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN64) || (_WIN32)
+# include "../../systemes/interfaceWindows.h"
+# endif
 # include "../../inclusion/menu.h"
 # include "../../inclusion/bouton.h"
 # include "../../inclusion/FenetreJeu.h"

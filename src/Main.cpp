@@ -3,11 +3,11 @@
 #include "../inclusion/menu.h"
 #include "../inclusion/Unite.h"
 #include "../inclusion/Batiment.h"
-// if defined (linux)
+# if defined (__linux__)
 # include "../systemes/interfaceDebian.h"
-// elif defined (_WIN64) || (_WIN32)
-// include "../systemes/interfaceWindows.h"
-// endif
+# elif defined (_WIN64) || (_WIN32)
+# include "../systemes/interfaceWindows.h"
+# endif
 
 
 int main(void)
