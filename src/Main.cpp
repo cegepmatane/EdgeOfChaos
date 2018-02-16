@@ -1,11 +1,13 @@
 #include <iostream>
 #include <string>
 #include "../inclusion/menu.h"
-# if defined (linux)
-# include "../../systemes/interfaceDebian.h"
-# elif defined (_WIN64) || (_WIN32)
-# include "../../systemes/interfaceWindows.h"
-# endif
+#include "../inclusion/Unite.h"
+#include "../inclusion/Batiment.h"
+// if defined (linux)
+# include "../systemes/interfaceDebian.h"
+// elif defined (_WIN64) || (_WIN32)
+// include "../systemes/interfaceWindows.h"
+// endif
 
 
 int main(void)
