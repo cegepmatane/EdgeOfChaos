@@ -3,10 +3,12 @@
 #include <iostream>
 #include "../../inclusion/VuePanneauBatiment.h"
 
+#include "../../systemes/interfaceWindows.h"
+
 VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image, Batiment* batiment) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batimentSprite(batiment)
 {
-	this->fonte.loadFromFile("ressources/polices/LinuxLibertine-Classique.ttf");
+	this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf");
 	initialiser();
 }
 

@@ -3,10 +3,12 @@
 #include <iostream>
 #include "../../inclusion/VuePanneauUnite.h"
 
+#include "../../systemes/interfaceWindows.h"
+
 VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int tailleCase, Unite* unite, std::string image) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), unite(unite)
 {
-	this->fonte.loadFromFile("ressources/polices/LinuxLibertine-Classique.ttf");
+	this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf");
 	initialiser();
 }
 
