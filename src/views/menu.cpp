@@ -142,4 +142,5 @@ void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& un
 
 
 	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
+	this->jeu->lancerBoucle();
 }
