@@ -49,7 +49,7 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite("Test", 100, tailleCase * 16, tailleCase * 14, attaque, 10, listeAttaques);
-	unite.setImage(Configuration::cheminTextures+"textures.png", 8);
+	unite.setImage(Configuration::cheminTextures+"textures.png", 12);
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
