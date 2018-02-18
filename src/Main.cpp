@@ -77,12 +77,13 @@ int main(void)
 				// Inclusion de l'initialisation du jeu ici
 				menu.initJeu(longueurNiveau, hauteurNiveau, unites, batiments, niveau);
 			}
-				menu.clear(sf::Color::Yellow);
-				menu.afficher();
-				if(!estConnecte){
-					menu.lancerErreur(tst);
-				}
-				menu.display();
+
+			menu.clear(sf::Color::Yellow);
+			menu.afficher();
+			if(!estConnecte){
+				menu.lancerErreur(tst);
+			}
+			menu.display();
 		}
 	}
 

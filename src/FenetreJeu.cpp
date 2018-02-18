@@ -72,6 +72,18 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				}
 			}
 
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+				int clicX = sf::Mouse::getPosition(*this).x;
+				int clicY = sf::Mouse::getPosition(*this).y;
+
+				if (clicX<longueurFenetre && clicX>0 && clicY<tailleCase*hauteurGrille && clicY>0)
+				{
+					clicX = clicX - clicX%tailleCase;
+					clicY = clicY - clicY%tailleCase;
+					sf::Vector2f positionSouris(clicX, clicY);
+				}
+			}
 		}
 
 		this->clear(sf::Color::Black);
