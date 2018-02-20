@@ -24,6 +24,7 @@ public:
 	void setTitreStats(std::string titre) { this->titreStats.setString(titre); }
 	void setTitrePoints(std::string titre) { this->titrePoints.setString(titre); }
 	void setTitreAttaques(std::string titre) { this->titreAttaques.setString(titre); }
+	void setUnite(Unite* unite) { this->unite = unite; }
 
 	void initialiser();
 	void dessiner(sf::RenderTarget &cible);

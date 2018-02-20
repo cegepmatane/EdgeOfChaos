@@ -10,7 +10,8 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	vueGrille(longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, niveau),
 	vueGenerale(longueurNiveau, hauteurNiveau, tailleCase, niveau),
 	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, &unites.front(), imagePanneau),
-	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiments.front())
+	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiments.front()),
+	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
 {
 	this->setView(vueGrille);
 	estVueGrille = true;
@@ -79,9 +80,42 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 				if (clicX<longueurFenetre && clicX>0 && clicY<tailleCase*hauteurGrille && clicY>0)
 				{
+					//Pour avoir les coordonnees du coin haut-gauche
 					clicX = clicX - clicX%tailleCase;
 					clicY = clicY - clicY%tailleCase;
+
+					// Pour avoir les coordonnees absolues
+					clicX += vueGrille.getCompteurLongueur();
+					clicY += vueGrille.getCompteurHauteur();
+
 					sf::Vector2f positionSouris(clicX, clicY);
+
+					/*if (positionSouris.x==tailleCase*2 && positionSouris.y==tailleCase*2)
+					{
+						this->close();
+					}*/
+
+					estUnite = false;
+					estBatiment = false;
+
+					for (Unite unite : unites)
+					{
+						if (positionSouris.x == unite.getVraiePosition().x && positionSouris.y == unite.getVraiePosition().y)
+						{
+							estUnite = true;
+							uniteSelect = &unite;
+							//this->close();
+						}
+					}
+					for (Batiment batiment : batiments)
+					{
+						if (positionSouris.x == batiment.getVraiePosition().x && positionSouris.y == batiment.getVraiePosition().y)
+						{
+							estBatiment = true;
+							batimentSelect = &batiment;
+						}
+					}
+
 				}
 			}
 		}
@@ -91,6 +125,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		//AFFICHER LA TILEMAP ET LE PANNEAU
 		if (estVueGrille)
 		{
+			//Affichage de la carte et des entites
 			this->setView(vueGrille);
 			this->draw(vueGrille.getCarte());
 			
@@ -103,10 +138,24 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				this->draw(batiment);
 			}
 
-			//this->setView(panneauBoisUnite);
-			//panneauBoisUnite.dessiner(*this);
-			this->setView(panneauBoisBatiment);
-			panneauBoisBatiment.dessiner(*this);
+			//Affichage du panneauBois
+			if (estUnite)
+			{
+				panneauBoisUnite.setUnite(uniteSelect);
+				this->setView(panneauBoisUnite);
+				panneauBoisUnite.dessiner(*this);
+			}
+			else if (estBatiment)
+			{
+				panneauBoisBatiment.setBatiment(batimentSelect);
+				this->setView(panneauBoisBatiment);
+				panneauBoisBatiment.dessiner(*this);
+			}
+			else
+			{
+				this->setView(panneauBois);
+				this->draw(panneauBois.getSprite());
+			}
 		}
 		else
 		{

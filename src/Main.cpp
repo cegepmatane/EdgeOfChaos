@@ -48,7 +48,7 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite("Test", 100, tailleCase * 16, tailleCase * 14, attaque, 10, listeAttaques);
+	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
 	unite.setImage(Configuration::cheminTextures+"textures.png", 12);
 
 	std::vector<std::string> optionsBatiment;

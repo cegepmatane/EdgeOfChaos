@@ -19,10 +19,14 @@ private:
 	std::vector<Unite> unites;
 	std::vector<Batiment> batiments;
 	bool estVueGrille;
+	bool estUnite, estBatiment = false;
+	Unite* uniteSelect;
+	Batiment* batimentSelect;
 	VueNiveauRapproche vueGrille;
 	VueNiveauEntier vueGenerale;
 	VuePanneauUnite panneauBoisUnite;
 	VuePanneauBatiment panneauBoisBatiment;
+	VuePanneau panneauBois;
 
 public:
 	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,

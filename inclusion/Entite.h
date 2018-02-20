@@ -7,7 +7,7 @@ class Entite : public sf::Sprite
 protected:
 	std::string nom;
 	int pointDeVie;
-	sf::Vector2f position;
+	sf::Vector2f vraiePosition;
 	sf::Texture texture;
 
 public:
@@ -15,7 +15,7 @@ public:
 
 	std::string getNom() { return nom; }
 	int getPointDeVie() { return pointDeVie; }
-	sf::Vector2f getPosition() { return position; }
+	sf::Vector2f getVraiePosition() { return vraiePosition; }
 	sf::Texture getTexture() { return texture; }
 	
 	void setNom(std::string nomEntite) { nom = nomEntite; }

@@ -5,6 +5,7 @@
 Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur) : sf::Sprite(),
 	nom(nomEntite), pointDeVie(pointDeVieEntite)
 {
+	this->vraiePosition = sf::Vector2f(positionLargeur, positionHauteur);
 	this->setPosition(sf::Vector2f(positionLargeur, positionHauteur));
 }
 

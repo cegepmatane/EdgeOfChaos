@@ -17,6 +17,8 @@ public:
 	void initialiser();
 	void dessiner(sf::RenderWindow &fenetre);
 
+	void setBatiment(Batiment* batiment) { this->batimentSprite = batiment; }
+
 	sf::Text getDescriptionBatiment() { return descriptionBatiment; }
 	sf::Text getOptionsBatiment() { return optionsBatiment; }
 };

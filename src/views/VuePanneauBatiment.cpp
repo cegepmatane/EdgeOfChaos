@@ -33,6 +33,7 @@ void VuePanneauBatiment::initialiser()
 
 void VuePanneauBatiment::dessiner(sf::RenderWindow &fenetre)
 {
+	this->initialiser();
 	fenetre.draw(sprite);
 	fenetre.draw(descriptionBatiment);
 	fenetre.draw(optionsBatiment);

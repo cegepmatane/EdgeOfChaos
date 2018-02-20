@@ -39,6 +39,7 @@ void VuePanneauUnite::initialiser()
 
 void VuePanneauUnite::dessiner(sf::RenderTarget& cible)
 {
+	this->initialiser();
 	cible.draw(sprite);
 	cible.draw(titreStats);
 	cible.draw(titrePoints);
