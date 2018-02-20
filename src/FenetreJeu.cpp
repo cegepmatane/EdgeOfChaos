@@ -78,7 +78,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				int clicX = sf::Mouse::getPosition(*this).x;
 				int clicY = sf::Mouse::getPosition(*this).y;
 
-				if (clicX<longueurFenetre && clicX>0 && clicY<tailleCase*hauteurGrille && clicY>0)
+				if (clicX<longueurFenetre && clicX>0 && clicY<tailleCase*hauteurGrille && clicY>0 && estVueGrille)
 				{
 					//Pour avoir les coordonnees du coin haut-gauche
 					clicX = clicX - clicX%tailleCase;
@@ -90,11 +90,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					sf::Vector2f positionSouris(clicX, clicY);
 
-					/*if (positionSouris.x==tailleCase*2 && positionSouris.y==tailleCase*2)
-					{
-						this->close();
-					}*/
-
 					estUnite = false;
 					estBatiment = false;
 
@@ -104,7 +99,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						{
 							estUnite = true;
 							uniteSelect = &unite;
-							//this->close();
 						}
 					}
 					for (Batiment batiment : batiments)
