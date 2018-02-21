@@ -51,16 +51,21 @@ int main(void)
 	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
 	unite.setImage(Configuration::cheminTextures+"textures.png", 12);
 
+	
+	/*Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
+	unite2.setImage(Configuration::cheminTextures+"textures.png", 12);*/
+
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
-	Batiment batiment("Caserne", 100, tailleCase * 26, tailleCase * 9, "Vous pouvez y former des unités", optionsBatiment);
+	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
 	batiment.setImage(Configuration::cheminTextures + "textures.png", 9);
 
 	std::vector<Unite> unites;
 	std::vector<Batiment> batiments;
 
 	unites.push_back(unite);
+	//unites.push_back(unite2);
 	batiments.push_back(batiment);
 
 	Menu menu;

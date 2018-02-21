@@ -20,7 +20,7 @@ private:
 	std::vector<Batiment> batiments;
 	bool estVueGrille;
 	bool estUnite, estBatiment = false;
-	Unite* uniteSelect;
+	Unite* uniteSelect = nullptr;
 	Batiment* batimentSelect;
 	VueNiveauRapproche vueGrille;
 	VueNiveauEntier vueGenerale;

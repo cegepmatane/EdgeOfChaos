@@ -11,6 +11,7 @@ Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur,
 
 void Entite::setImage(std::string image, int numTexture)
 {
+	this->numTexture = numTexture;
 	texture.loadFromFile(image, sf::IntRect(64*numTexture, 0, 64, 64));
 	this->setTexture(texture);
 }
