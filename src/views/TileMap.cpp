@@ -56,4 +56,5 @@ bool TileMap::load(const std::string& texture, sf::Vector2u tailleCase, const in
  * 10 = eglise
  * 11 = moulin
  * 12 = cavalier
+ * 13 = curseur noir
  */

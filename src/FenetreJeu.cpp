@@ -22,9 +22,9 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	this->setView(vueGrille);
 	estVueGrille = true;
 
-	textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64, 0, 64, 64));
+	textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64*13, 0, 64, 64));
 	spriteCurseur = sf::Sprite(textureCurseur);
-	spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
+	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
 }
 
@@ -101,10 +101,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					sf::Vector2f positionSouris(clicX, clicY);
 
-					spriteCurseur.setPosition(positionSouris);
-
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
+						spriteCurseur.setPosition(positionSouris);
+
 						estUnite = false;
 						estBatiment = false;
 						uniteSelect = nullptr;
