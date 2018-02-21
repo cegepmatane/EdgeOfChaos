@@ -27,6 +27,9 @@ private:
 	VuePanneauUnite panneauBoisUnite;
 	VuePanneauBatiment panneauBoisBatiment;
 	VuePanneau panneauBois;
+	sf::Texture textureCurseur;
+	sf::Sprite spriteCurseur;
+	bool curseurPresent=false;
 
 public:
 	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,

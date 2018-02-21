@@ -21,6 +21,11 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 {
 	this->setView(vueGrille);
 	estVueGrille = true;
+
+	textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64, 0, 64, 64));
+	spriteCurseur = sf::Sprite(textureCurseur);
+	spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
+	spriteCurseur.setPosition(0, 0);
 }
 
 void FenetreJeu::lancerBoucle(Menu* menu)
@@ -96,6 +101,8 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					sf::Vector2f positionSouris(clicX, clicY);
 
+					spriteCurseur.setPosition(positionSouris);
+
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
 						estUnite = false;
@@ -159,6 +166,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 							unites.push_back(uniteDeplacee);
 
 							uniteSelect = nullptr;
+							spriteCurseur.setPosition(positionSouris);
 
 						}
 
@@ -186,6 +194,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
+			this->draw(spriteCurseur);
 
 			//Affichage du panneauBois
 			if (estUnite)
@@ -222,8 +231,8 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
+			this->draw(spriteCurseur);
 		}
-
 		this->display();
 	}
 }
