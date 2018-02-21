@@ -178,10 +178,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			
 			for (Unite unite : unites)
 			{
+				unite.setImage(Configuration::cheminTextures + "textures.png", unite.getNumTexture());
 				this->draw(unite);
 			}
 			for (Batiment batiment : batiments)
 			{
+				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
 
@@ -212,10 +214,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			this->draw(vueGenerale.getCarte());
 			for (Unite unite : unites)
 			{
+				unite.setImage(Configuration::cheminTextures + "textures.png", unite.getNumTexture());
 				this->draw(unite);
 			}
 			for (Batiment batiment : batiments)
 			{
+				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
 		}
