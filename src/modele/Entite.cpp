@@ -1,6 +1,13 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "../../inclusion/Entite.h"
+#include <iostream>
+
+# if defined (linux)
+# include "../../systemes/interfaceDebian.h"
+# elif (_WIN32)||(_WIN64)
+# include "../../systemes/interfaceWindows.h"
+# endif
 
 Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur) : sf::Sprite(),
 	nom(nomEntite), pointDeVie(pointDeVieEntite)
@@ -12,6 +19,7 @@ Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur,
 void Entite::setImage(std::string image, int numTexture)
 {
 	this->numTexture = numTexture;
-	texture.loadFromFile(image, sf::IntRect(64*numTexture, 0, 64, 64));
+	if (!texture.loadFromFile(image, sf::IntRect(64*numTexture, 0, 64, 64)))
+		std::cerr << "Impossible de charger la texture de l'entite. \n ( " << Configuration::cheminTextures + image << " )" << std::endl;
 	this->setTexture(texture);
 }

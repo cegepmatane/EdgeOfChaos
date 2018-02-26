@@ -4,14 +4,15 @@
 #include "../../inclusion/VuePanneauUnite.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
-# elif defined (_WIN64) || (_WIN32)
+# elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
 
 VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int tailleCase, Unite* unite, std::string image) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), unite(unite)
 {
-	this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf");
+	if (!this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf"))
+		std::cerr << "Impossible de charger la police du panneau unite. \n ( " << Configuration::cheminPolices + "LinuxLibertine-Classique.ttf" << " )" << std::endl;
 	initialiser();
 }
 

@@ -4,14 +4,15 @@
 #include "../../inclusion/VuePanneauBatiment.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
-# elif defined (_WIN64) || (_WIN32)
+# elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
 
 VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image, Batiment* batiment) :
 	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batimentSprite(batiment)
 {
-	this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf");
+	if (!this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf"))
+		std::cerr << "Impossible de charger la police du panneau batiment. \n ( " << Configuration::cheminPolices + "LinuxLibertine-Classique.ttf" << " )" << std::endl;
 	initialiser();
 }
 

@@ -1,11 +1,19 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "../../inclusion/vuePanneau.h"
+#include <iostream>
+
+# if defined (__linux__)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN32) || (_WIN64)
+# include "../../systemes/interfaceWindows.h"
+# endif
 
 VuePanneau::VuePanneau(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image) : sf::View(sf::FloatRect(0, 0, tailleCase*20, tailleCase*20)),
 	longueur(longueurPanneau), hauteur(hauteurPanneau)
 {
-	texture.loadFromFile(image);
+	if (!texture.loadFromFile(image))
+		std::cerr << "Impossible de charger la texture du panneau. \n ( " << Configuration::cheminTextures + image << " )" << std::endl;
 	sprite.setTexture(texture);
 	this->setViewport(sf::FloatRect(0, 0.75f, 1, 1));
 }

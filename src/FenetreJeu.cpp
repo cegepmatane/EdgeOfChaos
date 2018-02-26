@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
 # if defined (__linux__)
-# include "../systemes/interfaceDebian.h"
-# elif defined (_WIN64) || (_WIN32)
+# include "../../systemes/interfaceDebian.h"
+# elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
 
@@ -21,7 +21,8 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	this->setView(vueGrille);
 	estVueGrille = true;
 
-	textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64*13, 0, 64, 64));
+	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64*13, 0, 64, 64)))
+		std::cerr << "Impossible de charger la texture du curseur. \n ( " << Configuration::cheminTextures + "textures.png" << " )" << std::endl;
 	spriteCurseur = sf::Sprite(textureCurseur);
 	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
