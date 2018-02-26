@@ -1,6 +1,5 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
-#include "../systemes/interfaceWindows.h"
 # if defined (__linux__)
 # include "../systemes/interfaceDebian.h"
 # elif defined (_WIN64) || (_WIN32)
