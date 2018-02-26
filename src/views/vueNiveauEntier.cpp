@@ -4,7 +4,7 @@
 #include "../../inclusion/TileMap.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
-# elif defined (_WIN64) || (_WIN32)
+# elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
 
