@@ -20,6 +20,6 @@ void Entite::setImage(std::string image, int numTexture)
 {
 	this->numTexture = numTexture;
 	if (!texture.loadFromFile(image, sf::IntRect(64*numTexture, 0, 64, 64)))
-		std::cerr << "Impossible de charger la texture de l'entite. \n ( " << Configuration::cheminTextures + image << " )" << std::endl;
+		std::cerr << "Impossible de charger la texture de l'entite. \n ( " << image << " )" << std::endl;
 	this->setTexture(texture);
 }
