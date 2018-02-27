@@ -12,7 +12,7 @@
 
 int main(void)
 {
-	// Définitions des mesures
+	// Dï¿½finitions des mesures
 
 	int hauteurNiveau = 20;
 	int longueurNiveau = 40;
@@ -42,13 +42,14 @@ int main(void)
 		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
 
-	// Déclaration des unités et bâtiments
+	// Dï¿½claration des unitï¿½s et bï¿½timents
 
 	int attaque = 10;
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
+	Unite* unitePtr = &unite;
 	unite.setImage(Configuration::cheminTextures+"textures64.png", 12);
 
 	
@@ -56,17 +57,18 @@ int main(void)
 	unite2.setImage(Configuration::cheminTextures+"textures64.png", 12);*/
 
 	std::vector<std::string> optionsBatiment;
-	optionsBatiment.push_back("Créer un lancier");
-	optionsBatiment.push_back("Créer un homme d'arme");
-	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
+	optionsBatiment.push_back("Crï¿½er un lancier");
+	optionsBatiment.push_back("Crï¿½er un homme d'arme");
+	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unitï¿½s", optionsBatiment);
 	batiment.setImage(Configuration::cheminTextures + "textures64.png", 10);
+	Batiment* batimentPtr = &batiment;
 
-	std::vector<Unite> unites;
-	std::vector<Batiment> batiments;
+	std::vector<Unite*> unites;
+	std::vector<Batiment*> batiments;
 
-	unites.push_back(unite);
+	unites.push_back(unitePtr);
 	//unites.push_back(unite2);
-	batiments.push_back(batiment);
+	batiments.push_back(batimentPtr);
 
 	Menu menu;
 	bool estConnecte = true;

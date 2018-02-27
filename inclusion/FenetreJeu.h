@@ -16,8 +16,8 @@ private:
 	int longueurFenetre, hauteurFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau;
 	int *niveau;
 	std::string nomFenetre, imagePanneau;
-	std::vector<Unite> unites;
-	std::vector<Batiment> batiments;
+	std::vector<Unite*> unites;
+	std::vector<Batiment*> batiments;
 	bool estVueGrille;
 	bool estUnite, estBatiment;
 	Unite* uniteSelect;
@@ -33,7 +33,7 @@ private:
 
 public:
 	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,
-		int niveau[], std::string imagePanneau, std::vector<Unite> &unites, std::vector<Batiment> &batiments);
+		int niveau[], std::string imagePanneau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
 
 	void lancerBoucle(Menu* menu);
 };

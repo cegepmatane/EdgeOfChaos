@@ -126,7 +126,7 @@ void Menu::initErreur(const std::string& police)
 	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
 
-void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite>& unites, std::vector<Batiment>& batiments, int* niveau)
+void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments, int* niveau)
 {
 	int longueurFenetre = 1280;
 	int hauteurFenetre = 768;
