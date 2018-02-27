@@ -12,5 +12,5 @@ VueNiveauEntier::VueNiveauEntier(int longueurNiveau, int hauteurNiveau, int tail
 {
 	// on crée la tilemap avec le niveau précédemment défini
 
-	carte.load(Configuration::cheminTextures + "textures.png", sf::Vector2u(tailleCase, tailleCase), niveau, longueurNiveau, hauteurNiveau);
+	carte.load(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau, longueurNiveau, hauteurNiveau);
 }

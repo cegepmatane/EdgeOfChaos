@@ -25,8 +25,8 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	this->setView(vueGrille);
 	estVueGrille = true;
 
-	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures.png", sf::IntRect(64*13, 0, 64, 64)))
-		std::cerr << "Impossible de charger la texture du curseur. \n ( " << Configuration::cheminTextures + "textures.png" << " )" << std::endl;
+	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures64.png", sf::IntRect(64*13, 0, 64, 64)))
+		std::cerr << "Impossible de charger la texture du curseur. \n ( " << Configuration::cheminTextures + "textures64.png" << " )" << std::endl;
 	spriteCurseur = sf::Sprite(textureCurseur);
 	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
@@ -169,7 +169,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						{
 							Unite uniteDeplacee = Unite(uniteSelect->getNom(), uniteSelect->getPointDeVie(), positionSouris.x, positionSouris.y, uniteSelect->getAttaque(), uniteSelect->getDefense(), uniteSelect->getListeAttaques()); 
 
-							uniteDeplacee.setImage(Configuration::cheminTextures+"textures.png", uniteSelect->getNumTexture());
+							uniteDeplacee.setImage(Configuration::cheminTextures+"textures64.png", uniteSelect->getNumTexture());
 							std::cout << uniteSelect->getNom() << std::endl;
 							
 							int compteurUnite = 0;
@@ -207,12 +207,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			
 			for (Unite unite : unites)
 			{
-				unite.setImage(Configuration::cheminTextures + "textures.png", unite.getNumTexture());
+				unite.setImage(Configuration::cheminTextures + "textures64.png", unite.getNumTexture());
 				this->draw(unite);
 			}
 			for (Batiment batiment : batiments)
 			{
-				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
+				batiment.setImage(Configuration::cheminTextures + "textures64.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
 			this->draw(spriteCurseur);
@@ -245,12 +245,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			this->draw(vueGenerale.getCarte());
 			for (Unite unite : unites)
 			{
-				unite.setImage(Configuration::cheminTextures + "textures.png", unite.getNumTexture());
+				unite.setImage(Configuration::cheminTextures + "textures64.png", unite.getNumTexture());
 				this->draw(unite);
 			}
 			for (Batiment batiment : batiments)
 			{
-				batiment.setImage(Configuration::cheminTextures + "textures.png", batiment.getNumTexture());
+				batiment.setImage(Configuration::cheminTextures + "textures64.png", batiment.getNumTexture());
 				this->draw(batiment);
 			}
 			this->draw(spriteCurseur);
