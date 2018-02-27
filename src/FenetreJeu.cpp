@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
 # if defined (__linux__)
-# include "../../systemes/interfaceDebian.h"
+# include "../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
@@ -18,6 +18,10 @@ FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomF
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, &batiments.front()),
 	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
 {
+	this->uniteSelect = nullptr;
+	this->batimentSelect = nullptr;
+	this->estUnite = false;
+	this->estBatiment= false;
 	this->setView(vueGrille);
 	estVueGrille = true;
 
@@ -37,7 +41,9 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		while (this->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
+			{
 				this->close();
+			}
 
 			if (event.type == sf::Event::KeyPressed)
 			{
@@ -46,13 +52,14 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				case sf::Keyboard::R:
 					if (estVueGrille)
 					{
-						estVueGrille = false;
+						estVueGrille = false;	// nom pas super super clair...
 					}
 					else
 					{
 						estVueGrille = true;
 					}
 					break;
+
 				case sf::Keyboard::D: case sf::Keyboard::Right:
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurNiveau) - (tailleCase * 20))
 					{
@@ -60,6 +67,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
 					}
 					break;
+
 				case sf::Keyboard::Z: case sf::Keyboard::Up:
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != 0)
 					{
@@ -67,6 +75,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() - tailleCase);
 					}
 					break;
+
 				case sf::Keyboard::S: case sf::Keyboard::Down:
 					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurNiveau) - tailleCase*hauteurGrille)
 					{
@@ -74,6 +83,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
 					}
 					break;
+
 				case sf::Keyboard::Q: case sf::Keyboard::Left:
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != 0)
 					{
@@ -89,11 +99,11 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				int clicX = sf::Mouse::getPosition(*this).x;
 				int clicY = sf::Mouse::getPosition(*this).y;
 
-				if (clicX<longueurFenetre && clicX>0 && clicY<tailleCase*hauteurGrille && clicY>0 && estVueGrille)
+				if (clicX < longueurFenetre && clicX > 0 && clicY < tailleCase*hauteurGrille && clicY > 0 && estVueGrille)
 				{
 					//Pour avoir les coordonnees du coin haut-gauche
-					clicX = clicX - clicX%tailleCase;
-					clicY = clicY - clicY%tailleCase;
+					clicX = clicX - clicX % tailleCase;
+					clicY = clicY - clicY % tailleCase;
 
 					// Pour avoir les coordonnees absolues
 					clicX += vueGrille.getCompteurLongueur();
@@ -103,30 +113,36 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						spriteCurseur.setPosition(positionSouris);
-
 						estUnite = false;
 						estBatiment = false;
 						uniteSelect = nullptr;
 						batimentSelect = nullptr;
+						
+						spriteCurseur.setPosition(positionSouris);
 
 						for (Unite unite : unites)
 						{
 							if (positionSouris == unite.getVraiePosition())
 							{
 								estUnite = true;
-								uniteSelect = &unite;
+								uniteSelect = &unite;	// après le for, "unite" est désalloué,
+								// donc "uniteSelect" pointe dans le vide.
+								std::cout << uniteSelect->getNom() << std::endl;
 							}
 						}
-						for (Batiment batiment : batiments)
+						if (!estUnite)
 						{
-							if (positionSouris == batiment.getVraiePosition())
+							for (Batiment batiment : batiments)
 							{
-								estBatiment = true;
-								batimentSelect = &batiment;
+								if (positionSouris == batiment.getVraiePosition())
+								{
+									estBatiment = true;
+									batimentSelect = &batiment;	// idem
+									std::cout << uniteSelect->getNom() << std::endl;
+								}
 							}
 						}
-					} else if (event.mouseButton.button == sf::Mouse::Right && uniteSelect!=nullptr)
+					} else if (event.mouseButton.button == sf::Mouse::Right && uniteSelect != nullptr)
 					{
 						// Verification du contenu de la case cliquee
 						bool caseOccupee = false;
@@ -138,28 +154,33 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 								
 							}
 						}
-						for (Batiment batiment : batiments)
-						{
-							if (positionSouris == batiment.getVraiePosition())
+						if(!caseOccupee){
+							for (Batiment batiment : batiments)
 							{
-								caseOccupee = true;
+								if (positionSouris == batiment.getVraiePosition())
+								{
+									caseOccupee = true;
+								}
 							}
 						}
 
 						// Mettre l'unite sur la case cliquee
 						if (!caseOccupee)
 						{
-							Unite uniteDeplacee = Unite(uniteSelect->getNom(), uniteSelect->getPointDeVie(), positionSouris.x,
-								positionSouris.y, uniteSelect->getAttaque(), uniteSelect->getDefense(), uniteSelect->getListeAttaques()); 
+							Unite uniteDeplacee = Unite(uniteSelect->getNom(), uniteSelect->getPointDeVie(), positionSouris.x, positionSouris.y, uniteSelect->getAttaque(), uniteSelect->getDefense(), uniteSelect->getListeAttaques()); 
 
 							uniteDeplacee.setImage(Configuration::cheminTextures+"textures.png", uniteSelect->getNumTexture());
+							std::cout << uniteSelect->getNom() << std::endl;
 							
 							int compteurUnite = 0;
 							for (Unite unite : unites)
 							{
+								// Compare les cases mémoires de "uniteSelect" et 
+								// des unités contenues dans ton vecteur... Tu gagneras du temps... ;)
 								if(unite.getVraiePosition()==uniteSelect->getVraiePosition())
 								{
 									unites.erase(unites.begin() + compteurUnite);
+									// faire un "break;"?
 								}
 								compteurUnite++;
 							}
@@ -199,7 +220,8 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			//Affichage du panneauBois
 			if (estUnite)
 			{
-				panneauBoisUnite.setUnite(uniteSelect);
+				//std::cout << uniteSelect << std::endl;
+				panneauBoisUnite.setUnite(uniteSelect); // !!!!! "uniteSelect" est à nullptr les 3/4 du temps!
 				/*uniteSelect->setAttaque(200);
 				panneauBoisUnite.mettreAJourTexte();*/
 				this->setView(panneauBoisUnite);

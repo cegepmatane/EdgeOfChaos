@@ -59,7 +59,7 @@ int main(void)
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
 	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
-	batiment.setImage(Configuration::cheminTextures + "textures.png", 9);
+	batiment.setImage(Configuration::cheminTextures + "textures.png", 10);
 
 	std::vector<Unite> unites;
 	std::vector<Batiment> batiments;
