@@ -138,7 +138,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 								{
 									estBatiment = true;
 									batimentSelect = &batiment;	// idem
-									std::cout << uniteSelect->getNom() << std::endl;
+									std::cout << batimentSelect->getNom() << std::endl;
 								}
 							}
 						}
