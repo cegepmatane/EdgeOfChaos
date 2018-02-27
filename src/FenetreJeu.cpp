@@ -129,7 +129,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 								estUnite = true;
 								uniteSelect = unite;	// après le for, "unite" est désalloué,
 								// donc "uniteSelect" pointe dans le vide.
-								std::cout << "unite cliquee " << uniteSelect->getNom() << uniteSelect->getNumTexture() << std::endl;
 							}
 						}
 						if (!estUnite)
@@ -140,7 +139,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 								{
 									estBatiment = true;
 									batimentSelect = batiment;	// idem
-									std::cout << "batiment clique " << batimentSelect->getNom() << std::endl;
 								}
 							}
 						}
@@ -169,42 +167,11 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						// Mettre l'unite sur la case cliquee
 						if (!caseOccupee)
 						{
-							/*uniteDeplacee = Unite(uniteSelect->getNom(), uniteSelect->getPointDeVie(), positionSouris.x, positionSouris.y, uniteSelect->getAttaque(), uniteSelect->getDefense(), uniteSelect->getListeAttaques()); 
-							// Constructeur par copie a tester
-							uniteDeplacee.setImage(Configuration::cheminTextures+"textures.png", uniteSelect->getNumTexture());
-
-							std::cout << "unite select " << uniteSelect->getNom() << uniteSelect->getNumTexture() << std::endl;
-							std::cout << "unite deplacee " << uniteDeplacee.getNom() << uniteDeplacee.getNumTexture() << std::endl;
-
-							Unite* uniteDeplaceePtr = &uniteDeplacee;
-							std::cout << "unite deplaceePtr " << uniteDeplaceePtr->getNom() << uniteDeplaceePtr->getNumTexture() << std::endl;
-							
-							int compteurUnite = 0;
-							for (Unite* unite : unites)
-							{
-								// Compare les cases mémoires de "uniteSelect" et 
-								// des unités contenues dans ton vecteur... Tu gagneras du temps... ;)
-								if(unite->getVraiePosition()==uniteSelect->getVraiePosition())
-								{
-									unites.erase(unites.begin() + compteurUnite);
-									// faire un "break;"?
-								}
-								compteurUnite++;
-							}
-							std::cout << "nombre unites avant " << unites.size() << std::endl;
-
-							unites.push_back(uniteDeplaceePtr);
-							std::cout << "nombre unites apres " << unites.size() << std::endl;*/
-
 							uniteSelect->setPosition(positionSouris);
 							uniteSelect->setVraiePosition(positionSouris.x, positionSouris.y);
 
-							uniteSelect = nullptr;
+							//uniteSelect = nullptr;
 							spriteCurseur.setPosition(positionSouris);
-							/*
-							std::cout << "unite deplaceePtr dans vector " << uniteDeplaceePtr->getNom() << uniteDeplaceePtr->getNumTexture() << std::endl;
-							std::cout << "unite prise direct dans vector " << unites.at(0)->getNom() << unites.at(0)->getNumTexture() << std::endl;
-							*/
 						}
 					}
 				}
@@ -220,7 +187,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			this->setView(vueGrille);
 			this->draw(vueGrille.getCarte());
 			
-			std::cout << "taille unites avant affichage " << unites.size() << std::endl;
 			for (Unite* unite : unites)
 			{
 				unite->setImage(Configuration::cheminTextures + "textures64.png", unite->getNumTexture());
@@ -236,10 +202,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			//Affichage du panneauBois
 			if (estUnite)
 			{
-				//std::cout << uniteSelect << std::endl;
 				panneauBoisUnite.setUnite(uniteSelect); // !!!!! "uniteSelect" est à nullptr les 3/4 du temps!
-				/*uniteSelect->setAttaque(200);
-				panneauBoisUnite.mettreAJourTexte();*/
 				this->setView(panneauBoisUnite);
 				panneauBoisUnite.dessiner(*this);
 			}

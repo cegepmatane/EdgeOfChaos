@@ -49,12 +49,12 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
-	Unite* unitePtr = &unite;
 	unite.setImage(Configuration::cheminTextures+"textures64.png", 12);
-
+	Unite* unitePtr = &unite;
 	
-	/*Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
-	unite2.setImage(Configuration::cheminTextures+"textures64.png", 12);*/
+	Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
+	unite2.setImage(Configuration::cheminTextures+"textures64.png", 12);
+	Unite* unite2Ptr = &unite2;
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Cr�er un lancier");
@@ -67,7 +67,7 @@ int main(void)
 	std::vector<Batiment*> batiments;
 
 	unites.push_back(unitePtr);
-	//unites.push_back(unite2);
+	unites.push_back(unite2Ptr);
 	batiments.push_back(batimentPtr);
 
 	Menu menu;
