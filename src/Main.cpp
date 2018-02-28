@@ -12,7 +12,7 @@
 
 int main(void)
 {
-	// D�finitions des mesures
+	// Definitions des mesures
 
 	int hauteurNiveau = 20;
 	int longueurNiveau = 40;
@@ -42,7 +42,7 @@ int main(void)
 		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
 
-	// D�claration des unit�s et b�timents
+	// Declaration des unites et batiments
 
 	int attaque = 10;
 	std::vector<std::string> listeAttaques;

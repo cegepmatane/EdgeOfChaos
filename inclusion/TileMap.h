@@ -1,3 +1,8 @@
+/*
+ * Le code ci-apres a ete adapte de celui present sur le site suivant :
+ * https://www.sfml-dev.org/tutorials/2.4/graphics-vertex-array-fr.php
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -6,7 +11,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
 
-	bool load(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur);
+	bool charger(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur);
 
 private:
 
@@ -16,12 +21,12 @@ private:
 		etat.transform *= getTransform();
 
 		// on applique la texture du tileset
-		etat.texture = &m_tileset;
+		etat.texture = &textureCases;
 
 		// et on dessine enfin le tableau de vertex
-		cible.draw(m_vertices, etat);
+		cible.draw(tableauCases, etat);
 	}
 
-	sf::VertexArray m_vertices;
-	sf::Texture m_tileset;
+	sf::VertexArray tableauCases;
+	sf::Texture textureCases;
 };

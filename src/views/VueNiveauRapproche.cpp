@@ -15,7 +15,7 @@ VueNiveauRapproche::VueNiveauRapproche(int longueurNiveau, int hauteurNiveau, in
 	
 	// on crée la tilemap avec le niveau précédemment défini
 
-	if (carte.load(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau, longueurNiveau, hauteurNiveau))
+	if (carte.charger(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau, longueurNiveau, hauteurNiveau))
 	{
 		this->setViewport(sf::FloatRect(0, 0, 1, 0.75f));
 	}
