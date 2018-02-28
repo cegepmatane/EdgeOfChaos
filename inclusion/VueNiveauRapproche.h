@@ -1,12 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "TileMap.h"
+#include "Carte.h"
 
 class VueNiveauRapproche : public sf::View
 {
 private:
-	TileMap carte;
+	Carte carte;
 	int compteurHauteur, compteurLongueur;
 
 public:
@@ -18,5 +18,5 @@ public:
 	void setCompteurHauteur(int hauteur) { compteurHauteur = hauteur; }
 	void setCompteurLongueur(int longueur) { compteurLongueur = longueur; }
 
-	TileMap getCarte() { return carte; }
+	Carte getCarte() { return carte; }
 };

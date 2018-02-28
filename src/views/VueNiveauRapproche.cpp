@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "../../inclusion/VueNiveauRapproche.h"
-#include "../../inclusion/TileMap.h"
+#include "../../inclusion/Carte.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)

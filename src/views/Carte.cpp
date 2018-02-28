@@ -5,9 +5,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../../inclusion/TileMap.h"
+#include "../../inclusion/Carte.h"
 
-bool TileMap::charger(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur)
+bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur)
 {
 	// on charge la texture du tileset
 	if (!textureCases.loadFromFile(texture))

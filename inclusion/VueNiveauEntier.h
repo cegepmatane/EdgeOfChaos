@@ -1,14 +1,14 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "TileMap.h"
+#include "Carte.h"
 
 class VueNiveauEntier : public sf::View
 {
 private:
-	TileMap carte;
+	Carte carte;
 
 public:
 	VueNiveauEntier(int longueurNiveau, int hauteurNiveau, int tailleCase, int niveau[]);
-	TileMap getCarte() { return carte; }
+	Carte getCarte() { return carte; }
 };
