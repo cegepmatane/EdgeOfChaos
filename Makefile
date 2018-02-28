@@ -1,4 +1,4 @@
-LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network
+LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system -lsfml-network -pthread
 EXEC = debug
 
 
