@@ -13,8 +13,8 @@ class Menu;
 class FenetreJeu : public sf::RenderWindow
 {
 private:
-	int longueurFenetre, hauteurFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau;
-	int *niveau;
+	int longueurFenetre, hauteurFenetre, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau;
+	Niveau niveau;
 	std::string nomFenetre, imagePanneau;
 	std::vector<Unite*> unites;
 	std::vector<Batiment*> batiments;
@@ -32,8 +32,7 @@ private:
 	bool curseurPresent=false;
 
 public:
-	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,
-		int niveau[], std::string imagePanneau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
+	FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
 
 	void lancerBoucle(Menu* menu);
 };

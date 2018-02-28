@@ -7,8 +7,12 @@
 #include <iostream>
 #include "../../inclusion/Carte.h"
 
-bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur)
+bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau)
 {
+	int largeur = niveau.getLongueur();
+	int hauteur = niveau.getHauteur();
+	short int* cases = niveau.getCases();
+
 	// on charge la texture du tileset
 	if (!textureCases.loadFromFile(texture))
 		return false;

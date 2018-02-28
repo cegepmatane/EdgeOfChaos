@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Carte.h"
+#include "Niveau.h"
 
 class VueNiveauRapproche : public sf::View
 {
@@ -10,7 +11,7 @@ private:
 	int compteurHauteur, compteurLongueur;
 
 public:
-	VueNiveauRapproche(int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille, int tailleCase, int niveau[]);
+	VueNiveauRapproche(Niveau niveau, int longueurGrille, int hauteurGrille, int tailleCase);
 
 	int getCompteurHauteur() { return compteurHauteur; }
 	int getCompteurLongueur() { return compteurLongueur; }

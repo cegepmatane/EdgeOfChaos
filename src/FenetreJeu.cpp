@@ -8,14 +8,12 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, int longueurNiveau, int hauteurNiveau, int longueurGrille, int hauteurGrille,
-	int tailleCase, int hauteurPanneau, int niveau[], std::string imagePanneau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments) :
-	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre, sf::Style::Close),
-	longueurFenetre(longueurFenetre), hauteurFenetre(hauteurFenetre), nomFenetre(nomFenetre),
-	longueurNiveau(longueurNiveau), hauteurNiveau(hauteurNiveau), longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),
-	hauteurPanneau(hauteurPanneau), niveau(niveau), imagePanneau(imagePanneau), unites(unites), batiments(batiments),
-	vueGrille(longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, niveau),
-	vueGenerale(longueurNiveau, hauteurNiveau, tailleCase, niveau),
+FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments) :
+	longueurFenetre(1280), hauteurFenetre(768), nomFenetre("Edge Of Chaos"),
+	sf::RenderWindow(sf::VideoMode(1280, 768), "Edge Of Chaos", sf::Style::Close),
+	longueurGrille(20), hauteurGrille(9), tailleCase(64),
+	hauteurPanneau(3), imagePanneau(Configuration::cheminTextures + "bois2.jpg"), niveau(niveau), unites(unites), batiments(batiments),
+	vueGrille(niveau, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, tailleCase),
 	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites.front(), imagePanneau),
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments.front()),
 	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
@@ -63,7 +61,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 					break;
 
 				case sf::Keyboard::D: case sf::Keyboard::Right:
-					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*longueurNiveau) - (tailleCase * 20))
+					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*niveau.getLongueur()) - (tailleCase * 20))
 					{
 						vueGrille.move(tailleCase, 0);
 						vueGrille.setCompteurLongueur(vueGrille.getCompteurLongueur() + tailleCase);
@@ -79,7 +77,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 					break;
 
 				case sf::Keyboard::S: case sf::Keyboard::Down:
-					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*hauteurNiveau) - tailleCase*hauteurGrille)
+					if (estVueGrille&&vueGrille.getCompteurHauteur() != (tailleCase*niveau.getHauteur()) - tailleCase*hauteurGrille)
 					{
 						vueGrille.move(0, tailleCase);
 						vueGrille.setCompteurHauteur(vueGrille.getCompteurHauteur() + tailleCase);
@@ -183,7 +181,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		//AFFICHER LA TILEMAP ET LE PANNEAU
 		if (estVueGrille)
 		{
-			//Affichage de la carte et des entites
+			//Affichage de la carte, des entites et du curseur
 			this->setView(vueGrille);
 			this->draw(vueGrille.getCarte());
 			
