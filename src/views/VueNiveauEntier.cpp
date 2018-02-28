@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include "../../inclusion/vueNiveauEntier.h"
+#include "../../inclusion/VueNiveauEntier.h"
 #include "../../inclusion/TileMap.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"

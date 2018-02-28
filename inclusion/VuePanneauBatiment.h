@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "vuePanneau.h"
+#include "VuePanneau.h"
 #include "Batiment.h"
 
 class VuePanneauBatiment : public VuePanneau

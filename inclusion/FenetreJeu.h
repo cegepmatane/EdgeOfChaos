@@ -3,10 +3,10 @@
 #include "Unite.h"
 #include "Batiment.h"
 #include "VueNiveauRapproche.h"
-#include "vueNiveauEntier.h"
+#include "VueNiveauEntier.h"
 #include "VuePanneauUnite.h"
 #include "VuePanneauBatiment.h"
-#include "menu.h"
+#include "Menu.h"
 
 class Menu;
 

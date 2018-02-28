@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "../../inclusion/vuePanneau.h"
+#include "../../inclusion/VuePanneau.h"
 #include <iostream>
 
 # if defined (__linux__)

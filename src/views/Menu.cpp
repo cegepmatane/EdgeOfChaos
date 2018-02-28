@@ -1,8 +1,8 @@
 # include <SFML/Graphics.hpp>
 # include <iostream>
 # include <string>
-# include "../../inclusion/menu.h"
-# include "../../inclusion/bouton.h"
+# include "../../inclusion/Menu.h"
+# include "../../inclusion/Bouton.h"
 # include "../../inclusion/FenetreJeu.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"

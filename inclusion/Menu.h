@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "bouton.h"
+#include "Bouton.h"
 #include "FenetreJeu.h"
 
 class FenetreJeu;

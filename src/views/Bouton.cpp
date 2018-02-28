@@ -7,7 +7,7 @@
 # elif (_WIN32)||(_WIN64)
 	# include "../../systemes/interfaceWindows.h"
 # endif
-# include "../../inclusion/bouton.h"
+# include "../../inclusion/Bouton.h"
 
 Bouton::Bouton(int hauteur, int longueur, std::string texte, const std::string& police) : RectangleShape(sf::Vector2f(hauteur - sf::VideoMode::getDesktopMode().width / 426.0 * 2, longueur - sf::VideoMode::getDesktopMode().width / 426.0 * 2))
 {

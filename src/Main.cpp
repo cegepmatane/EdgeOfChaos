@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "../inclusion/menu.h"
+#include "../inclusion/Menu.h"
 #include "../inclusion/Unite.h"
 #include "../inclusion/Batiment.h"
 # if defined (__linux__)
