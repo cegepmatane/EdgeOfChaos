@@ -32,8 +32,7 @@ private:
 	bool curseurPresent=false;
 
 public:
-	FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, Niveau niveau, int longueurGrille, int hauteurGrille, int tailleCase, int hauteurPanneau,
-		std::string imagePanneau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
+	FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
 
 	void lancerBoucle(Menu* menu);
 };

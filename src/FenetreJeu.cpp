@@ -8,12 +8,11 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-FenetreJeu::FenetreJeu(int longueurFenetre, int hauteurFenetre, std::string nomFenetre, Niveau niveau, int longueurGrille, int hauteurGrille,
-	int tailleCase, int hauteurPanneau, std::string imagePanneau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments) :
-	sf::RenderWindow(sf::VideoMode(longueurFenetre, hauteurFenetre), nomFenetre, sf::Style::Close),
-	longueurFenetre(longueurFenetre), hauteurFenetre(hauteurFenetre), nomFenetre(nomFenetre),
-	longueurGrille(longueurGrille), hauteurGrille(hauteurGrille), tailleCase(tailleCase),
-	hauteurPanneau(hauteurPanneau), imagePanneau(imagePanneau), niveau(niveau), unites(unites), batiments(batiments),
+FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments) :
+	longueurFenetre(1280), hauteurFenetre(768), nomFenetre("Edge Of Chaos"),
+	sf::RenderWindow(sf::VideoMode(1280, 768), "Edge Of Chaos", sf::Style::Close),
+	longueurGrille(20), hauteurGrille(9), tailleCase(64),
+	hauteurPanneau(3), imagePanneau(Configuration::cheminTextures + "bois2.jpg"), niveau(niveau), unites(unites), batiments(batiments),
 	vueGrille(niveau, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, tailleCase),
 	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites.front(), imagePanneau),
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments.front()),

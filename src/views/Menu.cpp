@@ -128,18 +128,6 @@ void Menu::initErreur(const std::string& police)
 
 void Menu::initJeu(Niveau niveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments)
 {
-	int longueurFenetre = 1280;
-	int hauteurFenetre = 768;
-	std::string nomFenetre = "Edge Of Chaos";
-	
-	int hauteurGrille = 9;
-	int longueurGrille = 20;
-	int tailleCase = 64;
-	
-	int hauteurPanneau = 3;
-	std::string imagePanneau = Configuration::cheminTextures + "bois2.jpg";
-
-	
-	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, niveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, imagePanneau, unites, batiments);
+	this->jeu = new FenetreJeu(niveau, unites, batiments);
 	this->jeu->lancerBoucle(this);
 }
