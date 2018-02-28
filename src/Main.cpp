@@ -3,22 +3,23 @@
 #include "../inclusion/Menu.h"
 #include "../inclusion/Unite.h"
 #include "../inclusion/Batiment.h"
+#include "../inclusion/Niveau.h"
 # if defined (__linux__)
 # include "../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-
 int main(void)
 {
+#define tailleCase 64
+
 	// Definitions des mesures
 
 	int hauteurNiveau = 20;
 	int longueurNiveau = 40;
-	int tailleCase = 64;
 
-	int niveau[] =
+	short int casesNiveau[] =
 	{
 		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
 		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
@@ -42,6 +43,8 @@ int main(void)
 		4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 	};
 
+	Niveau niveau(hauteurNiveau, longueurNiveau, casesNiveau);
+
 	// Declaration des unites et batiments
 
 	int attaque = 10;
@@ -57,9 +60,9 @@ int main(void)
 	Unite* unite2Ptr = &unite2;
 
 	std::vector<std::string> optionsBatiment;
-	optionsBatiment.push_back("Cr�er un lancier");
-	optionsBatiment.push_back("Cr�er un homme d'arme");
-	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unit�s", optionsBatiment);
+	optionsBatiment.push_back("Créer un lancier");
+	optionsBatiment.push_back("Créer un homme d'arme");
+	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
 	batiment.setImage(Configuration::cheminTextures + "textures64.png", 10);
 	Batiment* batimentPtr = &batiment;
 
@@ -82,7 +85,7 @@ int main(void)
 			if(event.type == sf::Event::Closed)
 			{
 				// Inclusion de l'initialisation du jeu ici
-				menu.initJeu(longueurNiveau, hauteurNiveau, unites, batiments, niveau);
+				menu.initJeu(niveau, unites, batiments);
 			}
 
 			menu.clear(sf::Color::Yellow);

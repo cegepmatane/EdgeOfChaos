@@ -5,6 +5,7 @@
 
 #include "Bouton.h"
 #include "FenetreJeu.h"
+#include "Niveau.h"
 
 class FenetreJeu;
 
@@ -32,7 +33,7 @@ class Menu : public sf::RenderWindow{
 		void initErreur(const std::string& police);
 	public:
 		Menu();
-		void initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments, int* niveau);
+		void initJeu(Niveau niveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments);
 		void afficher();
 		void lancerErreur( std::string& messageErreur );
 		Bouton getHeberger();

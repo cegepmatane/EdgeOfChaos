@@ -6,12 +6,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Niveau.h"
 
 class Carte : public sf::Drawable, public sf::Transformable
 {
 public:
 
-	bool charger(const std::string& texture, sf::Vector2u tailleCase, const int* cases, unsigned largeur, unsigned hauteur);
+	bool charger(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau);
 
 private:
 

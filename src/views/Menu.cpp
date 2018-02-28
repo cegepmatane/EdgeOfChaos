@@ -126,7 +126,7 @@ void Menu::initErreur(const std::string& police)
 	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
 
-void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments, int* niveau)
+void Menu::initJeu(Niveau niveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments)
 {
 	int longueurFenetre = 1280;
 	int hauteurFenetre = 768;
@@ -140,6 +140,6 @@ void Menu::initJeu(int longueurNiveau, int hauteurNiveau, std::vector<Unite*>& u
 	std::string imagePanneau = Configuration::cheminTextures + "bois2.jpg";
 
 	
-	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, longueurNiveau, hauteurNiveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, niveau, imagePanneau, unites, batiments);
+	this->jeu = new FenetreJeu(longueurFenetre, hauteurFenetre, nomFenetre, niveau, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau, imagePanneau, unites, batiments);
 	this->jeu->lancerBoucle(this);
 }
