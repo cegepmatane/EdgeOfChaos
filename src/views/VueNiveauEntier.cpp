@@ -8,9 +8,7 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-VueNiveauEntier::VueNiveauEntier(Niveau niveau, int tailleCase) : sf::View(sf::FloatRect(0, 0, niveau.getLongueur() * tailleCase, niveau.getHauteur() * tailleCase))
+VueNiveauEntier::VueNiveauEntier(Niveau niveau, Carte* carte, int tailleCase) : sf::View(sf::FloatRect(0, 0, niveau.getLongueur() * tailleCase, niveau.getHauteur() * tailleCase))
 {
-	// on crée la carte avec le niveau précédemment défini
-
-	carte.charger(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau);
+	this->carte = carte;
 }

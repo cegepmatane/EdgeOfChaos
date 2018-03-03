@@ -7,4 +7,3 @@ Batiment::Batiment(std::string nomEntite, int pointDeVieEntite, int positionLarg
 {
 	
 }
-

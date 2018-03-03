@@ -15,6 +15,7 @@ class FenetreJeu : public sf::RenderWindow
 private:
 	int longueurFenetre, hauteurFenetre, longueurGrille, hauteurGrille, tailleCase, hauteurPanneau;
 	Niveau niveau;
+	Carte* carte;
 	std::string nomFenetre, imagePanneau;
 	std::vector<Unite*> unites;
 	std::vector<Batiment*> batiments;
@@ -35,4 +36,6 @@ public:
 	FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
 
 	void lancerBoucle(Menu* menu);
+	void ajouterEntite(Entite* entite);
+	void deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY);
 };

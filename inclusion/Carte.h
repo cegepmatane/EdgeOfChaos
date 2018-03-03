@@ -6,14 +6,13 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <vector>
+#include <string>
 #include "Niveau.h"
+#include "Entite.h"
 
 class Carte : public sf::Drawable, public sf::Transformable
 {
-public:
-
-	bool charger(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau);
-
 private:
 
 	virtual void draw(sf::RenderTarget& cible, sf::RenderStates etat) const
@@ -30,4 +29,14 @@ private:
 
 	sf::VertexArray tableauCases;
 	sf::Texture textureCases;
+	std::vector<sf::Sprite*> entites;
+
+public:
+	Carte(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau);
+	bool charger(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau);
+	void ajouterEntite(Entite* entite, int positionLongueur, int positionHauteur);
+	void deplacerEntite(int anciennePositionLongueur, int anciennePositionHauteur, int nouvellePositionLongueur, int nouvellePositionHauteur);
+	void dessinerEntites(sf::RenderTarget& cible);
+	std::vector<sf::Sprite*> getEntites() { return entites; }
+	~Carte();
 };

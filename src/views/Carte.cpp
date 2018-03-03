@@ -7,6 +7,12 @@
 #include <iostream>
 #include "../../inclusion/Carte.h"
 
+Carte::Carte(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau)
+{
+	charger(texture, tailleCase, niveau);
+}
+
+
 bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, Niveau niveau)
 {
 	int largeur = niveau.getLongueur();
@@ -49,6 +55,57 @@ bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, Niveau 
 		}
 
 	return true;
+}
+
+void Carte::ajouterEntite(Entite* entite, int positionLongueur, int positionHauteur)
+{
+	std::cout << "nombre d'entites dans le vecteur de Carte : " << entites.size() << std::endl;
+	sf::Sprite* entiteSprite = new sf::Sprite();
+	sf::Texture texture;
+
+	int numTexture = entite->getNumTexture();
+	std::string image = entite->getImage();
+
+	if (!texture.loadFromFile(image, sf::IntRect(64 * numTexture, 0, 64, 64)))
+		std::cout << "Impossible de charger la texture de l'entite. \n ( " << image << " )" << std::endl;
+	entiteSprite->setTexture(texture);
+	entiteSprite->setPosition(positionLongueur, positionHauteur);
+
+	entites.push_back(entiteSprite);
+
+	std::cout << "entite ajoutee dans Carte : " << entite->getNom() << std::endl;
+	std::cout << "chemin texture entite ajoutee : " << entite->getImage() << std::endl;
+	std::cout << "numTexture entite ajoutee : " << entite->getNumTexture() << std::endl;
+	std::cout << "nombre d'entites dans le vecteur de Carte : " << entites.size() << std::endl;
+}
+
+void Carte::deplacerEntite(int anciennePositionLongueur, int anciennePositionHauteur, int nouvellePositionLongueur, int nouvellePositionHauteur)
+{
+	//parcourir entites pour trouver le bon Sprite en fonction de son ancienne position et changer sa position
+	for (sf::Sprite* entiteSprite : entites)
+	{
+		if (entiteSprite->getPosition().x == anciennePositionLongueur && entiteSprite->getPosition().y == anciennePositionHauteur)
+		{
+			entiteSprite->setPosition(nouvellePositionLongueur, nouvellePositionHauteur);
+		}
+	}
+}
+
+void Carte::dessinerEntites(sf::RenderTarget& cible)
+{
+	for (sf::Sprite* entiteSprite : entites)
+	{
+		cible.draw(*entiteSprite);
+		std::cout << "entite dessinee dans Carte" << std::endl;
+	}
+}
+
+Carte::~Carte()
+{
+	for (sf::Sprite* entiteSprite : entites)
+	{
+		delete entiteSprite;
+	}
 }
 
 /* Correspondance numéros et textures :

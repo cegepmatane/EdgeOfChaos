@@ -7,11 +7,11 @@
 class VueNiveauRapproche : public sf::View
 {
 private:
-	Carte carte;
+	Carte* carte;
 	int compteurHauteur, compteurLongueur;
 
 public:
-	VueNiveauRapproche(Niveau niveau, int longueurGrille, int hauteurGrille, int tailleCase);
+	VueNiveauRapproche(Niveau niveau, Carte* carte, int longueurGrille, int hauteurGrille, int tailleCase);
 
 	int getCompteurHauteur() { return compteurHauteur; }
 	int getCompteurLongueur() { return compteurLongueur; }
@@ -19,5 +19,5 @@ public:
 	void setCompteurHauteur(int hauteur) { compteurHauteur = hauteur; }
 	void setCompteurLongueur(int longueur) { compteurLongueur = longueur; }
 
-	Carte getCarte() { return carte; }
+	Carte* getCarte() { return carte; }
 };

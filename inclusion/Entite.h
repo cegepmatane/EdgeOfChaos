@@ -2,13 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-class Entite : public sf::Sprite
+class Entite
 {
 protected:
 	std::string nom;
 	int pointDeVie;
 	sf::Vector2f vraiePosition;
-	sf::Texture texture;
+	std::string image;
 	int numTexture;
 
 public:
@@ -17,11 +17,12 @@ public:
 	std::string getNom() { return nom; }
 	int getPointDeVie() { return pointDeVie; }
 	sf::Vector2f getVraiePosition() { return vraiePosition; }
-	sf::Texture getTexture() { return texture; }
+	std::string getImage() { return image; }
 	int getNumTexture() { return numTexture; }
 	
 	void setNom(std::string nomEntite) { nom = nomEntite; }
 	void setPointDeVie(int pointDeVieEntite) { pointDeVie = pointDeVieEntite; }
-	void setImage(std::string image, int numTexture);
+	void setImage(std::string image) { this->image = image; }
+	void setNumTexture(int numTexture) { this->numTexture = numTexture; }
 	void setVraiePosition(int x, int y) { vraiePosition = sf::Vector2f(x, y); }
 };

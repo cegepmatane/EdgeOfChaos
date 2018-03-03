@@ -53,25 +53,28 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
-	unite.setImage(Configuration::cheminTextures+"textures64.png", 12);
+	unite.setImage(Configuration::cheminTextures + "textures64.png");
+	unite.setNumTexture(12);
 	Unite* unitePtr = &unite;
 	
-	Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
-	unite2.setImage(Configuration::cheminTextures+"textures64.png", 12);
-	Unite* unite2Ptr = &unite2;
+	/*Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
+	unite2.setImage(Configuration::cheminTextures + "textures64.png");
+	unite2.setNumTexture(12);
+	Unite* unite2Ptr = &unite2;*/
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
 	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
-	batiment.setImage(Configuration::cheminTextures + "textures64.png", 10);
+	batiment.setImage(Configuration::cheminTextures + "textures64.png");
+	batiment.setNumTexture(10);
 	Batiment* batimentPtr = &batiment;
 
 	std::vector<Unite*> unites;
 	std::vector<Batiment*> batiments;
 
 	unites.push_back(unitePtr);
-	unites.push_back(unite2Ptr);
+	//unites.push_back(unite2Ptr);
 	batiments.push_back(batimentPtr);
 
 	Menu menu;

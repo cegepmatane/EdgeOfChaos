@@ -12,8 +12,9 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<B
 	longueurFenetre(1280), hauteurFenetre(768), nomFenetre("Edge Of Chaos"),
 	sf::RenderWindow(sf::VideoMode(1280, 768), "Edge Of Chaos", sf::Style::Close),
 	longueurGrille(20), hauteurGrille(9), tailleCase(64),
-	hauteurPanneau(3), imagePanneau(Configuration::cheminTextures + "bois2.jpg"), niveau(niveau), unites(unites), batiments(batiments),
-	vueGrille(niveau, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, tailleCase),
+	hauteurPanneau(3), imagePanneau(Configuration::cheminTextures + "bois2.jpg"), niveau(niveau), carte(new Carte(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau)),
+	unites(unites), batiments(batiments),
+	vueGrille(niveau, carte, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, carte, tailleCase),
 	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites.front(), imagePanneau),
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments.front()),
 	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
@@ -30,6 +31,16 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<B
 	spriteCurseur = sf::Sprite(textureCurseur);
 	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
+
+	for (Unite* unite : unites)
+	{
+		ajouterEntite(unite);
+	}
+	for (Batiment* batiment : batiments)
+	{
+		ajouterEntite(batiment);
+	}
+	std::cout << "nombre d'entites dans le vecteur de Carte : " << carte->getEntites().size() << std::endl;
 }
 
 void FenetreJeu::lancerBoucle(Menu* menu)
@@ -165,7 +176,8 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						// Mettre l'unite sur la case cliquee
 						if (!caseOccupee)
 						{
-							uniteSelect->setPosition(positionSouris);
+							deplacerEntite(uniteSelect, positionSouris.x, positionSouris.y);
+
 							uniteSelect->setVraiePosition(positionSouris.x, positionSouris.y);
 
 							//uniteSelect = nullptr;
@@ -183,9 +195,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		{
 			//Affichage de la carte, des entites et du curseur
 			this->setView(vueGrille);
-			this->draw(vueGrille.getCarte());
+			this->draw(*carte);
+			carte->dessinerEntites(*this);
 			
-			for (Unite* unite : unites)
+			/*for (Unite* unite : unites)
 			{
 				unite->setImage(Configuration::cheminTextures + "textures64.png", unite->getNumTexture());
 				this->draw(*unite);
@@ -194,7 +207,8 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			{
 				batiment->setImage(Configuration::cheminTextures + "textures64.png", batiment->getNumTexture());
 				this->draw(*batiment);
-			}
+			}*/
+
 			this->draw(spriteCurseur);
 
 			//Affichage du panneauBois
@@ -219,8 +233,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		else
 		{
 			this->setView(vueGenerale);
-			this->draw(vueGenerale.getCarte());
-			for (Unite* unite : unites)
+			this->draw(*carte);
+			carte->dessinerEntites(*this);
+
+			/*for (Unite* unite : unites)
 			{
 				unite->setImage(Configuration::cheminTextures + "textures64.png", unite->getNumTexture());
 				this->draw(*unite);
@@ -229,9 +245,21 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			{
 				batiment->setImage(Configuration::cheminTextures + "textures64.png", batiment->getNumTexture());
 				this->draw(*batiment);
-			}
+			}*/
+
 			this->draw(spriteCurseur);
 		}
 		this->display();
 	}
+}
+
+void FenetreJeu::ajouterEntite(Entite* entite)
+{
+	carte->ajouterEntite(entite, entite->getVraiePosition().x, entite->getVraiePosition().y);
+	std::cout << "entite ajoutee dans FenetreJeu : " << entite->getNom() << std::endl;
+}
+
+void FenetreJeu::deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY)
+{
+	carte->deplacerEntite(entite->getVraiePosition().x, entite->getVraiePosition().y, nouvellePositionX, nouvellePositionY);
 }

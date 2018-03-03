@@ -6,7 +6,7 @@
 class VuePanneauBatiment : public VuePanneau
 {
 private:
-	Batiment* batimentSprite;
+	Batiment* batiment;
 	sf::Font fonte;
 
 	sf::Text descriptionBatiment;
@@ -17,7 +17,7 @@ public:
 	void initialiser();
 	void dessiner(sf::RenderWindow &fenetre);
 
-	void setBatiment(Batiment* batiment) { this->batimentSprite = batiment; }
+	void setBatiment(Batiment* batiment) { this->batiment = batiment; }
 
 	sf::Text getDescriptionBatiment() { return descriptionBatiment; }
 	sf::Text getOptionsBatiment() { return optionsBatiment; }

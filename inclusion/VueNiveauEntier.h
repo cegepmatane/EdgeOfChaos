@@ -7,9 +7,9 @@
 class VueNiveauEntier : public sf::View
 {
 private:
-	Carte carte;
+	Carte* carte;
 
 public:
-	VueNiveauEntier(Niveau niveau, int tailleCase);
-	Carte getCarte() { return carte; }
+	VueNiveauEntier(Niveau niveau, Carte* carte, int tailleCase);
+	Carte* getCarte() { return carte; }
 };

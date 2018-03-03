@@ -9,7 +9,7 @@
 # endif
 
 VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, int tailleCase, std::string image, Batiment* batiment) :
-	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batimentSprite(batiment)
+	VuePanneau(longueurPanneau, hauteurPanneau, tailleCase, image), batiment(batiment)
 {
 	if (!this->fonte.loadFromFile(Configuration::cheminPolices + "LinuxLibertine-Classique.ttf"))
 		std::cerr << "Impossible de charger la police du panneau batiment. \n ( " << Configuration::cheminPolices + "LinuxLibertine-Classique.ttf" << " )" << std::endl;
@@ -18,12 +18,12 @@ VuePanneauBatiment::VuePanneauBatiment(int longueurPanneau, int hauteurPanneau, 
 
 void VuePanneauBatiment::initialiser()
 {
-	descriptionBatiment = sf::Text(batimentSprite->getNom() + "\nDescription :\n" + batimentSprite->getDescription(), fonte, 60);
+	descriptionBatiment = sf::Text(batiment->getNom() + "\nDescription :\n" + batiment->getDescription(), fonte, 60);
 	initTexte(descriptionBatiment);
 	descriptionBatiment.setPosition(64 / 2, 50);
 
 	std::string texteOptions = "Options :\n";
-	for (std::string option : this->batimentSprite->getOptions())
+	for (std::string option : this->batiment->getOptions())
 	{
 		texteOptions = texteOptions + option + "\n";
 	}
