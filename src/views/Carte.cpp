@@ -61,14 +61,14 @@ void Carte::ajouterEntite(Entite* entite, int positionLongueur, int positionHaut
 {
 	std::cout << "nombre d'entites dans le vecteur de Carte : " << entites.size() << std::endl;
 	sf::Sprite* entiteSprite = new sf::Sprite();
-	sf::Texture texture;
+	sf::Texture* texture = new sf::Texture();
 
 	int numTexture = entite->getNumTexture();
 	std::string image = entite->getImage();
 
-	if (!texture.loadFromFile(image, sf::IntRect(64 * numTexture, 0, 64, 64)))
-		std::cout << "Impossible de charger la texture de l'entite. \n ( " << image << " )" << std::endl;
-	entiteSprite->setTexture(texture);
+	if (!texture->loadFromFile(image, sf::IntRect(64 * numTexture, 0, 64, 64)))
+		std::cerr << "Impossible de charger la texture de l'entite. \n ( " << image << " )" << std::endl;
+	entiteSprite->setTexture(*texture);
 	entiteSprite->setPosition(positionLongueur, positionHauteur);
 
 	entites.push_back(entiteSprite);
