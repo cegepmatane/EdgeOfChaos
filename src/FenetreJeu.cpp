@@ -40,7 +40,6 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<B
 	{
 		ajouterEntite(batiment);
 	}
-	std::cout << "nombre d'entites dans le vecteur de Carte : " << carte->getEntites().size() << std::endl;
 }
 
 void FenetreJeu::lancerBoucle(Menu* menu)
@@ -256,7 +255,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 void FenetreJeu::ajouterEntite(Entite* entite)
 {
 	carte->ajouterEntite(entite, entite->getPosition().x, entite->getPosition().y);
-	std::cout << "entite ajoutee dans FenetreJeu : " << entite->getNom() << std::endl;
 }
 
 void FenetreJeu::deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY)

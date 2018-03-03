@@ -59,7 +59,6 @@ bool Carte::charger(const std::string& texture, sf::Vector2u tailleCase, Niveau 
 
 void Carte::ajouterEntite(Entite* entite, int positionLongueur, int positionHauteur)
 {
-	std::cout << "nombre d'entites dans le vecteur de Carte : " << entites.size() << std::endl;
 	sf::Sprite* entiteSprite = new sf::Sprite();
 	sf::Texture* texture = new sf::Texture();
 
@@ -72,11 +71,6 @@ void Carte::ajouterEntite(Entite* entite, int positionLongueur, int positionHaut
 	entiteSprite->setPosition(positionLongueur, positionHauteur);
 
 	entites.push_back(entiteSprite);
-
-	std::cout << "entite ajoutee dans Carte : " << entite->getNom() << std::endl;
-	std::cout << "chemin texture entite ajoutee : " << entite->getImage() << std::endl;
-	std::cout << "numTexture entite ajoutee : " << entite->getNumTexture() << std::endl;
-	std::cout << "nombre d'entites dans le vecteur de Carte : " << entites.size() << std::endl;
 }
 
 void Carte::deplacerEntite(int anciennePositionLongueur, int anciennePositionHauteur, int nouvellePositionLongueur, int nouvellePositionHauteur)
