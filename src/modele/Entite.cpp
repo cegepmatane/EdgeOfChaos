@@ -11,5 +11,5 @@
 
 Entite::Entite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur) :	nom(nomEntite), pointDeVie(pointDeVieEntite)
 {
-	this->vraiePosition = sf::Vector2f(positionLargeur, positionHauteur);
+	this->position = sf::Vector2f(positionLargeur, positionHauteur);
 }

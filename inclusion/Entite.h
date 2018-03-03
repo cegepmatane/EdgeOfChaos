@@ -7,7 +7,7 @@ class Entite
 protected:
 	std::string nom;
 	int pointDeVie;
-	sf::Vector2f vraiePosition;
+	sf::Vector2f position;
 	std::string image;
 	int numTexture;
 
@@ -16,7 +16,7 @@ public:
 
 	std::string getNom() { return nom; }
 	int getPointDeVie() { return pointDeVie; }
-	sf::Vector2f getVraiePosition() { return vraiePosition; }
+	sf::Vector2f getPosition() { return position; }
 	std::string getImage() { return image; }
 	int getNumTexture() { return numTexture; }
 	
@@ -24,5 +24,5 @@ public:
 	void setPointDeVie(int pointDeVieEntite) { pointDeVie = pointDeVieEntite; }
 	void setImage(std::string image) { this->image = image; }
 	void setNumTexture(int numTexture) { this->numTexture = numTexture; }
-	void setVraiePosition(int x, int y) { vraiePosition = sf::Vector2f(x, y); }
+	void setPosition(int x, int y) { position = sf::Vector2f(x, y); }
 };

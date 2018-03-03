@@ -133,7 +133,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 						for (Unite* unite : unites)
 						{
-							if (positionSouris == unite->getVraiePosition())
+							if (positionSouris == unite->getPosition())
 							{
 								estUnite = true;
 								uniteSelect = unite;	// après le for, "unite" est désalloué,
@@ -144,7 +144,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						{
 							for (Batiment* batiment : batiments)
 							{
-								if (positionSouris == batiment->getVraiePosition())
+								if (positionSouris == batiment->getPosition())
 								{
 									estBatiment = true;
 									batimentSelect = batiment;	// idem
@@ -157,7 +157,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						bool caseOccupee = false;
 						for (Unite* unite : unites)
 						{
-							if (positionSouris == unite->getVraiePosition())
+							if (positionSouris == unite->getPosition())
 							{
 								caseOccupee = true;
 								
@@ -166,7 +166,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						if(!caseOccupee){
 							for (Batiment* batiment : batiments)
 							{
-								if (positionSouris == batiment->getVraiePosition())
+								if (positionSouris == batiment->getPosition())
 								{
 									caseOccupee = true;
 								}
@@ -178,7 +178,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						{
 							deplacerEntite(uniteSelect, positionSouris.x, positionSouris.y);
 
-							uniteSelect->setVraiePosition(positionSouris.x, positionSouris.y);
+							uniteSelect->setPosition(positionSouris.x, positionSouris.y);
 
 							//uniteSelect = nullptr;
 							spriteCurseur.setPosition(positionSouris);
@@ -255,11 +255,11 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 void FenetreJeu::ajouterEntite(Entite* entite)
 {
-	carte->ajouterEntite(entite, entite->getVraiePosition().x, entite->getVraiePosition().y);
+	carte->ajouterEntite(entite, entite->getPosition().x, entite->getPosition().y);
 	std::cout << "entite ajoutee dans FenetreJeu : " << entite->getNom() << std::endl;
 }
 
 void FenetreJeu::deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY)
 {
-	carte->deplacerEntite(entite->getVraiePosition().x, entite->getVraiePosition().y, nouvellePositionX, nouvellePositionY);
+	carte->deplacerEntite(entite->getPosition().x, entite->getPosition().y, nouvellePositionX, nouvellePositionY);
 }
