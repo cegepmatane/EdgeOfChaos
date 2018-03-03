@@ -119,7 +119,9 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 					clicX += vueGrille.getCompteurLongueur();
 					clicY += vueGrille.getCompteurHauteur();
 
-					std::vector<int> positionSouris(clicX, clicY);
+					std::vector<int> positionSouris;
+					positionSouris.push_back(clicX);
+					positionSouris.push_back(clicY);
 
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
@@ -132,7 +134,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 						for (Unite* unite : unites)
 						{
-							if (positionSouris == unite->getPosition())
+							if (positionsEgales(positionSouris, unite->getPosition()))
 							{
 								estUnite = true;
 								uniteSelect = unite;	// après le for, "unite" est désalloué,
@@ -143,7 +145,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						{
 							for (Batiment* batiment : batiments)
 							{
-								if (positionSouris == batiment->getPosition())
+								if (positionsEgales(positionSouris, batiment->getPosition()))
 								{
 									estBatiment = true;
 									batimentSelect = batiment;	// idem
@@ -156,7 +158,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						bool caseOccupee = false;
 						for (Unite* unite : unites)
 						{
-							if (positionSouris == unite->getPosition())
+							if (positionsEgales(positionSouris, unite->getPosition()))
 							{
 								caseOccupee = true;
 								
@@ -165,7 +167,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						if(!caseOccupee){
 							for (Batiment* batiment : batiments)
 							{
-								if (positionSouris == batiment->getPosition())
+								if (positionsEgales(positionSouris, batiment->getPosition()))
 								{
 									caseOccupee = true;
 								}
@@ -176,10 +178,9 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						if (!caseOccupee)
 						{
 							deplacerEntite(uniteSelect, positionSouris.at(0), positionSouris.at(1));
-
+							
 							uniteSelect->setPosition(positionSouris.at(0), positionSouris.at(1));
 
-							//uniteSelect = nullptr;
 							spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
 						}
 					}
@@ -196,17 +197,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			this->setView(vueGrille);
 			this->draw(*carte);
 			carte->dessinerEntites(*this);
-			
-			/*for (Unite* unite : unites)
-			{
-				unite->setImage(Configuration::cheminTextures + "textures64.png", unite->getNumTexture());
-				this->draw(*unite);
-			}
-			for (Batiment* batiment : batiments)
-			{
-				batiment->setImage(Configuration::cheminTextures + "textures64.png", batiment->getNumTexture());
-				this->draw(*batiment);
-			}*/
 
 			this->draw(spriteCurseur);
 
@@ -235,17 +225,6 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			this->draw(*carte);
 			carte->dessinerEntites(*this);
 
-			/*for (Unite* unite : unites)
-			{
-				unite->setImage(Configuration::cheminTextures + "textures64.png", unite->getNumTexture());
-				this->draw(*unite);
-			}
-			for (Batiment* batiment : batiments)
-			{
-				batiment->setImage(Configuration::cheminTextures + "textures64.png", batiment->getNumTexture());
-				this->draw(*batiment);
-			}*/
-
 			this->draw(spriteCurseur);
 		}
 		this->display();
@@ -260,4 +239,14 @@ void FenetreJeu::ajouterEntite(Entite* entite)
 void FenetreJeu::deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY)
 {
 	carte->deplacerEntite(entite->getPosition().at(0), entite->getPosition().at(1), nouvellePositionX, nouvellePositionY);
+
+}
+
+bool FenetreJeu::positionsEgales(std::vector<int> positionSouris, std::vector<int> positionEntite)
+{
+	if (positionSouris.at(0)==positionEntite.at(0)&&positionSouris.at(1)==positionEntite.at(1))
+	{
+		return true;
+	}
+	return false;
 }

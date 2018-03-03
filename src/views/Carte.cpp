@@ -90,7 +90,6 @@ void Carte::dessinerEntites(sf::RenderTarget& cible)
 	for (sf::Sprite* entiteSprite : entites)
 	{
 		cible.draw(*entiteSprite);
-		std::cout << "entite dessinee dans Carte" << std::endl;
 	}
 }
 

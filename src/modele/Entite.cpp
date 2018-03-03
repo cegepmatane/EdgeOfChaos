@@ -16,3 +16,11 @@ Entite::Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int posi
 	this->pointsDefense = pointsDefense;
 	this->position = std::vector<int>(positionLargeur, positionHauteur);
 }
+
+void Entite::setPosition(int x, int y)
+{
+	std::vector<int> nouvellePosition;
+	nouvellePosition.push_back(x);
+	nouvellePosition.push_back(y);
+	position = nouvellePosition;
+}

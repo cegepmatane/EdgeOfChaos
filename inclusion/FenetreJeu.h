@@ -38,4 +38,5 @@ public:
 	void lancerBoucle(Menu* menu);
 	void ajouterEntite(Entite* entite);
 	void deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY);
+	bool positionsEgales(std::vector<int> positionSouris, std::vector<int> positionEntite);
 };

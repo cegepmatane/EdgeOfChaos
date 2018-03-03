@@ -27,5 +27,5 @@ public:
 	void setVie(int pointsDeVie) { this->pointsDeVie = pointsDeVie; }
 	void setDefense(int pointsDefense) { this->pointsDefense = pointsDefense; }
 	void setNumTexture(int numTexture) { this->numTexture = numTexture; }
-	void setPosition(int x, int y) { position = std::vector<int>(x, y); }
+	void setPosition(int x, int y);
 };
