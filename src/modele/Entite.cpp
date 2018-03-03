@@ -9,12 +9,14 @@
 # endif
 #include "../../inclusion/Entite.h"
 
-Entite::Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur) :
+Entite::Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur, int numTexture) :
 	image(Configuration::cheminTextures + "textures64.png")
 {
 	this->pointsDeVie = pointsDeVie;
 	this->pointsDefense = pointsDefense;
 	this->position = std::vector<int>(positionLargeur, positionHauteur);
+
+	this->numTexture = numTexture;
 }
 
 void Entite::setPosition(int x, int y)

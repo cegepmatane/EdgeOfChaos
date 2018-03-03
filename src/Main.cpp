@@ -52,9 +52,7 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite(100, 100, attaque, tailleCase * 1, tailleCase * 1, listeAttaques);
-	//unite.setImage(Configuration::cheminTextures + "textures64.png");
-	unite.setNumTexture(12);
+	Unite unite(100, 100, attaque, tailleCase * 1, tailleCase * 1, 12, listeAttaques);
 	Unite* unitePtr = &unite;
 	
 	/*Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
@@ -65,9 +63,7 @@ int main(void)
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
-	Batiment batiment(100, 100, tailleCase * 2, tailleCase * 2, optionsBatiment);
-	//batiment.setImage(Configuration::cheminTextures + "textures64.png");
-	batiment.setNumTexture(10);
+	Batiment batiment(100, 100, tailleCase * 2, tailleCase * 2, 10, optionsBatiment);
 	Batiment* batimentPtr = &batiment;
 
 	std::vector<Unite*> unites;

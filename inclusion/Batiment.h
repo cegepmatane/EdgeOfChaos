@@ -12,7 +12,7 @@ private:
 
 public:
 	std::string getNom() { return nom; }
-	Batiment(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur, std::vector<std::string> actionsBatiment);
+	Batiment(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur, int numTexture, std::vector<std::string> actionsBatiment);
 
 	std::string getDescription() { return description; }
 	std::vector<std::string> getActions() { return actions; }

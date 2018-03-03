@@ -16,7 +16,7 @@ private:
 
 public:
 	std::string getNom() { return nom; }
-	Unite(int pointsDeVie, int positionLargeur, int positionHauteur, int attaque, int defense, std::vector<std::string> attaques);
+	Unite(int pointsDeVie, int positionLargeur, int positionHauteur, int numTexture, int attaque, int defense, std::vector<std::string> attaques);
 	int getAttaque() { return attaque; }
 	std::vector<std::string> getListeAttaques() { return listeAttaques; }
 
