@@ -53,7 +53,7 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
-	unite.setImage(Configuration::cheminTextures + "textures64.png");
+	//unite.setImage(Configuration::cheminTextures + "textures64.png");
 	unite.setNumTexture(12);
 	Unite* unitePtr = &unite;
 	
@@ -66,7 +66,7 @@ int main(void)
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
 	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
-	batiment.setImage(Configuration::cheminTextures + "textures64.png");
+	//batiment.setImage(Configuration::cheminTextures + "textures64.png");
 	batiment.setNumTexture(10);
 	Batiment* batimentPtr = &batiment;
 
