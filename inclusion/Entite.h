@@ -1,5 +1,8 @@
 #pragma once
+
 #include <string>
+#include <vector>
+
 #include <SFML/Graphics.hpp>
 
 class Entite
@@ -7,7 +10,7 @@ class Entite
 private:
 	int pointsDeVie;
 	int pointsDefense;
-	sf::Vector2f position;
+	std::vector<int> position;
 	
 	std::string image;
 	int numTexture;
@@ -15,14 +18,14 @@ private:
 public:
 	Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur);
 
-	int getPointsDeVie() { return pointsDeVie; }
-	int getPointsDefense() { return pointsDefense; }
-	sf::Vector2f getPosition() { return position; }
+	int getVie() { return pointsDeVie; }
+	int getDefense() { return pointsDefense; }
+	std::vector<int> getPosition() { return position; }
 	std::string getImage() { return image; }
 	int getNumTexture() { return numTexture; }
 
-	void setPointsDeVie(int pointsDeVie) { this->pointsDeVie = pointsDeVie; }
-	void setPointsDefense(int pointsDefense) { this->pointsDefense = pointsDefense; }
+	void setVie(int pointsDeVie) { this->pointsDeVie = pointsDeVie; }
+	void setDefense(int pointsDefense) { this->pointsDefense = pointsDefense; }
 	void setNumTexture(int numTexture) { this->numTexture = numTexture; }
-	void setPosition(int x, int y) { position = sf::Vector2f(x, y); }
+	void setPosition(int x, int y) { position = std::vector<int>(x, y); }
 };

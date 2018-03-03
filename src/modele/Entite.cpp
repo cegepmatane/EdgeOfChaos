@@ -14,5 +14,5 @@ Entite::Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int posi
 {
 	this->pointsDeVie = pointsDeVie;
 	this->pointsDefense = pointsDefense;
-	this->position = sf::Vector2f(positionLargeur, positionHauteur);
+	this->position = std::vector<int>(positionLargeur, positionHauteur);
 }

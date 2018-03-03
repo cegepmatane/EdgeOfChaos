@@ -6,8 +6,9 @@
 #include "../../inclusion/Entite.h"
 #include "../../inclusion/Unite.h"
 
-Unite::Unite(int pointsDeVie, int positionLargeur, int positionHauteur, int attaque, int defense, std::vector<std::string> attaques) :
-	Entite(pointsDeVie, defense, positionLargeur, positionHauteur), attaque(attaque),
+Unite::Unite(int pointsDeVie, int pointsDefense, int pointsAttaque, int positionLargeur, int positionHauteur, std::vector<std::string> attaques) :
+	Entite(pointsDeVie, pointsDefense, positionLargeur, positionHauteur),
+	attaque(pointsAttaque),
 	listeAttaques(attaques),
 	nom("Unité")
 {

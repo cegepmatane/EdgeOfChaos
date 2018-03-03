@@ -23,7 +23,7 @@ void VuePanneauBatiment::initialiser()
 	descriptionBatiment.setPosition(64 / 2, 50);
 
 	std::string texteOptions = "Options :\n";
-	for (std::string option : this->batiment->getOptions())
+	for (std::string option : this->batiment->getActions())
 	{
 		texteOptions = texteOptions + option + "\n";
 	}

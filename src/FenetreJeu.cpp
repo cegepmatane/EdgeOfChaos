@@ -119,7 +119,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 					clicX += vueGrille.getCompteurLongueur();
 					clicY += vueGrille.getCompteurHauteur();
 
-					sf::Vector2f positionSouris(clicX, clicY);
+					std::vector<int> positionSouris(clicX, clicY);
 
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
@@ -128,7 +128,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						uniteSelect = nullptr;
 						batimentSelect = nullptr;
 						
-						spriteCurseur.setPosition(positionSouris);
+						spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
 
 						for (Unite* unite : unites)
 						{
@@ -175,12 +175,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						// Mettre l'unite sur la case cliquee
 						if (!caseOccupee)
 						{
-							deplacerEntite(uniteSelect, positionSouris.x, positionSouris.y);
+							deplacerEntite(uniteSelect, positionSouris.at(0), positionSouris.at(1));
 
-							uniteSelect->setPosition(positionSouris.x, positionSouris.y);
+							uniteSelect->setPosition(positionSouris.at(0), positionSouris.at(1));
 
 							//uniteSelect = nullptr;
-							spriteCurseur.setPosition(positionSouris);
+							spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
 						}
 					}
 				}
@@ -254,10 +254,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 void FenetreJeu::ajouterEntite(Entite* entite)
 {
-	carte->ajouterEntite(entite, entite->getPosition().x, entite->getPosition().y);
+	carte->ajouterEntite(entite, entite->getPosition().at(0), entite->getPosition().at(1));
 }
 
 void FenetreJeu::deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY)
 {
-	carte->deplacerEntite(entite->getPosition().x, entite->getPosition().y, nouvellePositionX, nouvellePositionY);
+	carte->deplacerEntite(entite->getPosition().at(0), entite->getPosition().at(1), nouvellePositionX, nouvellePositionY);
 }
