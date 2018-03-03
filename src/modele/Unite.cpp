@@ -1,10 +1,15 @@
-#include <SFML/Graphics.hpp>
 #include <string>
 #include <vector>
+
+#include <SFML/Graphics.hpp>
+
+#include "../../inclusion/Entite.h"
 #include "../../inclusion/Unite.h"
 
-Unite::Unite(std::string nomEntite, int pointDeVieEntite, int positionLargeur, int positionHauteur, int attaqueUnite, int defenseUnite, std::vector<std::string> attaques) :
-Entite(nomEntite, pointDeVieEntite, positionLargeur, positionHauteur), attaque(attaqueUnite), defense(defenseUnite), listeAttaques(attaques)
+Unite::Unite(int pointsDeVie, int positionLargeur, int positionHauteur, int attaque, int defense, std::vector<std::string> attaques) :
+	Entite(pointsDeVie, defense, positionLargeur, positionHauteur), attaque(attaque),
+	listeAttaques(attaques),
+	nom("Unité")
 {
 	
 }

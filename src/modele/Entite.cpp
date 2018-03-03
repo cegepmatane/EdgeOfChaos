@@ -9,9 +9,10 @@
 # endif
 #include "../../inclusion/Entite.h"
 
-Entite::Entite(std::string& nom, int pointsDeVie, int positionLargeur, int positionHauteur) :	nom(nom)
+Entite::Entite(int pointsDeVie, int pointsDefense, int positionLargeur, int positionHauteur) :
+	image(Configuration::cheminTextures + "textures64.png")
 {
-	this->image = Configuration::cheminTextures + "textures64.png";
 	this->pointsDeVie = pointsDeVie;
+	this->pointsDefense = pointsDefense;
 	this->position = sf::Vector2f(positionLargeur, positionHauteur);
 }

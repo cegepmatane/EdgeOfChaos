@@ -52,7 +52,7 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite("Test", 100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
+	Unite unite(100, tailleCase * 1, tailleCase * 1, attaque, 10, listeAttaques);
 	//unite.setImage(Configuration::cheminTextures + "textures64.png");
 	unite.setNumTexture(12);
 	Unite* unitePtr = &unite;
@@ -65,7 +65,7 @@ int main(void)
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
-	Batiment batiment("Caserne", 100, tailleCase * 2, tailleCase * 2, "Vous pouvez y former des unités", optionsBatiment);
+	Batiment batiment(100, tailleCase * 2, tailleCase * 2, optionsBatiment);
 	//batiment.setImage(Configuration::cheminTextures + "textures64.png");
 	batiment.setNumTexture(10);
 	Batiment* batimentPtr = &batiment;
