@@ -13,7 +13,7 @@
 
 int main(void)
 {
-#define tailleCase 64
+#define TAILLECASE 64
 
 	// Definitions des mesures
 
@@ -52,16 +52,16 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite(100, 100, attaque, tailleCase * 1, tailleCase * 1, 12, listeAttaques);
+	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 12, listeAttaques);
 	//Unite* unitePtr = &unite;
 	
-	/*Unite unite2(200, 20, 20, tailleCase * 3, tailleCase * 3, 12, listeAttaques);
+	/*Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 12, listeAttaques);
 	Unite* unite2Ptr = &unite2;*/
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
-	Batiment batiment(100, 100, tailleCase * 2, tailleCase * 2, 10, optionsBatiment);
+	Batiment batiment(100, 100, TAILLECASE * 2, TAILLECASE * 2, 10, optionsBatiment);
 	//Batiment* batimentPtr = &batiment;
 
 	std::vector<Unite*>* unites = new std::vector<Unite*>;
