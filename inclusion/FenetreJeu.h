@@ -17,8 +17,8 @@ private:
 	Niveau niveau;
 	Carte* carte;
 	std::string nomFenetre, imagePanneau;
-	std::vector<Unite*> unites;
-	std::vector<Batiment*> batiments;
+	std::vector<Unite*>* unites;
+	std::vector<Batiment*>* batiments;
 	bool estVueGrille;
 	bool estUnite, estBatiment;
 	Unite* uniteSelect;
@@ -33,7 +33,7 @@ private:
 	bool curseurPresent=false;
 
 public:
-	FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments);
+	FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments);
 
 	void lancerBoucle(Menu* menu);
 	void ajouterEntite(Entite* entite);

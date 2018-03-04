@@ -53,7 +53,7 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite(100, 100, attaque, tailleCase * 1, tailleCase * 1, 12, listeAttaques);
-	Unite* unitePtr = &unite;
+	//Unite* unitePtr = &unite;
 	
 	/*Unite unite2(200, 20, 20, tailleCase * 3, tailleCase * 3, 12, listeAttaques);
 	Unite* unite2Ptr = &unite2;*/
@@ -62,14 +62,14 @@ int main(void)
 	optionsBatiment.push_back("Créer un lancier");
 	optionsBatiment.push_back("Créer un homme d'arme");
 	Batiment batiment(100, 100, tailleCase * 2, tailleCase * 2, 10, optionsBatiment);
-	Batiment* batimentPtr = &batiment;
+	//Batiment* batimentPtr = &batiment;
 
-	std::vector<Unite*> unites;
-	std::vector<Batiment*> batiments;
+	std::vector<Unite*>* unites = new std::vector<Unite*>;
+	std::vector<Batiment*>* batiments = new std::vector<Batiment*>;
 
-	unites.push_back(unitePtr);
+	unites->push_back(&unite);
 	//unites.push_back(unite2Ptr);
-	batiments.push_back(batimentPtr);
+	batiments->push_back(&batiment);
 
 	Menu menu;
 	bool estConnecte = true;

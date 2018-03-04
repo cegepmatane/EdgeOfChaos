@@ -8,15 +8,15 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<Batiment*> &batiments) :
+FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments) :
 	longueurFenetre(1280), hauteurFenetre(768), nomFenetre("Edge Of Chaos"),
 	sf::RenderWindow(sf::VideoMode(1280, 768), "Edge Of Chaos", sf::Style::Close),
 	longueurGrille(20), hauteurGrille(9), tailleCase(64),
 	hauteurPanneau(3), imagePanneau(Configuration::cheminTextures + "bois2.jpg"), niveau(niveau), carte(new Carte(Configuration::cheminTextures + "textures64.png", sf::Vector2u(tailleCase, tailleCase), niveau)),
 	unites(unites), batiments(batiments),
 	vueGrille(niveau, carte, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, carte, tailleCase),
-	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites.front(), imagePanneau),
-	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments.front()),
+	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites->front(), imagePanneau),
+	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments->front()),
 	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
 {
 	this->uniteSelect = nullptr;
@@ -32,11 +32,11 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*> &unites, std::vector<B
 	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
 
-	for (Unite* unite : unites)
+	for (Unite* unite : *unites)
 	{
 		ajouterEntite(unite);
 	}
-	for (Batiment* batiment : batiments)
+	for (Batiment* batiment : *batiments)
 	{
 		ajouterEntite(batiment);
 	}
@@ -137,7 +137,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						
 						spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
 
-						for (Unite* unite : unites)
+						for (Unite* unite : *unites)
 						{
 							if (positionsEgales(positionSouris, unite->getPosition()))
 							{
@@ -148,7 +148,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						}
 						if (!estUnite)
 						{
-							for (Batiment* batiment : batiments)
+							for (Batiment* batiment : *batiments)
 							{
 								if (positionsEgales(positionSouris, batiment->getPosition()))
 								{
@@ -161,7 +161,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 					{
 						// Verification du contenu de la case cliquee
 						bool caseOccupee = false;
-						for (Unite* unite : unites)
+						for (Unite* unite : *unites)
 						{
 							if (positionsEgales(positionSouris, unite->getPosition()))
 							{
@@ -170,7 +170,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 							}
 						}
 						if(!caseOccupee){
-							for (Batiment* batiment : batiments)
+							for (Batiment* batiment : *batiments)
 							{
 								if (positionsEgales(positionSouris, batiment->getPosition()))
 								{

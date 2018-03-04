@@ -126,7 +126,7 @@ void Menu::initErreur(const std::string& police)
 	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
 
-void Menu::initJeu(Niveau niveau, std::vector<Unite*>& unites, std::vector<Batiment*>& batiments)
+void Menu::initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments)
 {
 	this->jeu = new FenetreJeu(niveau, unites, batiments);
 	this->jeu->lancerBoucle(this);
