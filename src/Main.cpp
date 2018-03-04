@@ -55,9 +55,7 @@ int main(void)
 	Unite unite(100, 100, attaque, tailleCase * 1, tailleCase * 1, 12, listeAttaques);
 	Unite* unitePtr = &unite;
 	
-	/*Unite unite2("Test2", 100, tailleCase * 3, tailleCase * 3, 200, 50, listeAttaques);
-	unite2.setImage(Configuration::cheminTextures + "textures64.png");
-	unite2.setNumTexture(12);
+	/*Unite unite2(200, 20, 20, tailleCase * 3, tailleCase * 3, 12, listeAttaques);
 	Unite* unite2Ptr = &unite2;*/
 
 	std::vector<std::string> optionsBatiment;

@@ -55,11 +55,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 				this->close();
 			}
 
-			if (event.type == sf::Event::KeyPressed)
+			if (event.type == sf::Event::KeyReleased)
 			{
-				switch (event.key.code)
+				if (event.key.code == sf::Keyboard::R)
 				{
-				case sf::Keyboard::R:
 					if (estVueGrille)
 					{
 						estVueGrille = false;	// nom pas super super clair...
@@ -69,7 +68,13 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 						estVueGrille = true;
 					}
 					break;
+				}
+			}
 
+			if (event.type == sf::Event::KeyPressed)
+			{
+				switch (event.key.code)
+				{
 				case sf::Keyboard::D: case sf::Keyboard::Right:
 					if (estVueGrille&&vueGrille.getCompteurLongueur() != (tailleCase*niveau.getLongueur()) - (tailleCase * 20))
 					{
