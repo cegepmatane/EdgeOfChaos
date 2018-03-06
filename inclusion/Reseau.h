@@ -1,20 +1,26 @@
 #pragma once
 #include <string>
+#include <vector>
 #include <SFML/Network.hpp>
 
 class Reseau
 {
 private:
 	sf::IpAddress adresseIpServeur;
-	sf::IpAddress adresseIpClient;
+	std::vector<sf::IpAddress> adressesIpClient;
+
+	void communiquerAuClient();
+	void communiquerAuServeur();
 
 public:
-	Reseau(std::string adresseIpServeur, std::string adresseIpClient);
-	~Reseau();
+	Reseau(std::string& adresseIpServeur, std::string adresseIpClient = nullptr);
+	Reseau(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient = nullptr);
 
-	sf::IpAddress getAdresseIpServeur() { return this->adresseIpServeur; }
-	sf::IpAddress getAdresseIpClient() { return this->adresseIpClient; }
+	std::string getAdresseIpServeur() { return this->adresseIpServeur.toString(); }
+	std::vector<std::string> getAdressesIpClient();
 
-	void setAdresseIpServeur(sf::IpAddress adresseIpServeur) { this->adresseIpClient = adresseIpServeur; }
-	void setAdresseIpClient(sf::IpAddress adresseIpClient) { this->adresseIpClient = adresseIpClient; }
+	void setAdresseIpServeur(std::string& adresseIpServeur) { this->adresseIpServeur = adresseIpServeur; }
+	void setAdresseIpClient(std::string& adresseIpClient);
+
+	void demarrerReseau();
 };
