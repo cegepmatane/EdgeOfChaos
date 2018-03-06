@@ -7,6 +7,7 @@
 #include "VuePanneauUnite.h"
 #include "VuePanneauBatiment.h"
 #include "Menu.h"
+#include "actionClic.h"
 
 class Menu;
 
@@ -39,4 +40,16 @@ public:
 	void ajouterEntite(Entite* entite);
 	void deplacerEntite(Entite* entite, int nouvellePositionX, int nouvellePositionY);
 	bool positionsEgales(std::vector<int> positionSouris, std::vector<int> positionEntite);
+
+	void setEstUnite(bool estUnite) { this->estUnite = estUnite; }
+	void setEstBatiment(bool estBatiment) { this->estBatiment = estBatiment; }
+	void setUniteSelect(Unite* unite) { uniteSelect = unite; }
+	void setBatimentSelect(Batiment* batiment) { batimentSelect = batiment; }
+
+	sf::Sprite* getSpriteCurseur() { return &spriteCurseur; }
+	bool getEstUnite() { return estUnite; }
+	std::vector<Unite*>* getUnites() { return unites; }
+	std::vector<Batiment*>* getBatiments() { return batiments; }
+	Unite* getUniteSelect() { return uniteSelect; }
+
 };

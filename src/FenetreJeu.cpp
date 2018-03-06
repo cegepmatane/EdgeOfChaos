@@ -130,64 +130,12 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						estUnite = false;
-						estBatiment = false;
-						uniteSelect = nullptr;
-						batimentSelect = nullptr;
-						
-						spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
-
-						for (Unite* unite : *unites)
-						{
-							if (positionsEgales(positionSouris, unite->getPosition()))
-							{
-								estUnite = true;
-								uniteSelect = unite;	// après le for, "unite" est désalloué,
-								// donc "uniteSelect" pointe dans le vide.
-							}
-						}
-						if (!estUnite)
-						{
-							for (Batiment* batiment : *batiments)
-							{
-								if (positionsEgales(positionSouris, batiment->getPosition()))
-								{
-									estBatiment = true;
-									batimentSelect = batiment;	// idem
-								}
-							}
-						}
+						ActionClic action = ActionClic();
+						action.clicGauche(this, positionSouris);
 					} else if (event.mouseButton.button == sf::Mouse::Right && uniteSelect != nullptr)
 					{
-						// Verification du contenu de la case cliquee
-						bool caseOccupee = false;
-						for (Unite* unite : *unites)
-						{
-							if (positionsEgales(positionSouris, unite->getPosition()))
-							{
-								caseOccupee = true;
-								
-							}
-						}
-						if(!caseOccupee){
-							for (Batiment* batiment : *batiments)
-							{
-								if (positionsEgales(positionSouris, batiment->getPosition()))
-								{
-									caseOccupee = true;
-								}
-							}
-						}
-
-						// Mettre l'unite sur la case cliquee
-						if (!caseOccupee)
-						{
-							deplacerEntite(uniteSelect, positionSouris.at(0), positionSouris.at(1));
-							
-							uniteSelect->setPosition(positionSouris.at(0), positionSouris.at(1));
-
-							spriteCurseur.setPosition(positionSouris.at(0), positionSouris.at(1));
-						}
+						ActionClic action = ActionClic();
+						action.clicDroit(this, positionSouris);
 					}
 				}
 			}
