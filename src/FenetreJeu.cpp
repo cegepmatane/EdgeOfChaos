@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
+#include "../inclusion/ActionClic.h"
 #include "string"
 #include "vector"
 # if defined (__linux__)

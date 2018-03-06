@@ -7,7 +7,7 @@
 #include "VuePanneauUnite.h"
 #include "VuePanneauBatiment.h"
 #include "Menu.h"
-#include "actionClic.h"
+#include "ActionClic.h"
 
 class Menu;
 
