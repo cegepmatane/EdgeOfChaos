@@ -15,10 +15,6 @@ Reseau::Reseau(std::string& adresseIpServeur, std::vector<std::string>* adresses
 			// Inclure regex pour vérifier la structure de la chaine de caractères.
 			this->adressesIpClient.push_back(adresseIpClient);
 		}
-		for(int i = 0; i < this->adressesIpClient.size(); ++i)
-		{
-			std::cout << this->adressesIpClient.at(i) << std::endl;
-		}
 	}
 }
 
@@ -39,18 +35,20 @@ void Reseau::setAdresseIpClient(std::string& adresseIpClient)
 
 void Reseau::communiquerAuClient()
 {
-	
+	std::cout << "J'aimes les licornes!" << std::endl;
 }
 
 void Reseau::communiquerAuServeur()
-{
-	
+{	
+	std::cout << "Et moi les pommes!" << std::endl;
 }
 
 void Reseau::demarrerReseau()
 {
-	//std::thread client(&Reseau::communiquerAuClient);
-	//std::thread serveur(&Reseau::communiquerAuServeur);
+	std::thread client(&Reseau::communiquerAuClient, this);
+	client.join();
+	std::thread serveur(&Reseau::communiquerAuServeur, this);
+	serveur.join();
 }
 
 
