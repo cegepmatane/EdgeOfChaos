@@ -26,3 +26,13 @@ void Entite::setPosition(int x, int y)
 	nouvellePosition.push_back(y);
 	position = nouvellePosition;
 }
+
+sf::Packet& Entite::operator<<(sf::Packet& paquet)
+{
+	return paquet << this->pointsDeVie << this->pointsDefense << this->position.at(0) << this->position.at(1) << this->image << this->numTexture;
+}
+
+sf::Packet& Entite::operator>>(sf::Packet& paquet)
+{
+	return paquet >> this->pointsDeVie >> this->pointsDefense >> this->position.at(0) >> this->position.at(1) >> this->image >> this->numTexture;
+}

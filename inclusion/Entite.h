@@ -4,6 +4,7 @@
 #include <vector>
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Network/Packet.hpp>
 
 class Entite
 {
@@ -27,4 +28,7 @@ public:
 	void setVie(int pointsDeVie) { this->pointsDeVie = pointsDeVie; }
 	void setDefense(int pointsDefense) { this->pointsDefense = pointsDefense; }
 	void setPosition(int x, int y);
+
+	sf::Packet& operator<<(sf::Packet& paquet);
+	sf::Packet& operator>>(sf::Packet& paquet);
 };
