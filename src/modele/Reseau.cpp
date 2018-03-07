@@ -1,17 +1,25 @@
 #include <string>
 #include <vector>
 #include <thread>
+#include <iostream>
 #include <SFML/Network.hpp>
 #include "../../inclusion/Reseau.h"
-
-Reseau::Reseau(std::string& adresseIpServeur, std::string adresseIpClient)
-{
-	this->adresseIpServeur = adresseIpServeur;
-}
 
 Reseau::Reseau(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient)
 {
 	this->adresseIpServeur = adresseIpServeur;
+	if (adressesIpClient != nullptr)
+	{
+		for(sf::IpAddress adresseIpClient : *adressesIpClient)
+		{
+			// Inclure regex pour vérifier la structure de la chaine de caractères.
+			this->adressesIpClient.push_back(adresseIpClient);
+		}
+		for(int i = 0; i < this->adressesIpClient.size(); ++i)
+		{
+			std::cout << this->adressesIpClient.at(i) << std::endl;
+		}
+	}
 }
 
 std::vector<std::string> Reseau::getAdressesIpClient()

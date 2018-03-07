@@ -13,13 +13,12 @@ private:
 	void communiquerAuServeur();
 
 public:
-	Reseau(std::string& adresseIpServeur, std::string adresseIpClient = nullptr);
 	Reseau(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient = nullptr);
 
 	std::string getAdresseIpServeur() { return this->adresseIpServeur.toString(); }
 	std::vector<std::string> getAdressesIpClient();
 
-	void setAdresseIpServeur(std::string& adresseIpServeur) { this->adresseIpServeur = adresseIpServeur; }
+	//void setAdresseIpServeur(std::string& adresseIpServeur) { this->adresseIpServeur = adresseIpServeur; }
 	void setAdresseIpClient(std::string& adresseIpClient);
 
 	void demarrerReseau();
