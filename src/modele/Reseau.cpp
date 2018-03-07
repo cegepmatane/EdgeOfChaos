@@ -41,8 +41,8 @@ void Reseau::communiquerAuServeur()
 
 void Reseau::demarrerReseau()
 {
-	std::thread client(this->communiquerAuClient);
-	std::thread serveur(this->communiquerAuServeur);
+	//std::thread client(&Reseau::communiquerAuClient);
+	//std::thread serveur(&Reseau::communiquerAuServeur);
 }
 
 
