@@ -24,12 +24,12 @@ Reseau::Reseau(std::string& adresseIpServeur, std::vector<std::string>* adresses
 
 std::vector<std::string> Reseau::getAdressesIpClient()
 {
-	std::vector<std::string> adressesIpClient;
+	std::vector<std::string> adressesIp;
 	for (sf::IpAddress adresseIpClient : this->adressesIpClient)
 	{
-		adressesIpClient.push_back(adresseIpClient.toString());
+		adressesIp.push_back(adresseIpClient.toString());
 	}
-	return adressesIpClient;
+	return adressesIp;
 }
 
 void Reseau::setAdresseIpClient(std::string& adresseIpClient)
