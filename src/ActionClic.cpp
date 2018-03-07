@@ -65,5 +65,14 @@ void ActionClic::clicDroit(FenetreJeu* fenetre, std::vector<int> positionSouris)
 		fenetre->getUniteSelect()->setPosition(positionSouris.at(0), positionSouris.at(1));
 
 		fenetre->getSpriteCurseur()->setPosition(positionSouris.at(0), positionSouris.at(1));
+
+
+
+		/* Envoyer infos au reseau :
+		 * *(fenetre->getUniteSelect())
+		 * positionSouris.at(0)
+		 * positionSouris.at(1)
+		 * Le reseau se chargera de faire les paquets et de les envoyer
+		 */
 	}
 }

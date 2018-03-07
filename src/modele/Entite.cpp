@@ -27,12 +27,18 @@ void Entite::setPosition(int x, int y)
 	position = nouvellePosition;
 }
 
-sf::Packet& Entite::operator<<(sf::Packet& paquet)
+sf::Packet& operator<<(sf::Packet& paquet, const Entite& e)
 {
-	return paquet << this->pointsDeVie << this->pointsDefense << this->position.at(0) << this->position.at(1) << this->image << this->numTexture;
+	return paquet << e.getVie() << e.getDefense() << e.getPosition().at(0) << e.getPosition().at(1) << e.getImage() << e.getNumTexture();
 }
 
-sf::Packet& Entite::operator>>(sf::Packet& paquet)
+sf::Packet& operator>>(sf::Packet& paquet, Entite& e)
 {
-	return paquet >> this->pointsDeVie >> this->pointsDefense >> this->position.at(0) >> this->position.at(1) >> this->image >> this->numTexture;
+	int pointsDeVie, pointsDeDefense, x, y, numTexture;
+	std::string image;
+	paquet >> pointsDeVie >> pointsDeDefense >> x >> y >> image >> numTexture;
+	e.setVie(pointsDeVie);
+	e.setDefense(pointsDeDefense);
+	e.setPosition(x, y);
+	return paquet >> pointsDeVie >> pointsDeDefense >> x >> y >> image >> numTexture;
 }
