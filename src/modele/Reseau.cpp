@@ -33,22 +33,33 @@ void Reseau::setAdresseIpClient(std::string& adresseIpClient)
 	this->adressesIpClient.push_back(adresseIpClient);
 }
 
-void Reseau::communiquerAuClient()
-{
-	std::cout << "J'aimes les licornes!" << std::endl;
-}
-
 void Reseau::communiquerAuServeur()
 {	
-	std::cout << "Et moi les pommes!" << std::endl;
+	std::cout << "Client" << std::endl;
+
+	sf::TcpSocket dockClient;
+	int portServeur = 50000;
+	sf::Socket::Status statut = dockClient.connect(this->adresseIpServeur, portServeur); // adresse et port auquel se connecte le client.
+
+	if (statut != sf::Socket::Done)	// Si la connexion n'est pas établie
+	{
+		std::cerr << "Connexion au serveur impossible" << std::endl;
+	}
+
+	char donneeRecue; // Caractère reçu
+	std::size_t tailleRecue; // Taille en octet du message reçu.
+	if (dockClient.receive(&donneeRecue, 1, tailleRecue) != sf::Socket::Done) // Si le message n'est pas reçu
+	{
+		std::cerr << "Réception impossible" << std::endl;
+	}
+	std::cout << "L'objet reçu est d'une taille de " << tailleRecue << " octet(s), il s'agit de " << donneeRecue << "." << std::endl;
+	dockClient.disconnect(); // Déconnexion du client au serveur
 }
 
 void Reseau::demarrerReseau()
 {
-	std::thread client(&Reseau::communiquerAuClient, this);
+	std::thread client(&Reseau::communiquerAuServeur, this);
 	client.join();
-	std::thread serveur(&Reseau::communiquerAuServeur, this);
-	serveur.join();
 }
 
 

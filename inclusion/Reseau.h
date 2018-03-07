@@ -9,7 +9,6 @@ private:
 	sf::IpAddress adresseIpServeur;
 	std::vector<sf::IpAddress> adressesIpClient;
 
-	void communiquerAuClient();
 	void communiquerAuServeur();
 
 public:
