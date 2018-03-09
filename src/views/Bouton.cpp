@@ -1,5 +1,6 @@
 # include <iostream>
 # include <string>
+# include <vector>
 # include <SFML/Graphics.hpp>
 
 # if defined (linux)
@@ -54,4 +55,12 @@ const sf::Vector2f Bouton::getPosition(){
 
 const sf::Vector2f Bouton::getSize(){
 	return sf::Vector2f(((RectangleShape)(*this)).getSize().x + this->bordure * 2,((RectangleShape)(*this)).getSize().y + this->bordure * 2);
+}
+
+const std::vector<int> Bouton::getDimensions()
+{
+	std::vector<int> dimensions;
+	dimensions.push_back(this->getSize().x);
+	dimensions.push_back(this->getSize().y);
+	return dimensions;
 }

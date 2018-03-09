@@ -30,7 +30,6 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<B
 	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures64.png", sf::IntRect(64*13, 0, 64, 64)))
 		std::cerr << "Impossible de charger la texture du curseur. \n ( " << Configuration::cheminTextures + "textures64.png" << " )" << std::endl;
 	spriteCurseur = sf::Sprite(textureCurseur);
-	//spriteCurseur.setColor(sf::Color(255, 0, 0, 128));
 	spriteCurseur.setPosition(0, 0);
 
 	for (Unite* unite : *unites)

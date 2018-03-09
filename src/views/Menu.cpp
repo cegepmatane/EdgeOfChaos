@@ -1,6 +1,7 @@
 # include <SFML/Graphics.hpp>
 # include <iostream>
 # include <string>
+# include <vector>
 # include "../../inclusion/Menu.h"
 # include "../../inclusion/Bouton.h"
 # include "../../inclusion/FenetreJeu.h"
@@ -57,6 +58,22 @@ Bouton Menu::getParametres()
 	return *(this->actionParametres);
 }
 
+std::vector<int> Menu::getHebergerPosition()
+{
+	std::vector<int> position;
+	position.push_back(actionHeberger->getPosition().x);
+	position.push_back(actionHeberger->getPosition().y);
+	return position;
+}
+
+std::vector<int> Menu::getJoindrePosition()
+{
+	std::vector<int> position;
+	position.push_back(actionJoindre->getPosition().x);
+	position.push_back(actionJoindre->getPosition().y);
+	return position;
+}
+
 Menu::~Menu()
 {
 	if(this->actionHeberger != nullptr){
@@ -93,14 +110,12 @@ void Menu::initTitre(const std::string& police)
 
 void Menu::initBoutons(const std::string& police, const double proportion)
 {
-	this->positionXBoutons = this->getSize().x * (1 - proportion) / 2 ;	// Somme des des fractions doit être égale à 1.
+	this->positionXBoutons = this->getSize().x * (1 - proportion) / 2 ;	// Somme des fractions doit etre egale a 1.
 	this->offsetYBoutons = this->titre.getCharacterSize() + this->titre.getPosition().y;
 	this->espacementBoutons = 20;
 	
 	const int _HAUTEUR = this->getSize().y / 6;	
 	const int _LONGUEUR = this->getSize().x * proportion;
-
-
 	
 	this->actionHeberger = new Bouton(_LONGUEUR, _HAUTEUR, "Heberger", police);
 	this->actionHeberger->setBtnPosition(this->positionXBoutons, this->offsetYBoutons + 50 + (_HAUTEUR + this->espacementBoutons) * 0);

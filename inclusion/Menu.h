@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "Bouton.h"
 #include "FenetreJeu.h"
@@ -39,5 +40,7 @@ class Menu : public sf::RenderWindow{
 		Bouton getHeberger();
 		Bouton getJoindre();
 		Bouton getParametres();
+		std::vector<int> getHebergerPosition();
+		std::vector<int> getJoindrePosition();
 		~Menu();
 };

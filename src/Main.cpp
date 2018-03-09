@@ -5,6 +5,7 @@
 #include "../inclusion/Unite.h"
 #include "../inclusion/Batiment.h"
 #include "../inclusion/Niveau.h"
+#include "../inclusion/ActionMenu.h"
 # if defined (__linux__)
 # include "../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)
@@ -84,6 +85,14 @@ int main(void)
 			{
 				// Inclusion de l'initialisation du jeu ici
 				menu.initJeu(niveau, unites, batiments);
+			}
+
+			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+			{
+				int clicX = sf::Mouse::getPosition(menu).x;
+				int clicY = sf::Mouse::getPosition(menu).y;
+				ActionMenu action = ActionMenu();
+				action.cliquer(&menu, clicX, clicY);
 			}
 
 			menu.clear(sf::Color::Yellow);
