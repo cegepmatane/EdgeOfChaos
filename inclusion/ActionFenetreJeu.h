@@ -5,10 +5,10 @@
 
 class FenetreJeu;
 
-class ActionClic
+class ActionFenetreJeu
 {
 public:
-	ActionClic();
+	ActionFenetreJeu();
 	void clicGauche(FenetreJeu* fenetre, std::vector<int> positionSouris);
 	void clicDroit(FenetreJeu* fenetre, std::vector<int> positionSouris);
 };

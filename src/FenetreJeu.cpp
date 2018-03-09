@@ -1,6 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "../inclusion/FenetreJeu.h"
-#include "../inclusion/ActionClic.h"
+#include "../inclusion/ActionFenetreJeu.h"
 #include "string"
 #include "vector"
 # if defined (__linux__)
@@ -130,11 +130,11 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 
 					if (event.mouseButton.button == sf::Mouse::Left)
 					{
-						ActionClic action = ActionClic();
+						ActionFenetreJeu action = ActionFenetreJeu();
 						action.clicGauche(this, positionSouris);
 					} else if (event.mouseButton.button == sf::Mouse::Right && uniteSelect != nullptr)
 					{
-						ActionClic action = ActionClic();
+						ActionFenetreJeu action = ActionFenetreJeu();
 						action.clicDroit(this, positionSouris);
 					}
 				}

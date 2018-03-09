@@ -1,10 +1,10 @@
-#include "../inclusion/ActionClic.h"
+#include "../inclusion/ActionFenetreJeu.h"
 
-ActionClic::ActionClic()
+ActionFenetreJeu::ActionFenetreJeu()
 {
 }
 
-void ActionClic::clicGauche(FenetreJeu* fenetre, std::vector<int> positionSouris)
+void ActionFenetreJeu::clicGauche(FenetreJeu* fenetre, std::vector<int> positionSouris)
 {
 	fenetre->setEstUnite(false);
 	fenetre->setEstBatiment(false);
@@ -35,7 +35,7 @@ void ActionClic::clicGauche(FenetreJeu* fenetre, std::vector<int> positionSouris
 	}
 }
 
-void ActionClic::clicDroit(FenetreJeu* fenetre, std::vector<int> positionSouris)
+void ActionFenetreJeu::clicDroit(FenetreJeu* fenetre, std::vector<int> positionSouris)
 {
 	// Verification du contenu de la case cliquee
 	bool caseOccupee = false;
