@@ -6,12 +6,11 @@
 
 #include <SFML/Network.hpp>
 
-class Client
+class Session
 {
 	private:
 		sf::TcpSocket socket;
 		std::thread communication;
-		std::string exemple;
 
 	public:
 		void communiquerAuClient();

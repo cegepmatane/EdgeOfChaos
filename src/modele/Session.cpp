@@ -5,16 +5,15 @@
 
 #include <SFML/Network.hpp>
 
-#include "../../inclusion/Client.h"
+#include "../../inclusion/Session.h"
 
-
-Client::Client() :
-	communication(&Client::communiquerAuClient, this)
+Session::Session() :
+	communication(&Session::communiquerAuClient, this)
 {
 	this->communication.join();
 }
 
-void Client::communiquerAuClient()
+void Session::communiquerAuClient()
 {
 	printf("Dear Willi\n");
 	// Pour Willi
