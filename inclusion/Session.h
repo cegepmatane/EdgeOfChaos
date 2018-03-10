@@ -13,8 +13,8 @@ class Session
 		std::thread communication;
 
 	public:
+		Session();
 		void communiquerAuClient();
-		Client();
 };
 
 #endif
