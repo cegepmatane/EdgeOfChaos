@@ -5,12 +5,17 @@
 #include <SFML/Network.hpp>
 #include "../../inclusion/Serveur.h"
 
-Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient)
+Serveur::Serveur(std::string& adresseIpServeur)
 {
 	this->adresseIpServeur = adresseIpServeur;
-	if (adressesIpClient != nullptr)
+}
+
+Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>& adressesIpClient)
+{
+	this->adresseIpServeur = adresseIpServeur;
+	if (!adressesIpClient.empty())
 	{
-		for(sf::IpAddress adresseIpClient : *adressesIpClient)
+		for(sf::IpAddress adresseIpClient : adressesIpClient)
 		{
 			// Inclure regex pour vérifier la structure de la chaine de caractères.
 			this->adressesIpClient.push_back(adresseIpClient);
@@ -59,7 +64,7 @@ void Serveur::executer()
 void Serveur::demarrerServeur()
 {
 	std::thread serveur(&Serveur::executer, this);
-	client.join();
+	serveur.join();
 }
 
 

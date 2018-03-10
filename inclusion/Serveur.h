@@ -14,7 +14,8 @@ private:
 	void executer();
 
 public:
-	Serveur(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient = nullptr);
+	Serveur(std::string& adresseIpServeur);
+	Serveur(std::string& adresseIpServeur, std::vector<std::string>& adressesIpClient);
 
 	std::string getAdresseIpServeur() { return this->adresseIpServeur.toString(); }
 	std::vector<std::string> getAdressesIpClient();
