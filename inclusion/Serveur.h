@@ -1,18 +1,20 @@
-#pragma once
+#ifndef SERVEUR_H
+#define SERVEUR_H
+
 #include <string>
 #include <vector>
 #include <SFML/Network.hpp>
 
-class Reseau
+class Serveur
 {
 private:
 	sf::IpAddress adresseIpServeur;
 	std::vector<sf::IpAddress> adressesIpClient;
 
-	void communiquerAuServeur();
+	void executer();
 
 public:
-	Reseau(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient = nullptr);
+	Serveur(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient = nullptr);
 
 	std::string getAdresseIpServeur() { return this->adresseIpServeur.toString(); }
 	std::vector<std::string> getAdressesIpClient();
@@ -20,5 +22,7 @@ public:
 	//void setAdresseIpServeur(std::string& adresseIpServeur) { this->adresseIpServeur = adresseIpServeur; }
 	void setAdresseIpClient(std::string& adresseIpClient);
 
-	void demarrerReseau();
+	void demarrerServeur();
 };
+
+#endif

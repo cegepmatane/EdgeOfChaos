@@ -3,9 +3,9 @@
 #include <thread>
 #include <iostream>
 #include <SFML/Network.hpp>
-#include "../../inclusion/Reseau.h"
+#include "../../inclusion/Serveur.h"
 
-Reseau::Reseau(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient)
+Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>* adressesIpClient)
 {
 	this->adresseIpServeur = adresseIpServeur;
 	if (adressesIpClient != nullptr)
@@ -18,7 +18,7 @@ Reseau::Reseau(std::string& adresseIpServeur, std::vector<std::string>* adresses
 	}
 }
 
-std::vector<std::string> Reseau::getAdressesIpClient()
+std::vector<std::string> Serveur::getAdressesIpClient()
 {
 	std::vector<std::string> adressesIp;
 	for (sf::IpAddress adresseIpClient : this->adressesIpClient)
@@ -28,14 +28,14 @@ std::vector<std::string> Reseau::getAdressesIpClient()
 	return adressesIp;
 }
 
-void Reseau::setAdresseIpClient(std::string& adresseIpClient)
+void Serveur::setAdresseIpClient(std::string& adresseIpClient)
 {
 	this->adressesIpClient.push_back(adresseIpClient);
 }
 
-void Reseau::communiquerAuServeur()
+void Serveur::executer()
 {	
-	std::cout << "Client" << std::endl;
+	/*std::cout << "Client" << std::endl;
 
 	sf::TcpSocket dockClient;
 	int portServeur = 50000;
@@ -53,12 +53,12 @@ void Reseau::communiquerAuServeur()
 		std::cerr << "Réception impossible" << std::endl;
 	}
 	std::cout << "L'objet reçu est d'une taille de " << tailleRecue << " octet(s), il s'agit de " << donneeRecue << "." << std::endl;
-	dockClient.disconnect(); // Déconnexion du client au serveur
+	dockClient.disconnect(); // Déconnexion du client au serveur*/
 }
 
-void Reseau::demarrerReseau()
+void Serveur::demarrerServeur()
 {
-	std::thread client(&Reseau::communiquerAuServeur, this);
+	std::thread serveur(&Serveur::executer, this);
 	client.join();
 }
 
