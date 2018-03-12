@@ -10,11 +10,24 @@
 Session::Session() :
 	communication(&Session::communiquerAuClient, this)
 {
-	this->communication.join();
+	this->deconnexion = false;
 }
 
 void Session::communiquerAuClient()
 {
-	printf("Dear Willi\n");
-	// Pour Willi
+	while(!this->deconnexion)
+	{
+		printf("Dear Willi\n");
+	}
+}
+
+void Session::deconnecterClient()
+{
+	this->deconnexion = true;
+}
+
+Session::~Session()
+{
+	this->deconnexion = true;
+	this->communication.join();
 }
