@@ -2,17 +2,22 @@
 #include <vector>
 #include <thread>
 #include <iostream>
+#include <fstream>
 #include <SFML/Network.hpp>
 #include "../../inclusion/Serveur.h"
 
 Serveur::Serveur(std::string& adresseIpServeur)
 {
+	this->serveur = nullptr;
 	this->adresseIpServeur = adresseIpServeur;
+	this->avorteServeur = false;
 }
 
-Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>& adressesIpClient)
+/*Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>& adressesIpClient)
 {
+	this->serveur = nullptr;
 	this->adresseIpServeur = adresseIpServeur;
+	this->avorteServeur = false;
 	if (!adressesIpClient.empty())
 	{
 		for(sf::IpAddress adresseIpClient : adressesIpClient)
@@ -21,7 +26,7 @@ Serveur::Serveur(std::string& adresseIpServeur, std::vector<std::string>& adress
 			this->adressesIpClient.push_back(adresseIpClient);
 		}
 	}
-}
+}*/
 
 std::vector<std::string> Serveur::getAdressesIpClient()
 {
@@ -33,38 +38,49 @@ std::vector<std::string> Serveur::getAdressesIpClient()
 	return adressesIp;
 }
 
-void Serveur::setAdresseIpClient(std::string& adresseIpClient)
-{
-	this->adressesIpClient.push_back(adresseIpClient);
-}
-
 void Serveur::executer()
-{	
-	/*std::cout << "Client" << std::endl;
-
-	sf::TcpSocket dockClient;
-	int portServeur = 50000;
-	sf::Socket::Status statut = dockClient.connect(this->adresseIpServeur, portServeur); // adresse et port auquel se connecte le client.
-
-	if (statut != sf::Socket::Done)	// Si la connexion n'est pas établie
+{
+	std::ofstream log("logServeur.txt", std::ios::out | std::ios::trunc);
+	if(log)
 	{
-		std::cerr << "Connexion au serveur impossible" << std::endl;
+		log << this->avorteServeur << std::endl;
+		while(!this->avorteServeur)
+		{
+			log << "Le serveur cherche des client potentiels... " << this << std::endl;
+		}
+		log << "Le serveur se ferme..." << std::endl;
+		log.close();
+		// dockClient.disconnect(); // Déconnexion du client au serveur
 	}
-
-	char donneeRecue; // Caractère reçu
-	std::size_t tailleRecue; // Taille en octet du message reçu.
-	if (dockClient.receive(&donneeRecue, 1, tailleRecue) != sf::Socket::Done) // Si le message n'est pas reçu
-	{
-		std::cerr << "Réception impossible" << std::endl;
-	}
-	std::cout << "L'objet reçu est d'une taille de " << tailleRecue << " octet(s), il s'agit de " << donneeRecue << "." << std::endl;
-	dockClient.disconnect(); // Déconnexion du client au serveur*/
 }
 
 void Serveur::demarrerServeur()
 {
-	std::thread serveur(&Serveur::executer, this);
-	serveur.join();
+	if(this->serveur == nullptr)
+	{
+		this->serveur = new std::thread(&Serveur::executer, this);
+	}
 }
 
+void Serveur::arreterServeur()
+{
+	this->avorteServeur = true;
+}
 
+void Serveur::attendreFermetureServeur()
+{
+	if(this->serveur->joinable())
+	{
+		this->serveur->join();
+	}
+}
+
+Serveur::~Serveur()
+{
+	if(this->serveur != nullptr)
+	{
+		this->attendreFermetureServeur();
+		delete this->serveur;
+		this->serveur = nullptr;
+	}
+}
