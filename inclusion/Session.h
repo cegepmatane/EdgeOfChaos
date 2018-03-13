@@ -9,13 +9,16 @@
 class Session
 {
 	private:
-		sf::TcpSocket socket;
-		std::thread communication;
+		sf::TcpSocket* socket;
+		std::thread* communication;
 		bool deconnexion;
 
+		void executerSession();
+		void attendreFermetureSession();
+
 	public:
-		Session();
-		void communiquerAuClient();
+		Session(sf::TcpSocket* socket)throw(std::string&);
+		void connecterClient();
 		void deconnecterClient();
 		~Session();
 };
