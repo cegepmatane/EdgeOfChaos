@@ -83,8 +83,7 @@ int main(void)
 		{
 			if(event.type == sf::Event::Closed)
 			{
-				// Inclusion de l'initialisation du jeu ici
-				menu.initJeu(niveau, unites, batiments);
+				menu.close();
 			}
 
 			if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
@@ -92,7 +91,10 @@ int main(void)
 				int clicX = sf::Mouse::getPosition(menu).x;
 				int clicY = sf::Mouse::getPosition(menu).y;
 				ActionMenu action = ActionMenu();
-				action.cliquer(&menu, clicX, clicY);
+				if (action.cliquer(&menu, clicX, clicY))
+				{
+					menu.initJeu(niveau, unites, batiments);
+				}
 			}
 
 			menu.clear(sf::Color::Yellow);

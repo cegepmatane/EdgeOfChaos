@@ -7,5 +7,5 @@ class ActionMenu
 {
 public:
 	ActionMenu();
-	void cliquer(Menu* menu, int x, int y);
+	bool cliquer(Menu* menu, int x, int y);
 };
