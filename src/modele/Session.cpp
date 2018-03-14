@@ -38,8 +38,13 @@ void Session::executerSession()
 {
 	while(!this->deconnexion)
 	{
-		std::cout << "Dear William\nI can't give a fuck in your section.\nSO WORK!" << std::endl;
+		char data = 'c';
+		if (this->socket->send(&data, 1) != sf::Socket::Done)
+		{
+			std::cerr << "Probleme lors de l'envoi des donnees au client." << std::endl;
+		}
 	}
+	this->socket->disconnect();
 }
 
 void Session::deconnecterClient()
