@@ -1,5 +1,9 @@
 #pragma once
+
+#include <thread>
+
 #include <SFML/Graphics.hpp>
+
 #include "Unite.h"
 #include "Batiment.h"
 #include "VueNiveauRapproche.h"
@@ -32,6 +36,11 @@ private:
 	sf::Texture textureCurseur;
 	sf::Sprite spriteCurseur;
 	bool curseurPresent=false;
+	
+	std::thread* client;
+	bool jeuFerme;
+	void communiquerAuServeur();
+	void attendreFermeture();
 
 public:
 	FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments);
@@ -51,5 +60,7 @@ public:
 	std::vector<Unite*>* getUnites() { return unites; }
 	std::vector<Batiment*>* getBatiments() { return batiments; }
 	Unite* getUniteSelect() { return uniteSelect; }
+
+	~FenetreJeu();
 
 };

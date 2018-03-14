@@ -1,8 +1,10 @@
+#include <string>
+#include <vector>
+
 #include <SFML/Graphics.hpp>
+
 #include "../inclusion/FenetreJeu.h"
 #include "../inclusion/ActionFenetreJeu.h"
-#include "string"
-#include "vector"
 # if defined (__linux__)
 # include "../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)
@@ -20,6 +22,8 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<B
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments->front()),
 	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
 {
+	this->jeuFerme = false;
+	this->client = new std::thread(&FenetreJeu::communiquerAuServeur, this);
 	this->uniteSelect = nullptr;
 	this->batimentSelect = nullptr;
 	this->estUnite = false;
@@ -202,4 +206,31 @@ bool FenetreJeu::positionsEgales(std::vector<int> positionSouris, std::vector<in
 		return true;
 	}
 	return false;
+}
+
+void FenetreJeu::communiquerAuServeur()
+{
+	while(!this->jeuFerme)
+	{
+		std::cout << "Code de communication au serveur. (dans FenetreJeu.cpp)..." << std::endl;
+	}
+}
+
+void FenetreJeu::attendreFermeture()
+{
+	if(this->client->joinable())
+	{
+		this->client->join();
+	}
+}
+
+FenetreJeu::~FenetreJeu()
+{
+	if(this->client != nullptr)
+	{
+		this->jeuFerme = true;
+		this->attendreFermeture();
+		delete this->client;
+		this->client = nullptr;
+	}
 }
