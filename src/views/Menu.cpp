@@ -147,7 +147,7 @@ void Menu::initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batim
 	if (serveurPresent)
 	{
 		Serveur* serveur = new Serveur();
-		serveur->demarrerServeur();
+		serveur->demarrer();
 		this->jeu = new FenetreJeu(niveau, unites, batiments, serveur);
 	} else
 	{

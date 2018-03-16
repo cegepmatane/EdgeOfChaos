@@ -60,7 +60,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			{
 				if (serveur!=nullptr)
 				{
-					serveur->arreterServeur();
+					serveur->arreter();
 				}
 				this->close();
 			}
