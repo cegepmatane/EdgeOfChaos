@@ -18,8 +18,8 @@ class Session
 
 	public:
 		Session(sf::TcpSocket* socket)throw(std::string&);
-		void connecterClient();
-		void deconnecterClient();
+		void demarrer();
+		void arreter();
 		~Session();
 };
 
