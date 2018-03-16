@@ -5,6 +5,7 @@
 # include "../../inclusion/Menu.h"
 # include "../../inclusion/Bouton.h"
 # include "../../inclusion/FenetreJeu.h"
+#include "../../inclusion/Serveur.h"
 # if defined (__linux__)
 # include "../../systemes/interfaceDebian.h"
 # elif defined (_WIN32) || (_WIN64)
@@ -141,8 +142,16 @@ void Menu::initErreur(const std::string& police)
 	this->erreur.setPosition(0, this->cadreErreur.getPosition().y - 4);
 }
 
-void Menu::initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments)
+void Menu::initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments, bool serveurPresent)
 {
-	this->jeu = new FenetreJeu(niveau, unites, batiments);
+	if (serveurPresent)
+	{
+		Serveur* serveur = new Serveur();
+		serveur->demarrerServeur();
+		this->jeu = new FenetreJeu(niveau, unites, batiments, serveur);
+	} else
+	{
+		this->jeu = new FenetreJeu(niveau, unites, batiments);
+	}
 	this->jeu->lancerBoucle(this);
 }

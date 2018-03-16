@@ -11,6 +11,7 @@
 #include "VuePanneauUnite.h"
 #include "VuePanneauBatiment.h"
 #include "Menu.h"
+#include "Serveur.h"
 #include "ActionFenetreJeu.h"
 
 class Menu;
@@ -37,13 +38,14 @@ private:
 	sf::Sprite spriteCurseur;
 	bool curseurPresent=false;
 	
+	Serveur* serveur;
 	std::thread* client;
 	bool jeuFerme;
 	void communiquerAuServeur();
 	void attendreFermeture();
 
 public:
-	FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments);
+	FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments, Serveur* serveur=nullptr);
 
 	void lancerBoucle(Menu* menu);
 	void ajouterEntite(Entite* entite);

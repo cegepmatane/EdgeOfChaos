@@ -5,7 +5,7 @@ ActionMenu::ActionMenu()
 {
 }
 
-bool ActionMenu::cliquer(Menu* menu, int x, int y)
+int ActionMenu::cliquer(Menu* menu, int x, int y)
 {
 	int hauteurHeberger = menu->getHeberger().getDimensions().at(0);
 	int longueurHeberger = menu->getHeberger().getDimensions().at(1);
@@ -16,14 +16,14 @@ bool ActionMenu::cliquer(Menu* menu, int x, int y)
 		&& y < menu->getHebergerPosition().at(1)+longueurHeberger && y > menu->getHebergerPosition().at(1))
 	{
 		std::cout << "Heberger" << std::endl;
-		return true;
+		return 1;
 	}
 
 	if (x < menu->getJoindrePosition().at(0)+hauteurJoindre && x > menu->getJoindrePosition().at(0)
 		&& y < menu->getJoindrePosition().at(1)+longueurJoindre && y > menu->getJoindrePosition().at(1))
 	{
 		std::cout << "Joindre" << std::endl;
-		return true;
+		return 2;
 	}
-	return false;
+	return 0;
 }

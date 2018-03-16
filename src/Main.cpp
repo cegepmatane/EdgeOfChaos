@@ -91,9 +91,12 @@ int main(void)
 				int clicX = sf::Mouse::getPosition(menu).x;
 				int clicY = sf::Mouse::getPosition(menu).y;
 				ActionMenu action = ActionMenu();
-				if (action.cliquer(&menu, clicX, clicY))
+				switch (action.cliquer(&menu, clicX, clicY))
 				{
-					menu.initJeu(niveau, unites, batiments);
+				case 1: menu.initJeu(niveau, unites, batiments, true);
+					break;
+				case 2: menu.initJeu(niveau, unites, batiments);
+					break;
 				}
 			}
 

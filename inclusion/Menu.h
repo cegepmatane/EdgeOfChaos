@@ -34,7 +34,7 @@ class Menu : public sf::RenderWindow{
 		void initErreur(const std::string& police);
 	public:
 		Menu();
-		void initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments);
+		void initJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments, bool serveurPresent=false);
 		void afficher();
 		void lancerErreur( std::string& messageErreur );
 		Bouton getHeberger();

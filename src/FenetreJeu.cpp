@@ -12,7 +12,7 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
-FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments) :
+FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<Batiment*>* batiments, Serveur* serveur) :
 	longueurFenetre(1280), hauteurFenetre(768), nomFenetre("Edge Of Chaos"),
 	sf::RenderWindow(sf::VideoMode(1280, 768), "Edge Of Chaos", sf::Style::Close),
 	longueurGrille(20), hauteurGrille(9), tailleCase(64),
@@ -21,7 +21,8 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<B
 	vueGrille(niveau, carte, longueurGrille, hauteurGrille, tailleCase), vueGenerale(niveau, carte, tailleCase),
 	panneauBoisUnite(longueurGrille, hauteurPanneau, tailleCase, unites->front(), imagePanneau),
 	panneauBoisBatiment(longueurGrille, hauteurPanneau, tailleCase, imagePanneau, batiments->front()),
-	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau)
+	panneauBois(longueurGrille, hauteurPanneau, tailleCase, imagePanneau),
+	serveur(serveur)
 {
 	this->jeuFerme = false;
 	this->client = new std::thread(&FenetreJeu::communiquerAuServeur, this);
@@ -57,6 +58,10 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 		{
 			if (event.type == sf::Event::Closed)
 			{
+				if (serveur!=nullptr)
+				{
+					serveur->arreterServeur();
+				}
 				this->close();
 			}
 
