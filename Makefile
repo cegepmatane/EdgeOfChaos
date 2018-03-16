@@ -4,7 +4,7 @@ EXEC = debug
 
 all: init $(EXEC)
 
-debug: obj/ActionMenu.o obj/ActionFenetreJeu.o obj/Niveau.o obj/interfaceDebian.o obj/FenetreJeu.o obj/Main.o obj/Entite.o obj/Unite.o obj/Batiment.o obj/Bouton.o obj/Menu.o obj/Carte.o obj/VueNiveauEntier.o obj/VueNiveauRapproche.o obj/VuePanneauBatiment.o obj/VuePanneau.o obj/VuePanneauUnite.o
+debug: obj/ActionMenu.o obj/Serveur.o obj/Session.o obj/ActionFenetreJeu.o obj/Niveau.o obj/interfaceDebian.o obj/FenetreJeu.o obj/Main.o obj/Entite.o obj/Unite.o obj/Batiment.o obj/Bouton.o obj/Menu.o obj/Carte.o obj/VueNiveauEntier.o obj/VueNiveauRapproche.o obj/VuePanneauBatiment.o obj/VuePanneau.o obj/VuePanneauUnite.o
 	g++ -g $^ -o bin/$@ $(LDFLAGS)
 
 obj/interfaceDebian.o: systemes/interfaceDebian.cpp
