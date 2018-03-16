@@ -26,7 +26,7 @@ catch(const std::string& err)
 	//std::cerr << "ERROR :\t\"" << err << "\" in a \"Session\" constructor." << std::endl;
 }
 
-void Session::connecterClient()
+void Session::demarrer()
 {
 	if(this->communication == nullptr)
 	{
@@ -47,7 +47,7 @@ void Session::executerSession()
 	this->socket->disconnect();
 }
 
-void Session::deconnecterClient()
+void Session::arreter()
 {
 	this->deconnexion = true;
 }
@@ -69,5 +69,7 @@ Session::~Session()
 		delete this->communication;
 		this->communication = nullptr;
 	}
+
+	delete this->socket;
 	this->socket = nullptr;
 }
