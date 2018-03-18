@@ -12,17 +12,19 @@ class Serveur
 {
 private:
 	std::vector<Session*> clients;
+	sf::TcpListener* ecouteur;
 	std::thread* serveur;
 	bool avorteFil;
 
 	void executer();
-	inline void initialiserEcouteur(sf::TcpListener& ecouteur, std::ofstream& log);
+	inline void initialiserEcouteur(std::ofstream& log);
 	void attendreFermetureServeur();
 
 public:
 	Serveur();
 
 	void demarrer();
+	void arreterConnexions();
 	void arreter();
 
 	~Serveur();
