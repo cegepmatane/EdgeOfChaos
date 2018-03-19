@@ -60,8 +60,8 @@ int main(void)
 	Unite* unite2Ptr = &unite2;*/
 
 	std::vector<std::string> optionsBatiment;
-	optionsBatiment.push_back("Créer un lancier");
-	optionsBatiment.push_back("Créer un homme d'arme");
+	optionsBatiment.push_back("Creer un lancier");
+	optionsBatiment.push_back("Creer un homme d'arme");
 	Batiment batiment(100, 100, TAILLECASE * 2, TAILLECASE * 2, 10, optionsBatiment);
 	//Batiment* batimentPtr = &batiment;
 

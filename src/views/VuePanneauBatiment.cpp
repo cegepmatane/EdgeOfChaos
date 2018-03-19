@@ -20,7 +20,7 @@ void VuePanneauBatiment::initialiser()
 {
 	descriptionBatiment = sf::Text(batiment->getNom() + "\nDescription :\n" + batiment->getDescription(), fonte, 60);
 	initTexte(descriptionBatiment);
-	descriptionBatiment.setPosition(64 / 2, 50);
+	descriptionBatiment.setPosition(64 / 2, 10);
 
 	std::string texteOptions = "Options :\n";
 	for (std::string option : this->batiment->getActions())
@@ -29,7 +29,7 @@ void VuePanneauBatiment::initialiser()
 	}
 	optionsBatiment = sf::Text(texteOptions, fonte, 60);
 	initTexte(optionsBatiment);
-	optionsBatiment.setPosition(64 * 16 /2, 50);
+	optionsBatiment.setPosition((64 * 20) /2, 10);
 }
 
 void VuePanneauBatiment::dessiner(sf::RenderWindow &fenetre)
