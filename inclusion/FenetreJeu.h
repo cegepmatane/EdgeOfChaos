@@ -66,6 +66,8 @@ public:
 	VuePanneauUnite* getPanneauBoisUnite() { return &panneauBoisUnite; }
 	VuePanneauBatiment* getPanneauBoisBatiment() { return &panneauBoisBatiment; }
 
+	Niveau* getNiveau() { return &niveau; }
+
 	~FenetreJeu();
 
 };

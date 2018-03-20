@@ -46,7 +46,6 @@ void ActionFenetreJeu::clicDroit(FenetreJeu* fenetre, std::vector<int> positionS
 		if (fenetre->positionsEgales(positionSouris, unite->getPosition()))
 		{
 			caseOccupee = true;
-
 		}
 	}
 	if (!caseOccupee) {
@@ -58,6 +57,27 @@ void ActionFenetreJeu::clicDroit(FenetreJeu* fenetre, std::vector<int> positionS
 			}
 		}
 	}
+
+	// Vérifier que non montagne (2) et non eau (1)
+	if (!caseOccupee)
+	{
+		int x = positionSouris.at(0);
+		int y = positionSouris.at(1);
+		if (positionSouris.at(0)!=0)
+		{
+			x = positionSouris.at(0) / 64;
+		}
+		if (positionSouris.at(1) != 0)
+		{
+			y = positionSouris.at(1) / 64;
+		}
+		int numeroCase = fenetre->getNiveau()->getValeurCase(x, y);
+		if (numeroCase==2 || numeroCase==1)
+		{
+			caseOccupee = true;
+		}
+	}
+
 
 	// Mettre l'unite sur la case cliquee
 	if (!caseOccupee)

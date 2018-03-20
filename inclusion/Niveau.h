@@ -11,4 +11,5 @@ public:
 	int getHauteur() { return this->hauteur; }
 	int getLongueur() { return this->longueur; }
 	short int* getCases() { return this->cases; }
+	short int getValeurCase(int x, int y);
 };
