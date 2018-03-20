@@ -6,7 +6,7 @@ Batiment::Batiment(int pointsDeVie, int pointsDefense, int positionLargeur, int 
 	Entite(pointsDeVie, pointsDefense, positionLargeur, positionHauteur, numTexture),
 	actions(actionsBatiment),
 	nom("Batiment"),
-	description("Vous pouvez y former des unites a pied.")
+	description("Vous pouvez y former des unites terrestres.")
 {
 	
 }

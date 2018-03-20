@@ -10,7 +10,7 @@ Unite::Unite(int pointsDeVie, int pointsDefense, int pointsAttaque, int position
 	Entite(pointsDeVie, pointsDefense, positionLargeur, positionHauteur, numTexture),
 	attaque(pointsAttaque),
 	listeAttaques(attaques),
-	nom("Unité")
+	nom("Unite")
 {
 	
 }

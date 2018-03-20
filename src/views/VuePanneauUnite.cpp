@@ -18,7 +18,7 @@ VuePanneauUnite::VuePanneauUnite(int longueurPanneau, int hauteurPanneau, int ta
 
 void VuePanneauUnite::initialiser()
 {
-	std::string stats = "Statistiques :\nAttaque : " + std::to_string(this->unite->getAttaque())
+	std::string stats = unite->getNom() + "\nStatistiques :\nAttaque : " + std::to_string(this->unite->getAttaque())
 		+ "\nDéfense : " + std::to_string(this->unite->getDefense());
 	this->titreStats = sf::Text(stats, this->fonte, 60);
 	initTexte(this->titreStats);

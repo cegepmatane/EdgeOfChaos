@@ -33,7 +33,7 @@ FenetreJeu::FenetreJeu(Niveau niveau, std::vector<Unite*>* unites, std::vector<B
 	this->setView(vueGrille);
 	estVueGrille = true;
 
-	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures64.png", sf::IntRect(64*13, 0, 64, 64)))
+	if (!textureCurseur.loadFromFile(Configuration::cheminTextures + "textures64.png", sf::IntRect(64*8, 0, 64, 64)))
 		std::cerr << "Impossible de charger la texture du curseur. \n ( " << Configuration::cheminTextures + "textures64.png" << " )" << std::endl;
 	spriteCurseur = sf::Sprite(textureCurseur);
 	spriteCurseur.setPosition(0, 0);

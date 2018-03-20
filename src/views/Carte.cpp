@@ -110,10 +110,7 @@ Carte::~Carte()
  * 5 = route
  * 6 = route2
  * 7 = bois
- * 8 = maison
- * 9 = taverne
- * 10 = eglise
- * 11 = moulin
- * 12 = cavalier
- * 13 = curseur noir
+ * 8 = curseur noir
+ * 9 = caserne
+ * 10 = barbare
  */

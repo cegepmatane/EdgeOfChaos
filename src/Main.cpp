@@ -53,16 +53,16 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 12, listeAttaques);
+	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 10, listeAttaques);
 	//Unite* unitePtr = &unite;
 	
-	/*Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 12, listeAttaques);
+	/*Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 10, listeAttaques);
 	Unite* unite2Ptr = &unite2;*/
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Creer un lancier");
 	optionsBatiment.push_back("Creer un homme d'arme");
-	Batiment batiment(100, 100, TAILLECASE * 2, TAILLECASE * 2, 10, optionsBatiment);
+	Batiment batiment(100, 100, TAILLECASE * 2, TAILLECASE * 2, 9, optionsBatiment);
 	//Batiment* batimentPtr = &batiment;
 
 	std::vector<Unite*>* unites = new std::vector<Unite*>;
