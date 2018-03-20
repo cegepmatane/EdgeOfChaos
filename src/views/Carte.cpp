@@ -113,4 +113,6 @@ Carte::~Carte()
  * 8 = curseur noir
  * 9 = caserne
  * 10 = barbare
+ * 11 = barbare clair
+ * 12 = barnare sombre
  */
