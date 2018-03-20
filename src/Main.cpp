@@ -12,6 +12,50 @@
 # include "../../systemes/interfaceWindows.h"
 # endif
 
+// Preuve de concept de parsing avec pugiXML
+
+/*#include "../lib/pugixml-1.8/src/pugixml.cpp"
+#include <SFML/Network.hpp>
+#include <string>
+#include <sstream>
+#include <iostream>
+
+struct xml_string_writer : pugi::xml_writer
+{
+	std::string result;
+
+	virtual void write(const void* data, size_t size)
+	{
+		result.append(static_cast<const char*>(data), size);
+	}
+};
+
+int main(void)
+{
+	pugi::xml_document doc;
+	pugi::xml_node ip = doc.append_child("test").append_child("reseau").append_child("adresse");;
+	pugi::xml_node machine = doc.child("test").child("reseau").append_child("machine");
+	machine.text().set("Debian");
+	ip.append_attribute("ip").set_value("localhost");
+	std::stringstream test;
+	if (ip)
+	{
+		doc.print(test);
+		std::cout << test.str() << std::endl;
+	}
+	std::string reseau = test.str();
+	pugi::xml_document aze;
+	pugi::xml_parse_result tst = aze.load_string(reseau.c_str());
+	std::cout << aze.child("test").child("reseau").child("machine").child_value() << std::endl;
+	std::cout << aze.child("test").child("reseau").child("adresse").attribute("ip").value() << std::endl;
+
+
+	return 0;
+}
+
+// g++ -g main.cpp -o exec.exe -L/usr/include -lpugixml
+*/
+
 int main(void)
 {
 #define TAILLECASE 64
@@ -53,9 +97,12 @@ int main(void)
 	std::vector<std::string> listeAttaques;
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
-	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 10, listeAttaques);
+	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 11, listeAttaques);
 	
-	Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 10, listeAttaques);
+	std::vector<std::string> listeAttaques2;
+	listeAttaques2.push_back("Attaque eclair");
+	listeAttaques2.push_back("Explosionnnnn!");
+	Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 12, listeAttaques2);
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Creer un lancier");
