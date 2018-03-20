@@ -166,7 +166,7 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			//Affichage du panneauBois
 			if (estUnite)
 			{
-				panneauBoisUnite.setUnite(uniteSelect); // !!!!! "uniteSelect" est à nullptr les 3/4 du temps!
+				//panneauBoisUnite.setUnite(uniteSelect); // !!!!! "uniteSelect" est à nullptr les 3/4 du temps!
 				this->setView(panneauBoisUnite);
 				panneauBoisUnite.dessiner(*this);
 			}
@@ -216,10 +216,10 @@ bool FenetreJeu::positionsEgales(std::vector<int> positionSouris, std::vector<in
 
 void FenetreJeu::communiquerAuServeur()
 {
-	while(!this->jeuFerme)
+	/*while(!this->jeuFerme)
 	{
 		std::cout << "Code de communication au serveur. (dans FenetreJeu.cpp)..." << std::endl;
-	}
+	}*/
 }
 
 void FenetreJeu::attendreFermeture()

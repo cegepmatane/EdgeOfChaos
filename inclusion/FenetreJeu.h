@@ -63,6 +63,8 @@ public:
 	std::vector<Batiment*>* getBatiments() { return batiments; }
 	Unite* getUniteSelect() { return uniteSelect; }
 
+	VuePanneauUnite* getPanneauBoisUnite() { return &panneauBoisUnite; }
+
 	~FenetreJeu();
 
 };

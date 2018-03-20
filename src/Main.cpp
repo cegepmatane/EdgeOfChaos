@@ -54,10 +54,8 @@ int main(void)
 	listeAttaques.push_back("Charge");
 	listeAttaques.push_back("Chun chun maru!");
 	Unite unite(100, 100, attaque, TAILLECASE * 1, TAILLECASE * 1, 10, listeAttaques);
-	//Unite* unitePtr = &unite;
 	
-	/*Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 10, listeAttaques);
-	Unite* unite2Ptr = &unite2;*/
+	Unite unite2(200, 20, 20, TAILLECASE * 3, TAILLECASE * 3, 10, listeAttaques);
 
 	std::vector<std::string> optionsBatiment;
 	optionsBatiment.push_back("Creer un lancier");
@@ -69,7 +67,7 @@ int main(void)
 	std::vector<Batiment*>* batiments = new std::vector<Batiment*>;
 
 	unites->push_back(&unite);
-	//unites.push_back(unite2Ptr);
+	unites->push_back(&unite2);
 	batiments->push_back(&batiment);
 
 	Menu menu;

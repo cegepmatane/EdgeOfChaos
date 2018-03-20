@@ -28,5 +28,5 @@ public:
 
 	void initialiser();
 	void dessiner(sf::RenderTarget &cible);
-	void mettreAJourTexte();
+	void mettreAJourTexte(Unite* unite);
 };

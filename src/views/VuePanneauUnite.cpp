@@ -46,8 +46,14 @@ void VuePanneauUnite::dessiner(sf::RenderTarget& cible)
 	cible.draw(titreAttaques);
 }
 
-void VuePanneauUnite::mettreAJourTexte()
+void VuePanneauUnite::mettreAJourTexte(Unite* unite)
 {
-	this->titreStats.setString("Statistiques :\nAttaque : " + std::to_string(this->unite->getAttaque())
-		+ "\nDéfense : " + std::to_string(this->unite->getDefense()));
+	this->titreStats.setString("Statistiques :\nAttaque : " + std::to_string(unite->getAttaque())
+		+ "\nDéfense : " + std::to_string(unite->getDefense()));
+	std::string texteAttaques = "Attaques spéciales :\n";
+	for (std::string attaque : unite->getListeAttaques())
+	{
+		texteAttaques = texteAttaques + attaque + "\n";
+	}
+	this->titreAttaques.setString(texteAttaques);
 }

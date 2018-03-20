@@ -20,6 +20,7 @@ void ActionFenetreJeu::clicGauche(FenetreJeu* fenetre, std::vector<int> position
 			fenetre->setEstUnite(true);
 			fenetre->setUniteSelect(unite);	// après le for, "unite" est désalloué,
 											// donc "uniteSelect" pointe dans le vide.
+			fenetre->getPanneauBoisUnite()->mettreAJourTexte(unite);
 		}
 	}
 	if (!fenetre->getEstUnite())
