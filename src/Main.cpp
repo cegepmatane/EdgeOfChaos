@@ -108,7 +108,10 @@ int main(void)
 	optionsBatiment.push_back("Creer un lancier");
 	optionsBatiment.push_back("Creer un homme d'arme");
 	Batiment batiment(100, 100, TAILLECASE * 2, TAILLECASE * 2, 9, optionsBatiment);
-	//Batiment* batimentPtr = &batiment;
+
+	/*std::vector<std::string> optionsBatiment2;
+	optionsBatiment2.push_back("Soin");
+	Batiment batiment2(100, 100, TAILLECASE * 0, TAILLECASE * 0, 13, optionsBatiment2);*/
 
 	std::vector<Unite*>* unites = new std::vector<Unite*>;
 	std::vector<Batiment*>* batiments = new std::vector<Batiment*>;
@@ -116,6 +119,7 @@ int main(void)
 	unites->push_back(&unite);
 	unites->push_back(&unite2);
 	batiments->push_back(&batiment);
+	//batiments->push_back(&batiment2);
 
 	Menu menu;
 	bool estConnecte = true;

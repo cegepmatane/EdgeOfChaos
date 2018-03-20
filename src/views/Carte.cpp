@@ -114,5 +114,6 @@ Carte::~Carte()
  * 9 = caserne
  * 10 = barbare
  * 11 = barbare clair
- * 12 = barnare sombre
+ * 12 = barbare sombre
+ * 13 = taverne
  */
