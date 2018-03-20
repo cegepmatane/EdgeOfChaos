@@ -15,14 +15,12 @@ int ActionMenu::cliquer(Menu* menu, int x, int y)
 	if (x < menu->getHebergerPosition().at(0)+hauteurHeberger && x > menu->getHebergerPosition().at(0)
 		&& y < menu->getHebergerPosition().at(1)+longueurHeberger && y > menu->getHebergerPosition().at(1))
 	{
-		std::cout << "Heberger" << std::endl;
 		return 1;
 	}
 
 	if (x < menu->getJoindrePosition().at(0)+hauteurJoindre && x > menu->getJoindrePosition().at(0)
 		&& y < menu->getJoindrePosition().at(1)+longueurJoindre && y > menu->getJoindrePosition().at(1))
 	{
-		std::cout << "Joindre" << std::endl;
 		return 2;
 	}
 	return 0;
