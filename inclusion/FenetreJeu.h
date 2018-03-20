@@ -64,6 +64,7 @@ public:
 	Unite* getUniteSelect() { return uniteSelect; }
 
 	VuePanneauUnite* getPanneauBoisUnite() { return &panneauBoisUnite; }
+	VuePanneauBatiment* getPanneauBoisBatiment() { return &panneauBoisBatiment; }
 
 	~FenetreJeu();
 

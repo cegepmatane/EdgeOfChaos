@@ -38,3 +38,14 @@ void VuePanneauBatiment::dessiner(sf::RenderWindow &fenetre)
 	fenetre.draw(descriptionBatiment);
 	fenetre.draw(optionsBatiment);
 }
+
+void VuePanneauBatiment::mettreAJourTexte(Batiment* batiment)
+{
+	this->descriptionBatiment.setString(batiment->getNom() + "\nDescription :\n" + batiment->getDescription());
+	std::string texteOptions = "Options :\n";
+	for (std::string option : batiment->getActions())
+	{
+		texteOptions = texteOptions + option + "\n";
+	}
+	this->optionsBatiment.setString(texteOptions);
+}

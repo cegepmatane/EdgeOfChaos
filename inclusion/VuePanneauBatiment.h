@@ -21,4 +21,5 @@ public:
 
 	sf::Text getDescriptionBatiment() { return descriptionBatiment; }
 	sf::Text getOptionsBatiment() { return optionsBatiment; }
+	void mettreAJourTexte(Batiment* batiment);
 };

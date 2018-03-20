@@ -31,6 +31,7 @@ void ActionFenetreJeu::clicGauche(FenetreJeu* fenetre, std::vector<int> position
 			{
 				fenetre->setEstBatiment(true);
 				fenetre->setBatimentSelect(batiment);	// idem
+				fenetre->getPanneauBoisBatiment()->mettreAJourTexte(batiment);
 			}
 		}
 	}

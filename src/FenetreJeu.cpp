@@ -166,13 +166,11 @@ void FenetreJeu::lancerBoucle(Menu* menu)
 			//Affichage du panneauBois
 			if (estUnite)
 			{
-				//panneauBoisUnite.setUnite(uniteSelect); // !!!!! "uniteSelect" est à nullptr les 3/4 du temps!
 				this->setView(panneauBoisUnite);
 				panneauBoisUnite.dessiner(*this);
 			}
 			else if (estBatiment)
 			{
-				panneauBoisBatiment.setBatiment(batimentSelect);
 				this->setView(panneauBoisBatiment);
 				panneauBoisBatiment.dessiner(*this);
 			}
