@@ -12,6 +12,12 @@ Apitronix (anciennement CNotreProjet) - **Benoit Langlois**
 
 <a>https://edge-of-chaos.slack.com/</a>
 
+Liens de la présentation et de la vidéo :
+
+<a>https://drive.google.com/open?id=1cLOxiTK5bu5tyEIaA8N5yr8-HoOyw3mv</a>
+
+<a>https://drive.google.com/open?id=1cYwffE5zr8FP_npdZZChbtPnkDzd94LAKxe4f4h2vxw</a>
+
 ---
 
 # Présentation du projet
